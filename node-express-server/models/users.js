@@ -2,13 +2,10 @@ const Sequelize = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   const internalUser = sequelize.define("users", {
-    user_id: {
+    id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
-    },
-    userName: {
-      type: Sequelize.STRING
     },
     email: {
       type: Sequelize.STRING
@@ -16,7 +13,29 @@ module.exports = (sequelize, DataTypes) => {
     password: {
       type: Sequelize.STRING,
     },
-    roles: {
+    fullName: {
+      type: Sequelize.STRING
+    },
+    phone: {
+      type: Sequelize.STRING
+    },
+    federatedID: {
+      type: Sequelize.STRING
+    },
+    promoCode: {
+      type: Sequelize.STRING
+    },
+    lastActive: {
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.NOW
+    },
+    active: {
+      type: Sequelize.Boolean,
+    },
+    otp: {
+      type: Sequelize.STRING,
+    },
+    role: {
       type: Sequelize.STRING,
     },
     createdAt: {

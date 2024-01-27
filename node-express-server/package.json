@@ -1,5 +1,5 @@
 {
-  "name": "ajoVault-web-app",
+  "name": "ajo-vault-web-app",
   "version": "1.0.0",
   "description": "server side application for AjoVault, a personal and pooled savings services web app",
   "main": "app.js",
@@ -31,7 +31,10 @@
     "paths": "^0.1.1",
     "sequelize": "^4.43.0",
     "passport-google-oauth2": "^0.2.0",
-    "passport-google-oauth20": "^2.0.0"
+    "passport-google-oauth20": "^2.0.0",
+    "passport-google-oidc": "^0.1.0",
+    "otp-generator": "^0.1.1",
+    "nodemailer": "^0.1.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

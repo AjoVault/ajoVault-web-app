@@ -1,12 +1,11 @@
-//import potential modules
-const express = require('express'),
-    bodyParser = require('body-parser'),
-    cors = require('cors');
-    path = require('path');
+//Import required modules
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const path = require('path');
 
 const passport = require('passport');
 const connectEnsureLogin = require('connect-ensure-login');
-//const userModel = require('./models/users');
 const mysqlConnection = require('../db/dbconnect');
 const session = require('express-session');
 const cookieSession = require('cookie-session');
@@ -32,15 +31,15 @@ app.use(passport.session());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
+// parse requests of content-type - application/json
+app.use(express.json());
+
 //add support for middleware- cors
 var corsOptions = {
     origin: "http://localhost:80"
   };
 app.use(cors(corsOptions));
   
-// parse requests of content-type - application/json
-app.use(express.json());
-
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
