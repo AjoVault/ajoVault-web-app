@@ -1,33 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import './modal.css'
 import LilacButton from '../Button/LilacButton';
-import forwardEmail from '../../assets/forward_to_inbox.png'
+import forwardInbox from '../../assets/forward-inbox.png'
+import { Link } from 'react-router-dom';
 
-function OTPModal({displayStyle='none'}) {
-  
-//   const [dis, setDis] = useState(style);
+function OTPModal() {
 
-    //   useEffect(() => {
-    //     setDis(style)
-    //   }, [style]);
-
-  let OTPModalstyle = {
-    display: displayStyle
-  }
   return (
     <>
     <div>
-            <div id="myModal" className="modal" style={OTPModalstyle}>
+            <div id="myModal" className="modal" >
+            
 
             {/* Modal content */}
-            <div className="modal-content">
-              <div>
-                <h4 className='modal-heading'> Check your email for an OTP</h4>
-               
+           
+            <div className="modal-content otp-inbox">
+              <div className='forward-email input-logo'>
+                <img className='forward-logo' src={forwardInbox} alt="" />
               </div>
-                
-              
-               <LilacButton title='Next'/>
+  
+                <div>
+                  <h4 className='modal-heading check-email'> Check your email for an OTP</h4>
+                </div >
+
+                <Link to='/inputotp'>
+              <LilacButton
+              type='text'
+              title='Next'
+              />
+            </Link>
             </div>
       </div>
       </div>

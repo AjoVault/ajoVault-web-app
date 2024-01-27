@@ -9,18 +9,17 @@ import Modal from '../Modal/modal';
 import OTPModal from '../Modal/OTPModal';
 import ModalContextProvider from '../../context/modalDisplayProvider';
 import ModalDisplayContex from '../../context/modalDisplay';
+import {Outlet, Link} from 'react-router-dom'
 
 
 function Register() {
-    const [display, setDisplay] = useState('none');
+    // const [display, setDisplay] = useState('none');
     // const {otpModal} = useContext(ModalDisplayContex);
     useEffect(()=> {
 
     })
 
-  return (
- 
-          
+  return (    
         <div className='login-div'>
         <div className='img-div'>
             <img className='logo' src={Logo} alt="" />
@@ -66,16 +65,19 @@ function Register() {
                         <Input placeholder='Enter promo code' name='name'/>
                     </div>
                     <div className='acc-div'>
-                        <LilacButton 
-                        type='button' 
-                        title='Create Account' 
-                        onClick={() => setDisplay('block')}
-                        />
+                        <Link to='checkemail'>
+                            <LilacButton 
+                            type='button' 
+                            title='Create Account' 
+                            onClick={() => setDisplay('block')}
+                            />
+                        </Link>
+                       
                         <p className='acc-text'>Already have an account? <a className='login-span'>Log in</a> </p>
                     </div>
                     
-                    <Modal displayStyle={display}/>   
-                    {/* <OTPModal displayStyle={otpModal}/>            */}
+                    {/* <Modal/>    */}
+                    {/* <OTPModal displayStyle={otpModal? otpModal : 'none'}/>            */}
                 </form>
             </div>
         </div>

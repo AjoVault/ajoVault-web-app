@@ -4,24 +4,26 @@ import LilacButton from '../Button/LilacButton';
 import forwardEmail from '../../assets/forward_to_inbox.png'
 import OTPModal from './OTPModal';
 import ModalDisplayContex from '../../context/modalDisplay';
+import { Link } from 'react-router-dom';
 
-function Modal({displayStyle='none'}) {
+function Modal() {
   
   const [dis, setDis] = useState('none');
   // const {setOtpModal} = useContext(ModalDisplayContex)
 
-      useEffect(() => {
-        setDis(displayStyle)
-      }, [displayStyle]);
+  //     useEffect(() => {
+  //       setDis(displayStyle)
+  //     }, [displayStyle]);
 
-  let modalstyle = {
-    display: dis
-  }
+  // let modalstyle = {
+  //   display: dis
+  // }
+
 
   return (
     <>
     <div>
-            <div id="myModal" className="modal" style={modalstyle}>
+            <div id="myModal" className="modal">
 
             <span className="close"
             onClick={() => setDis('none')}
@@ -33,14 +35,11 @@ function Modal({displayStyle='none'}) {
                 <h4 className='modal-heading'> We need you to verify your email address ar**@gmail.com</h4>
                 <p className='modal-para'>Please select how you want to be verified below</p>
               </div>
-               <button 
-               className='lilacBtn'
-               onClick={() => {;
-                setDis('none')
-                // setOtpModal('block')
-               }}
-               type='button'
-               >
+              <Link to='/otp'>
+                <button 
+                className='lilacBtn'
+                type='button'>            
+
                 <div className='button-div'>
                   <div className='forward-email'>
                     <img className='forward-logo' src={forwardEmail} alt="" />
@@ -51,6 +50,7 @@ function Modal({displayStyle='none'}) {
                   </div>
                 </div>             
                </button>
+               </Link>
             </div>
       </div>
       </div>

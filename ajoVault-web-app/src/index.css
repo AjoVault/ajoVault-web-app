@@ -8,7 +8,7 @@ body{
 }
 
 :root{
-    --lilac: hsla(248, 59%, 55%, 1);   
+    --lilac: hsla(248, 59%, 55%, 1);
     --inputBackground: rgba(91, 73, 208, 7%);  
     --lilacBtn: hsla(248, 93%, 77%, 1);
     --black3: hsla(0, 0%, 17%, 1);
@@ -56,4 +56,9 @@ label{
     font-weight: 500;
     font-size: 20px;
     margin-top: 10px;
+}
+
+.link{
+    text-decoration: none;
+    padding: 0px;
 }
