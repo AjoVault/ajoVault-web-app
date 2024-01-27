@@ -229,16 +229,17 @@ module.exports.googleAuth = (req, res) => {
 module.exports.googleAuthCallback = (req, res) => {    
   passport.authenticate('google', {failureRedirect: '/' }),
   (req, res) => {
-    // Successful authentication, req.user contains the user object
-    if (req.isAuthenticated()) {        
+    // Authentication successful . req.user contains the user object
+    if (req.isAuthenticated()) {
+        
         const fullName = user.fullName.split(' ');
         const firstName = fullName[0];
-
-      const userDetailsToSend = {
-        id: req.user.id,
-        email: req.user.email,
-        firstName: req.user.name
-      };
+      
+        const userDetailsToSend = {
+            id: req.user.id,
+            email: req.user.email,
+            firstName: req.user.name
+        };
 
       // Respond with JSON containing user data
       res.json(userDetailsToSend);

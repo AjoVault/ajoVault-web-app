@@ -1,6 +1,6 @@
 //Import required modules
 const express = require('express');
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 const cors = require('cors');
 const path = require('path');
 
@@ -31,12 +31,12 @@ app.use(passport.session());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
-// parse requests of content-type - application/json
+// Enable parsing requests of content-type - application/json
 app.use(express.json());
 
-//add support for middleware- cors
+//Add support for cors middleware and accept only request from own server
 var corsOptions = {
-    origin: "http://localhost:80"
+    origin: "http://localhost"
   };
 app.use(cors(corsOptions));
   
