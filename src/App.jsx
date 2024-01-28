@@ -1,19 +1,15 @@
-import React from "react";
-import Navbar from "./components-landingPage/navbar/navbar";
-import Hero from "./components-landingPage/hero/hero";
-import ProductF from "./components-landingPage/product-features/productF";
-
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
-  return (
-    <>
-      <div>
-        <Navbar/>
-        <Hero/>
-        <ProductF/>
-      </div>
-    </>
-  );
+    return (
+        <div>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+            </Routes>
+        </div>
+    );
 }
-
 export default App;
