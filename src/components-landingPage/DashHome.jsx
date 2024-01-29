@@ -69,7 +69,7 @@ const DashHome = () => {
                         <h3 className="text-2xl">
                             Pooled <br /> Contribution
                         </h3>
-                        <p className="max-w-36 pb-4">
+                        <p className="max-w-44 pb-4">
                             Join a batch savings pool based on your budget
                         </p>
                         <button className="border-2 border-[#5E0035] py-3 rounded-lg">
@@ -80,7 +80,7 @@ const DashHome = () => {
                         <h3 className="text-2xl">
                             Personal <br /> Savings
                         </h3>
-                        <p className="max-w-[10rem] pb-4">
+                        <p className="max-w-[11rem] pb-4">
                             Start a personal savings to meet your goal
                         </p>
                         <button className="border-2 border-[#5A47CF] py-3 rounded-lg">
@@ -91,7 +91,7 @@ const DashHome = () => {
                         <h3 className="text-2xl">
                             Creating a <br /> Savings Pool
                         </h3>
-                        <p className="max-w-[11rem] pb-4">
+                        <p className="max-w-[12rem] pb-4">
                             Invite friends to create a pooled contribution that
                             works for all
                         </p>
