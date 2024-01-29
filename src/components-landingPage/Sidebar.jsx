@@ -13,6 +13,7 @@ import support from "../assets/support.svg";
 
 import DashHome from "./DashHome";
 import Savings from "./Savings";
+import Withdrawal from "./Withdrawal";
 import { Tab } from "@headlessui/react";
 
 const Sidebar = () => {
@@ -20,11 +21,11 @@ const Sidebar = () => {
         <section className="bg-[#FCFCFC]">
             <Tab.Group>
                 <div className="flex gap-4 h-screen rounded-sm">
-                    <Tab.List className="flex flex-col justify-between bg-[#5A47CF] py-10 w-[200px] lg:w-[250px] shrink-0">
+                    <Tab.List className="flex flex-col justify-between bg-[#5A47CF] py-10 md:w-[200px] lg:w-[250px] shrink-0">
                         <div className="flex flex-col items-center text-white">
                             <div className="flex items-center gap-1 pb-8 cursor-pointer">
                                 <img src={coin} alt="ajo vault logo" />
-                                <p className="font-semibold text-3xl">
+                                <p className="font-semibold text-3xl hidden md:block">
                                     Ajo<span className="text-[#5E0035]">V</span>
                                     ault
                                 </p>
@@ -44,7 +45,7 @@ const Sidebar = () => {
                                             alt="home icon"
                                             className="w-6 lg:w-8"
                                         />
-                                        <p className="text-lg font-medium lg:text-[23px]">
+                                        <p className="text-lg font-medium lg:text-[23px] hidden md:block">
                                             Home
                                         </p>
                                     </div>
@@ -67,13 +68,13 @@ const Sidebar = () => {
                                             alt="Savings icon"
                                             className="w-6 lg:w-8"
                                         />
-                                        <p className="text-lg font-medium lg:text-[23px]">
+                                        <p className="text-lg font-medium lg:text-[23px] hidden md:block">
                                             Savings
                                         </p>
                                     </div>
                                 )}
                             </Tab>
-                            <Tab disabled as={Fragment}>
+                            <Tab as={Fragment}>
                                 {({ selected }) => (
                                     <div
                                         className={` w-full py-4 pl-4 flex items-center gap-2 cursor-pointer ${
@@ -86,7 +87,7 @@ const Sidebar = () => {
                                             alt="Savings icon"
                                             className="w-6 lg:w-8"
                                         />
-                                        <p className="text-lg font-medium lg:text-[23px]">
+                                        <p className="text-lg font-medium lg:text-[23px] hidden md:block">
                                             Withdrawal
                                         </p>
                                     </div>
@@ -105,7 +106,7 @@ const Sidebar = () => {
                                             alt="Savings icon"
                                             className="w-6 lg:w-8"
                                         />
-                                        <p className="text-lg font-medium lg:text-[23px]">
+                                        <p className="text-lg font-medium lg:text-[23px] hidden md:block">
                                             Transaction
                                         </p>
                                     </div>
@@ -128,7 +129,7 @@ const Sidebar = () => {
                                             alt="Savings icon"
                                             className="w-6 lg:w-8"
                                         />
-                                        <p className="text-lg font-medium lg:text-[23px]">
+                                        <p className="text-lg font-medium lg:text-[23px] hidden md:block">
                                             Settings
                                         </p>
                                     </div>
@@ -153,7 +154,7 @@ const Sidebar = () => {
                                             alt="Savings icon"
                                             className="w-6 lg:w-8"
                                         />
-                                        <p className="text-lg font-medium lg:text-[23px]">
+                                        <p className="text-lg font-medium lg:text-[23px] hidden md:block">
                                             Support
                                         </p>
                                     </div>
@@ -169,7 +170,9 @@ const Sidebar = () => {
                         <Tab.Panel>
                             <Savings />
                         </Tab.Panel>
-                        <Tab.Panel></Tab.Panel>
+                        <Tab.Panel>
+                            <Withdrawal />
+                        </Tab.Panel>
                         <Tab.Panel></Tab.Panel>
                         <Tab.Panel></Tab.Panel>
                     </Tab.Panels>
