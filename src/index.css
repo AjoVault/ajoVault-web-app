@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    background-color: #fcfcfc;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.card0 {
+    box-shadow: 4px 4px 8px 0px rgba(204, 204, 204, 0.2);
+}
+
+.card1 {
+    border-radius: 8px 8px 0px 8px;
+    box-shadow: 8px 8px 0px 0px #5e0035;
+}
+
+.card2 {
+    border-radius: 8px 8px 0px 8px;
+    box-shadow: 8px 8px 0px 0px #5a47cf;
+}
+
+.card3 {
+    border-radius: 8px 8px 0px 8px;
+    box-shadow: 8px 8px 0px 0px #5a47cf;
+}
+
+.savingsCard {
+    box-shadow: 8px 8px 0px 0px #5a47cf;
+}
