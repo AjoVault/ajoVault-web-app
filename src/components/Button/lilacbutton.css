@@ -1,0 +1,15 @@
+
+.lilacBtn{
+    width: 100%;
+    background-color:  var(--lilacBtn);
+    padding: 15px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.7s ease;
+    
+}
+.lilacBtn:hover{
+    background-color: var(--lilac);
+    cursor: pointer;
+}
