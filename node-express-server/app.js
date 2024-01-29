@@ -1,12 +1,11 @@
-//Import required modules
 const express = require('express');
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 
 const passport = require('passport');
 const connectEnsureLogin = require('connect-ensure-login');
-const mysqlConnection = require('../db/dbconnect');
+const mysqlConnection = require('./db/dbconnect');
 const session = require('express-session');
 const cookieSession = require('cookie-session');
 
@@ -29,7 +28,6 @@ app.use(passport.session());
 
 //Enable parsing as urlencoded and json.
 app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json());
 
 // Enable parsing requests of content-type - application/json
 app.use(express.json());
@@ -60,10 +58,10 @@ app.use((err, req, res, next) => {
 });
 
 // Catch all other routes and send to home page
-const path = __dirname + '/node-express-server/views/';
-app.use(express.static(path));
+const staticClientPath = __dirname + '/node-express-server/views/';
+app.use(express.static(staticClientPath));
 app.get('/*', function (req,res) {
-    res.sendFile(path + "index.html");
+    res.sendFile(staticClientPath + "index.html");
   });
 
 

@@ -17,4 +17,13 @@ router.get('/google-auth', authController.googleAuth);
 // Google auth callback
 router.get('/google-auth-callback', authController.googleAuthCallback);
 
+// Handle forgotten user password
+router.get('/forgotten-password', authController.forgottenPassword);
+
+// Password reset token bearer
+router.get('/password-reset/:token', authController.passwordResetToken);
+
+// Password reset form submission
+router.get('/reset-password/:token', authController.passwordReset);
+
 module.exports = router;

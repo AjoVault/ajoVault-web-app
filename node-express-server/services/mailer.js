@@ -1,3 +1,6 @@
+
+const nodemailer = require('nodemailer');
+
 const MAIL_SETTINGS = {
     service: 'gmail',
     auth: {
@@ -5,26 +8,16 @@ const MAIL_SETTINGS = {
       pass: process.env.MAIL_PASSWORD,
     },
   }
-    
-  const nodemailer = require('nodemailer');
-  const transporter = nodemailer.createTransport(MAIL_SETTINGS);
-  
+      
+const transporter = nodemailer.createTransport(MAIL_SETTINGS);
+
   module.exports.sendMail = async (params) => {
     try {
       let info = await transporter.sendMail({
         from: MAIL_SETTINGS.auth.user,
         to: params.to, 
-        subject: 'AjoVault Signup OTP',
-        html: `
-        <div
-          class="container"
-          style="max-width: 90%; margin: auto; padding-top: 20px"
-        >
-          <h2>You are almost there</h2>
-          <p style="margin-bottom: 30px;">Please use the following signup OTP to get verify your email address</p>
-          <h1 style="font-size: 40px; letter-spacing: 2px; text-align:center;">${params.OTP}</h1>
-     </div>
-      `,
+        subject: params.subject, 
+        html: params.body,
       });
       return info;
     } catch (error) {
