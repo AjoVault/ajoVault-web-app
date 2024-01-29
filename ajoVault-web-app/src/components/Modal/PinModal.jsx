@@ -4,7 +4,9 @@ import LilacButton from '../Button/LilacButton';
 import forwardInbox from '../../assets/forward-inbox.png'
 import {Link} from 'react-router-dom';
 
-function EnterOTP({numberOfDigits=4}) {   
+function PinModal({numberOfDigits=4}) {
+
+    
 
     const [otp, setOtp] = useState(new Array(numberOfDigits).fill(""));
     const [otpError, setOtpError] = useState(null);
@@ -40,7 +42,8 @@ function EnterOTP({numberOfDigits=4}) {
             <div className="modal-content otp-inbox">
 
               <div>
-                <h4 className='modal-heading check-email'> Enter the OTP sent to your email address</h4>
+                <h4 className='modal-heading check-email'> Lastly Create your 4-digit pin you won't forget</h4>
+                <p>You will have to input this pin whenever you need to sign back in after being out for a while</p>
               </div>
               <div className='otp-input'>
                     {
@@ -56,10 +59,10 @@ function EnterOTP({numberOfDigits=4}) {
                         ))
                     }
               </div>
-              <div>
-                <p>Didn't get a PIN? resend in 5:00</p>
+              <div style={{height: '20px'}}>
+
               </div>  
-              <Link to='/password'>
+              <Link to='/confirmpin'>
               <LilacButton title='Next'/>
               </Link>          
                 
@@ -70,4 +73,4 @@ function EnterOTP({numberOfDigits=4}) {
   )
 }
 
-export default EnterOTP
+export default PinModal

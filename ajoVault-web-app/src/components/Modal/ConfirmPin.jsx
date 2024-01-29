@@ -4,7 +4,9 @@ import LilacButton from '../Button/LilacButton';
 import forwardInbox from '../../assets/forward-inbox.png'
 import {Link} from 'react-router-dom';
 
-function EnterOTP({numberOfDigits=4}) {   
+function ConfirmPin({numberOfDigits=4}) {
+
+    
 
     const [otp, setOtp] = useState(new Array(numberOfDigits).fill(""));
     const [otpError, setOtpError] = useState(null);
@@ -40,7 +42,8 @@ function EnterOTP({numberOfDigits=4}) {
             <div className="modal-content otp-inbox">
 
               <div>
-                <h4 className='modal-heading check-email'> Enter the OTP sent to your email address</h4>
+                <h4 className='modal-heading check-email'> Confirm Pin</h4>
+                <p>Re-enter your pin. This is to ensure that you would not forget</p>
               </div>
               <div className='otp-input'>
                     {
@@ -57,10 +60,10 @@ function EnterOTP({numberOfDigits=4}) {
                     }
               </div>
               <div>
-                <p>Didn't get a PIN? resend in 5:00</p>
+                <p>By clicking complete signup, I agree to AjoVaults <span className='login-span'>Terms</span> and <span className='login-span'>Privacy policy</span> </p>
               </div>  
-              <Link to='/password'>
-              <LilacButton title='Next'/>
+              <Link to='/login'>
+              <LilacButton title='Complete Sign up'/>
               </Link>          
                 
             </div>
@@ -70,4 +73,4 @@ function EnterOTP({numberOfDigits=4}) {
   )
 }
 
-export default EnterOTP
+export default ConfirmPin

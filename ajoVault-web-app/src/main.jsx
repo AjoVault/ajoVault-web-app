@@ -10,6 +10,8 @@ import RegisterOutlet from './RegisterLayout.jsx'
 import OTPModal from './components/Modal/OTPModal.jsx'
 import EnterOTP from './components/Modal/EnterOTP.jsx'
 import Password from './components/Modal/Password.jsx'
+import PinModal from './components/Modal/PinModal.jsx'
+import ConfirmPin from './components/Modal/ConfirmPin.jsx'
 
 
 const router = createBrowserRouter(
@@ -20,6 +22,8 @@ const router = createBrowserRouter(
       <Route path='/otp' element={<OTPModal />} />
       <Route path='/inputotp' element={<EnterOTP />} />
       <Route path='/password' element={<Password />} />
+      <Route path='/pin' element={<PinModal />} />
+      <Route path='/confirmpin' element={<ConfirmPin />} />
     </Route>
     <Route path='/login' element={<Login />}>
 
