@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+// import App from './App.jsx'
+import './index.css'
+import Register from './components/Register/Register.jsx'
+import Login from './components/Login/Login.jsx'
+import Modal from './components/Modal/modal.jsx'
+// import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import RegisterOutlet from './RegisterLayout.jsx'
+import OTPModal from './components/Modal/OTPModal.jsx'
+import EnterOTP from './components/Modal/EnterOTP.jsx'
+import Password from './components/Modal/Password.jsx'
+import PinModal from './components/Modal/PinModal.jsx'
+import ConfirmPin from './components/Modal/ConfirmPin.jsx'
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <div>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path='/register/' element={<RegisterOutlet />}>
+                    <Route path='checkemail' element={<Modal />}  />
+                    <Route path='otp' element={<OTPModal />} />
+                    <Route path='inputotp' element={<EnterOTP />} />
+                    <Route path='password' element={<Password />} />
+                    <Route path='pin' element={<PinModal />} />
+                    <Route path='confirmpin' element={<ConfirmPin />} />
+                    {/* </Route> */}   
+                </Route>
+                <Route path='/login' element={<Login />} />
+            </Routes>
+        </div>
+    );
 }
-
-export default App
+export default App;

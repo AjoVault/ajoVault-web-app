@@ -1,0 +1,45 @@
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 50px 0px;
+  }
+  
+  .separator::before,
+  .separator::after {
+    content: ' ';
+    flex: 1;
+    border-bottom: 1px solid #000;
+  }
+  
+  .separator:not(:empty)::before {
+    margin-right: 1rem;
+  }
+  
+  .separator:not(:empty)::after {
+    margin-left: 1rem;
+  }
+
+  .google-div{
+    display: flex;
+    width: 50px;
+    /* border: 1px solid red; */
+    margin: auto;
+  }
+
+  .google-img{
+    width: 100%;
+  }
+  .login{
+    text-align: left;
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
+  .acc-login-div{
+    
+  }
+
+  .acc-login{
+    margin-top: 40px;
+  }
+  
