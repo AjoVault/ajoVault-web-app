@@ -1,0 +1,60 @@
+.carousel-container {
+  position: relative;
+  border: 4px solid red;
+}
+
+.review-card-containers {
+  display: flex;
+  overflow: hidden;
+  width: 613px;
+  height: 613px;
+  border: 4px solid blue;
+}
+
+.carousel-card {
+  /* opacity: 0; */
+  transition: opacity 0.5s ease;
+  border: solid 4px green;
+}
+
+.img-container {
+  position: relative;
+  /* width: 150px;
+    height: 150px; */
+}
+
+.img-container .card-img {
+  /* height: 100%;
+    width: 100%; */
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.carousel-card.active {
+  opacity: 1;
+}
+
+/* .carousel-indicators {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+  }
+  
+  .carousel-indicator {
+    width: 10px;
+    height: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .carousel-indicator.active {
+    background-color: #333;
+  } */
+
+/* .review-img{
+
+  } */
