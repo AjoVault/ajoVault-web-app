@@ -114,3 +114,30 @@
   float: left;
   margin: 0px;
  }
+
+ .customer{
+  margin: 0;
+  text: white;
+  font-weight: 600;
+  font-size: 2.063rem;
+ }
+
+ .customer-div{
+  background-color: var(--blue);
+  color: #fefefe;
+  margin: 0px;
+  padding: 0px;
+ }
+
+ .modal-body{
+  padding: 31px;
+ }
+ .modal-header{
+  padding: 0px;
+  border-radius: 20px;
+  overflow: hidden;
+ }
+ .customer-text{
+  text-align: center;
+  color: var(--black2)
+ }

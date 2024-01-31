@@ -62,7 +62,7 @@ function PinModal({numberOfDigits=4}) {
               <div style={{height: '20px'}}>
 
               </div>  
-              <Link to='/confirmpin'>
+              <Link to='/register/confirmpin'>
               <LilacButton title='Next'/>
               </Link>          
                 

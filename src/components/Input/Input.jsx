@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './input.css';
 import visibility from '../../assets/visibility.png';
 
-function Input({placeholder="Enter your name", name="email", type ='text', inputValue, inputChange, required=true}) {
+function Input({placeholder="Enter your name", name="email", type ='text', inputValue='', inputChange='', required=true}) {
   const [place, setPlace] = useState(placeholder);
   const [inputType, setInputType] = useState(type)
 
@@ -34,7 +34,7 @@ function Input({placeholder="Enter your name", name="email", type ='text', input
      alt="" 
      onClick={() => {inputType === 'password' ? setInputType('text') : setInputType('password') }}
     />
-    <input type={inputType} 
+    <input className="input" type={inputType} 
     placeholder={place}
     name={name}
     value={inputValue}

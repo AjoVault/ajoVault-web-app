@@ -15,6 +15,7 @@ import EnterOTP from './components/Modal/EnterOTP.jsx'
 import Password from './components/Modal/Password.jsx'
 import PinModal from './components/Modal/PinModal.jsx'
 import ConfirmPin from './components/Modal/ConfirmPin.jsx'
+import KnowYourCustomer from "./components/Modal/KnowYourCustomer.jsx";
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/dashboard" element={<Dashboard />} />
-                <Route path='/register/' element={<RegisterOutlet />}>
+                <Route path='register/' element={<RegisterOutlet />}>
                     <Route path='checkemail' element={<Modal />}  />
                     <Route path='otp' element={<OTPModal />} />
                     <Route path='inputotp' element={<EnterOTP />} />
@@ -33,6 +34,7 @@ function App() {
                     {/* </Route> */}   
                 </Route>
                 <Route path='/login' element={<Login />} />
+                <Route path='/knowyourcustomer' element={<KnowYourCustomer />} />
             </Routes>
         </div>
     );

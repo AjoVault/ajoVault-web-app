@@ -59,7 +59,7 @@ function EnterOTP({numberOfDigits=4}) {
               <div>
                 <p>Didn't get a PIN? resend in 5:00</p>
               </div>  
-              <Link to='/password'>
+              <Link to='/register/password'>
               <LilacButton title='Next'/>
               </Link>          
                 

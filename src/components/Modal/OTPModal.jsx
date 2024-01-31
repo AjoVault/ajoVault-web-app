@@ -23,7 +23,7 @@ function OTPModal() {
                   <h4 className='modal-heading check-email'> Check your email for an OTP</h4>
                 </div >
 
-                <Link to='/inputotp'>
+                <Link to='/register/inputotp'>
               <LilacButton
               type='text'
               title='Next'

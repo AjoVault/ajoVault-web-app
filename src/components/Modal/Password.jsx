@@ -22,7 +22,7 @@ function Password({numberOfDigits=4}) {
 
                 <label className='label' htmlFor='password'>Password</label>
                 <Input placeholder='Enter your password' name='password' />  
-                    <Link to='/pin'>
+                    <Link to='/register/pin'>
                     <LilacButton title='Continue'/>
                   </Link>      
                 
