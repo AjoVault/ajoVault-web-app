@@ -1,8 +1,6 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const router = express.Router();
-const cors = require('cors');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const mysqlConnection = require('../db/dbconnect');
 const Users = mysqlConnection.users;
@@ -14,88 +12,35 @@ const cookieSession = require('cookie-session');
 const connectEnsureLogin = require('connect-ensure-login');
 const Sequelize = require('sequelize');
 const mysql = require('mysql2/promise');
+const path = require('path');
 
 const { generateOTP } = require('../services/otp');
 const { sendMail } = require('../services/mailer');
-
-// Create the strategy using the user model
-passport.use(new LocalStrategy(Users.authenticate()));
-
 
 // Create token generating function
 function generateToken(length) {
   return crypto.randomBytes(length).toString('hex');
 }
 
-// initialize passport
-passport.initialize(); 
-passport.session(); 
+// Create an email masking function
+function maskEmail(email) {
+  const atIndex = email.indexOf('@');
 
-// Serialize user to store in the session
-passport.serializeUser((user, done) => {
-    done(null, user.id);
-  });
+  if (atIndex !== -1) {
+    const username = email.slice(0, atIndex);
+    const maskedUsername = username.slice(0, 3) + '*'.repeat(username.length - 5) + username.slice(-2);
+    const domain = email.slice(atIndex);
+    const maskedEmail = maskedUsername + domain;
 
-// Deserialize user from the session
-passport.deserializeUser(async (id, done) => {
-    try {
-      const user = await Users.findByPk(id);
-      done(null, user);
-    } catch (error) {
-      done(error, null);
-    }
-  });
+    return maskedEmail;
+  }
 
-  
-
-
-// Configure Google Auth Strategy
-passport.use(new GoogleStrategy({
-    clientID: process.env['GOOGLE_CLIENT_ID'],
-    clientSecret: process.env['GOOGLE_CLIENT_SECRET'],
-    callbackURL: '/auth/google-auth-callback',
-    scope: ['profile']
-  }, function verify(issuer, profile, cb) {
-    //Check if user has previously been profiled with a db query
-    mysqlConnection.get('SELECT * FROM users WHERE federatedID = ?', [profile.id], function(err, row) {
-        //If db query error, return the error
-      if (err) { return cb(err); }
-
-      //If db query is empty, user has not been profiled. Go ahead and add user
-      if (!row) {
-        const userEmail = profile.emails && profile.emails.length > 0 ? profile.emails[0].value : null;
-        mysqlConnection.run('INSERT INTO users (email, fullName, federatedID) VALUES (?,?)', [userEmail, profile.displayName,profile.id], 
-        function(err) {
-            //If user insert error, return the error
-          if (err) {return cb(err);}
-          
-            //Otherwise, insert successful. Return user object
-          var id = this.lastID;
-          var user = {
-            id: id,
-            email: userEmail,
-            fullName: profile.displayName
-          };
-          return cb(null, user);          
-        });
-      } else {
-        //If db query returns a row, user has previously been profiled. Go ahead and select the user
-        mysqlConnection.get('SELECT id, email, fullName FROM users WHERE id = ?', [row.user_id], function(err, user) {
-          if (err) {return cb(err);}
-          if (!row) {return cb(null, false);}
-          return cb(null, user);
-        });
-      }
-    });
-  }));
-    
+  return email;
+}
 
 
 const moment = require('moment');
 const currenttime = new moment().format('YYYY-MM-DD HH:MM:SS');
-
-process.env.SECRET_KEY = 'ajoVaulSecret';
-router.use(cors());
 
 
 //SignUp user
@@ -109,14 +54,16 @@ module.exports.signupUser = async (req, res) => {
         role: req.body.role,
         created_at: currenttime
     }
-    
+
     Users.findOne({
         where: Sequelize.or({email: req.body.email}, {phone: req.body.phone})
     })
     .then(user => {
             if (!user) {
-                const hash = bcrypt.hashSync(newUser.password, 10)
-                newUser.password = hash;
+                const hashedPassword = bcrypt.hashSync(req.body.password, 10);             
+                newUser.password = hashedPassword;
+                const dpPath = path.posix.join('/node-express-server', 'views', 'images', 'dp_images', 'default_avatar.png');
+                newUser.dpPath = dpPath;
                 const otpGenerated = generateOTP();
                 newUser.otp = otpGenerated;
                 Users.create(newUser)
@@ -136,19 +83,20 @@ module.exports.signupUser = async (req, res) => {
                          </div>
                           `,  
                           });
-                          res.json({'email': req.body.email});
+                          const maskedEmail = maskEmail(req.body.email);
+                          res.json({"success":"true", "response": maskedEmail});
                         } catch (error) {
-                            res.json({error: 'Unable to complete signup'});
+                            res.json({"success":"false", "response": "Unable to complete signup"});
                         }
                     })
                     .catch(err => {
-                        res.send('error: ' + err)
+                        res.json({"success":"false", "response": +err})
                     })
             } else {
-                res.json({error: 'User exists' });
+                res.json({"success":"false", "response": "User exists"});
             }
         }).catch(err => {
-            res.send('error: ' + err);
+            res.json({"success":"false", "response": +err});
         })    
   };
 
@@ -160,96 +108,115 @@ module.exports.signupUser = async (req, res) => {
     const verifiedUser = await validateUserSignUp(email, otp);
 
     if (verifiedUser[0]) {
-        passport.authenticate('local', {session: true}, (err, user) => {
-            if (err || !user) {
-                return res.status(401).json({
-                    success: false,
-                    message: 'Authentication failed',
-                });
-            }
-            
-            const fullName = user.fullName;
-            const fullNameArray = fullName.split(" ");
-            const firstName = fullNameArray[0];
 
-            const userDetailsToSend = {
-                id: user.id,
-                email: user.email,
-                firstName: firstName,
-            };
-     
-            return res.json({
-                success: true,
-                message: 'Authentication successful',
-                user: userDetailsToSend,
-            });
-        })(req, res, next);
+            const user = await Users.findOne({where: { email }});
+
+              req.login(user, (err) => {
+                if (err) {
+                  return res.status(500).json({ success: false, "response": "Authentication failed"});
+                }
+
+                // The user is now logged in                            
+                const fullName = user.fullName;
+                const fullNameArray = fullName.split(" ");
+                const firstName = fullNameArray[0];
+                const dpPath = path.posix.join('/node-express-server', 'views', 'images', 'dp_images', 'default_avatar.png');
+                const userDetailsToSend = {
+                    id: user.id,
+                    email: user.email,
+                    firstName: firstName,
+                    dpPath: dpPath,             
+                };
+        
+                return res.json({"success":"true", "response": userDetailsToSend});
+              });
     } else {
-        res.status(401).json({
-            success: false,
-            message: 'Email validation failed',
+        res.status(401).json({"success":"false", "response":"Email validation failed",
         });
     }
 };
-  
+
   const validateUserSignUp = async (email, otp) => {
-    const verifiedUser = await Users.findOne({where: {email}});
+    var verifiedUser = await Users.findOne({where: {email}});
     if (!verifiedUser) {
         return [false, 'User not found'];
     }
-    if (verifiedUser && user.otp !== otp) {
+    if (verifiedUser && verifiedUser.otp !== otp) {
         return [false, 'Invalid OTP'];
     }
     verifiedUser = await verifiedUser.update({active: true});
-    return verifiedUser;
+    return [true, verifiedUser];
   };
 
 
-
 //Login user
-module.exports.loginUser = (req, res) => {
-    passport.authenticate('local', {session: true}, (err, user) => {
-        if (err || !user) {
-            return res.status(401).json({
-                success: false,
-                message: 'Authentication failed',
-            });
-        }
-        
-        const fullName = user.fullName.split(' ');
-        const firstName = fullName[0];
+module.exports.loginUser = async (req, res, next) => {
+  
+  const {email, password} = req.body;
+  const verifiedUser = await loginManual(email, password);
 
+  if (verifiedUser[0]) {
+
+    const user = await Users.findOne({where: { email }});
+
+      req.login(user, (err) => {
+        if (err) {
+          return res.status(500).json({ success: false, "response": "Authentication failed"});
+        }
+
+        // The user is now logged in                            
+        const fullName = user.fullName;
+        const fullNameArray = fullName.split(" ");
+        const firstName = fullNameArray[0];
+        const dpPath = user.dpPath;
         const userDetailsToSend = {
             id: user.id,
             email: user.email,
             firstName: firstName,
+            dpPath: dpPath,             
         };
- 
-        return res.json({
-            success: true,
-            message: 'Authentication successful',
-            user: userDetailsToSend,
-        });
-    })(req, res, next);
+
+        return res.json({"success":"true", "response": userDetailsToSend});
+      });
+} else {
+res.status(401).json({"success":"false", "response":"Username or Password Incorrect",
+});
 }
+
+}
+
+const loginManual = async (email, password) => {
+  var verifiedUser = await Users.findOne({where: {email}});
+  if (!verifiedUser) {
+      return [false, 'User not found'];
+  }
+  if (verifiedUser && !(await bcrypt.compare(password, verifiedUser.password))) {
+      return [false, 'Incorrect Password'];
+  }
+  
+  return [true, verifiedUser];
+};
+
+
 
 
 //Logout user
-module.exports.loginUser = (req, res) => {
+module.exports.logoutUser = (req, res) => {
     req.logout();
-    res.redirect('/');
+    return res.json({"success":"true", "response": "User logged out successfully"});
+    //res.redirect('/');
 }
 
-//Google Auth 
+//Google Auth - redirects user to Google
 module.exports.googleAuth = (req, res) => {
-    passport.authenticate('google'); //redirects user to Google
+    passport.authenticate('google'); 
 }
 
 //Google Auth Callback
 module.exports.googleAuthCallback = (req, res) => {    
   passport.authenticate('google', {failureRedirect: '/' }),
   (req, res) => {
-    // Authentication successful . req.user contains the user object
+    // Authentication successful. req.user contains the user object
     if (req.isAuthenticated()) {
         
         const fullName = user.fullName.split(' ');
@@ -262,10 +229,10 @@ module.exports.googleAuthCallback = (req, res) => {
         };
 
       // Respond with JSON containing user data
-      res.json(userDetailsToSend);
+      res.json({"success":"true", "response":userDetailsToSend});
     } else {
       // On authentication failure
-      res.status(401).json({ message: 'User not authenticated' });
+      res.status(401).json({"success":"false", "response":"User not authenticated"});
     }
   }
 
@@ -282,7 +249,7 @@ module.exports.forgottenPassword = async (req, res) => {
 
     if (!rows || !rows.length) {
       // Handle case where email is not found
-      res.status(401).json({message: 'User not found'});
+      res.status(401).json({"success":"false", "response":"User not found"});
     }
 
     // Generate a unique token (you might use a library like crypto or uuid)
@@ -311,15 +278,15 @@ module.exports.forgottenPassword = async (req, res) => {
    </div>
     `,  
     });
-    res.json({'Success': 'Password reset link sent successfully'});
+    res.json({"success":"true", "response": "Password reset link sent successfully"});
   } catch (error) {
-      res.json({error: 'Unable to complete your request'});
+      res.json({"success":"false", "response": "Unable to complete your request"});
   }
 
   } catch (error) {
     console.error(error);
     // Handle any error
-      res.json({error: 'Unable to complete your request'});
+      res.json({"success":"false", "response":"Unable to complete your request"});
   }
 };
 

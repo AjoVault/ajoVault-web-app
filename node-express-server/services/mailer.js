@@ -1,5 +1,6 @@
 
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 const MAIL_SETTINGS = {
     service: 'gmail',

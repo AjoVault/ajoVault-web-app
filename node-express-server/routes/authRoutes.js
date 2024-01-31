@@ -26,4 +26,7 @@ router.get('/password-reset/:token', authController.passwordResetToken);
 // Password reset form submission
 router.get('/reset-password/:token', authController.passwordReset);
 
+// Logout User
+router.post('/logout', authController.logoutUser);
+
 module.exports = router;
