@@ -1,13 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-  margin: 0;
-  padding: 0;
-  font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
 }
 
 body {
-  background-color: #fcfcfc;
+    background-color: #fcfcfc;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.card0 {
+    box-shadow: 4px 4px 8px 0px rgba(204, 204, 204, 0.2);
+}
+
+.card1 {
+    border-radius: 8px 8px 0px 8px;
+    box-shadow: 8px 8px 0px 0px #5e0035;
+}
+
+.card2 {
+    border-radius: 8px 8px 0px 8px;
+    box-shadow: 8px 8px 0px 0px #5a47cf;
+}
+
+.card3 {
+    border-radius: 8px 8px 0px 8px;
+    box-shadow: 8px 8px 0px 0px #5a47cf;
+}
+
+.savingsCard {
+    box-shadow: 8px 8px 0px 0px #5a47cf;
+}
+
+
+body{
+    margin: 0;
+    padding: 0;
+    /* background-color: black; */
+    font-family: 'Montserrat', 'sans-serif';
+    box-sizing: border-box;
+    color: var(--black3);
+}
+
+:root{
+    --lilac: hsla(248, 59%, 55%, 1);
+    --inputBackground: rgba(91, 73, 208, 7%);  
+    --lilacBtn: hsla(248, 93%, 77%, 1);
+    --black3: hsla(0, 0%, 17%, 1);
+}
+
+.login-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.login-div{
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    /* height: 700px; */
+    /* border: 2px solid red; */
+}
+.img-div{
+    width: 50%;
+
+    position: relative;
+    /* border: 2px solid red; */
+}
+.logo {
+    position: absolute;
+    width: 60%;
+    left: 15%;
+    top: 3%
+}
+.login-text{
+    position: absolute;
+    bottom: 8%;
+    left: 8%;
+    width: 60%;
+}
+.form-div{
+    /* display: flex; */
+    width: 60%;   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+}
+label{
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.link{
+    text-decoration: none;
+    padding: 0px;
 }

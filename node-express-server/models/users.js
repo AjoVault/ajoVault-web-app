@@ -1,36 +1,62 @@
-const Sequelize = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
+const passportLocalSequelize = require('passport-local-sequelize');
+
 
 module.exports = (sequelize, DataTypes) => {
-  const internalUser = sequelize.define("users", {
-    user_id: {
-      type: Sequelize.INTEGER,
+  const users = sequelize.define("users", {
+    id: {
+      type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    userName: {
-      type: Sequelize.STRING
-    },
     email: {
-      type: Sequelize.STRING
+      type: DataTypes.STRING
     },
     password: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
-    roles: {
-      type: Sequelize.STRING,
+    fullName: {
+      type: DataTypes.STRING
+    },
+    phone: {
+      type: DataTypes.STRING
+    },
+    federatedID: {
+      type: DataTypes.STRING
+    },
+    promoCode: {
+      type: DataTypes.STRING
+    },
+    lastActive: {
+      type: DataTypes.DATE,
+      defaultValue: Sequelize.NOW
+    },
+    active: {
+      type: DataTypes.BOOLEAN,
+    },
+    otp: {
+      type: DataTypes.STRING,
+    },
+    role: {
+      type: DataTypes.STRING,
     },
     createdAt: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
       defaultValue: Sequelize.NOW
     },
     updatedAt: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
       defaultValue: Sequelize.NOW
     }
   }, {
       tableName: 'users',
   })
+  
+  passportLocalSequelize.attachToUser(users, {
+    usernameField: 'email',
+    hashField: 'password', 
+  });
 
-  return internalUser;
+  return users;
 }
 

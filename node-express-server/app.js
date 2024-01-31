@@ -1,13 +1,11 @@
-//import potential modules
-const express = require('express'),
-    bodyParser = require('body-parser'),
-    cors = require('cors');
-    path = require('path');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const path = require('path');
 
 const passport = require('passport');
 const connectEnsureLogin = require('connect-ensure-login');
-//const userModel = require('./models/users');
-const mysqlConnection = require('../db/dbconnect');
+const mysqlConnection = require('./db/dbconnect');
 const session = require('express-session');
 const cookieSession = require('cookie-session');
 
@@ -30,17 +28,16 @@ app.use(passport.session());
 
 //Enable parsing as urlencoded and json.
 app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json());
 
-//add support for middleware- cors
+// Enable parsing requests of content-type - application/json
+app.use(express.json());
+
+//Add support for cors middleware and accept only request from own server
 var corsOptions = {
-    origin: "http://localhost:80"
+    origin: "http://localhost"
   };
 app.use(cors(corsOptions));
   
-// parse requests of content-type - application/json
-app.use(express.json());
-
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
@@ -61,10 +58,10 @@ app.use((err, req, res, next) => {
 });
 
 // Catch all other routes and send to home page
-const path = __dirname + '/node-express-server/views/';
-app.use(express.static(path));
+const staticClientPath = __dirname + '/node-express-server/views/';
+app.use(express.static(staticClientPath));
 app.get('/*', function (req,res) {
-    res.sendFile(path + "index.html");
+    res.sendFile(staticClientPath + "index.html");
   });
 
 

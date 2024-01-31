@@ -1,11 +1,10 @@
-
-const Sequelize = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const env = require('../config/env');
 const mysqlConnection = {}
 
 const sequelize = new Sequelize(env.database, env.username, '', {
   host: env.host, 
-  dialect: env.dialect,
+  dialect: env.dialect
 });
 
 sequelize.authenticate()
