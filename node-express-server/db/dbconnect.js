@@ -1,9 +1,11 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const env = require('../config/env');
+//const env = require('../config/env');
+const env = require('../config/env-remote');
 const mysqlConnection = {}
 
-const sequelize = new Sequelize(env.database, env.username, '', {
+const sequelize = new Sequelize(env.database, env.username, env.password, {
   host: env.host, 
+  port: env.port,
   dialect: env.dialect
 });
 
