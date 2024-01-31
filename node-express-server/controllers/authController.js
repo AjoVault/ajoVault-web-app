@@ -202,9 +202,12 @@ const loginManual = async (email, password) => {
 
 //Logout user
 module.exports.logoutUser = (req, res) => {
-    req.logout();
-    return res.json({"success":"true", "response": "User logged out successfully"});
-    //res.redirect('/');
+  req.logout(function(err) {
+      if (err) {
+          return res.json({"success": "false", "response": "Error logging out"});
+      }
+      return res.json({"success": "true", "response": "User logged out successfully"});
+  });
 }
 
 //Google Auth - redirects user to Google
