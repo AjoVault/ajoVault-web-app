@@ -8,7 +8,7 @@ const mysqlConnection = require('./db/dbconnect');
 const Users = mysqlConnection.users;
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GoogleStrategy = require('passport-google-oidc');
 const connectEnsureLogin = require('connect-ensure-login');
 const session = require('express-session');
 const cookieSession = require('cookie-session');
@@ -33,9 +33,9 @@ app.use(cors(corsOptions));
 
 // Configure Google Auth Strategy
 passport.use(new GoogleStrategy({
-  clientID: process.env['GOOGLE_CLIENT_ID'],
-  clientSecret: process.env['GOOGLE_CLIENT_SECRET'],
-  callbackURL: process.env['GOOGLE_AUTH_CALLBACK_URL'],
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: process.GOOGLE_AUTH_CALLBACK_URL,
   scope: ['profile']
 }, function verify(issuer, profile, cb) {
   //Check if user has previously been profiled with a db query
@@ -124,6 +124,7 @@ passport.deserializeUser(async (id, done) => {
 //import authentication routes
 const authRoutes = require('./routes/authRoutes');    
 //add authentication routes to the app
+app.use('/auth/google-auth', passport.authenticate('google'));
 app.use('/auth', authRoutes);
 
 //import utility routes
