@@ -212,17 +212,17 @@ module.exports.logoutUser = (req, res) => {
 
 //Google Auth - redirects user to Google
 module.exports.googleAuth = (req, res) => {
-    passport.authenticate('google'); 
+  passport.authenticate('google', {scope: ['profile', 'email']});
 }
 
 //Google Auth Callback
-module.exports.googleAuthCallback = (req, res) => {    
-  passport.authenticate('google', {failureRedirect: '/' }),
+module.exports.googleAuthCallback = () => {
+  passport.authenticate('google', {failureRedirect: '/auth/login' }),
   (req, res) => {
     // Authentication successful. req.user contains the user object
     if (req.isAuthenticated()) {
         
-        const fullName = user.fullName.split(' ');
+        const fullName = req.user.fullName.split(' ');
         const firstName = fullName[0];
       
         const userDetailsToSend = {

@@ -1,12 +1,12 @@
 const { Sequelize, DataTypes } = require('sequelize');
-//const env = require('../config/env');
-const env = require('../config/env-remote');
+require('dotenv').config();
+
 const mysqlConnection = {}
 
-const sequelize = new Sequelize(env.database, env.username, env.password, {
-  host: env.host, 
-  port: env.port,
-  dialect: env.dialect
+const sequelize = new Sequelize(process.env.database, process.env.username, process.env.password, {
+  host: process.env.host, 
+  port: process.env.port,
+  dialect: process.env.dialect
 });
 
 sequelize.authenticate()

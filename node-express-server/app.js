@@ -8,7 +8,7 @@ const mysqlConnection = require('./db/dbconnect');
 const Users = mysqlConnection.users;
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
-const GoogleStrategy = require('passport-google-oidc');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const connectEnsureLogin = require('connect-ensure-login');
 const session = require('express-session');
 const cookieSession = require('cookie-session');
@@ -31,24 +31,11 @@ var corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// Configure sessions
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: true,
-  cookie: { maxAge: 60 * 60 * 1000 } // 1 hour
-}));
-
-// initialize passport middleware and attach passport session to app
-app.use(passport.initialize()); 
-app.use(passport.session()); 
-
-
 // Configure Google Auth Strategy
 passport.use(new GoogleStrategy({
   clientID: process.env['GOOGLE_CLIENT_ID'],
   clientSecret: process.env['GOOGLE_CLIENT_SECRET'],
-  callbackURL: '/auth/google-auth-callback',
+  callbackURL: process.env['GOOGLE_AUTH_CALLBACK_URL'],
   scope: ['profile']
 }, function verify(issuer, profile, cb) {
   //Check if user has previously been profiled with a db query
@@ -104,6 +91,19 @@ passport.use(new LocalStrategy({
     return done(err);
   }
 }));
+
+// Configure sessions
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 60 * 60 * 1000 } // 1 hour
+}));
+
+// initialize passport middleware and attach passport session to app
+app.use(passport.initialize()); 
+app.use(passport.session()); 
+
 
 // Serialize user to store in session
 passport.serializeUser((user, done) => {
