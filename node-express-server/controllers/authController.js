@@ -222,7 +222,7 @@ module.exports.googleAuth = (req, res) => {
 
 //Google Auth Callback
 module.exports.googleAuthCallback = () => {
-  passport.authenticate('google', {failureRedirect: '/auth/login' }),
+  passport.authenticate('google', {failureRedirect: '/login.html' }),
   (req, res) => {
     // Authentication successful. req.user contains the user object
     if (req.isAuthenticated()) {
@@ -244,7 +244,7 @@ module.exports.googleAuthCallback = () => {
       //res.redirect(`/dashboard?user=${encodedData}`);      
     } else {
       // On authentication failure
-      res.redirect('/login');
+      res.redirect('/login.html');
       //res.status(401).json({"success":"false", "response":"User not authenticated"});
     }
   }
