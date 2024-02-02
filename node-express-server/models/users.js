@@ -10,16 +10,18 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
     },
     email: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      unique: true,
     },
     password: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     fullName: {
       type: DataTypes.STRING
     },
     phone: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      unique: true,
     },
     federatedID: {
       type: DataTypes.STRING
