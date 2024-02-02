@@ -36,9 +36,12 @@ function Modal() {
                 <p className='modal-para'>Please select how you want to be verified below</p>
               </div>
               <Link to='/register/otp'>
+
                 <button 
                 className='lilacBtn'
-                type='button'>            
+                type='button'
+                style={{backgroundColor: 'var(--lilacBtn)'}}
+                >            
 
                 <div className='button-div'>
                   <div className='forward-email'>

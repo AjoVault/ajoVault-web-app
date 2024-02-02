@@ -13,7 +13,7 @@ function LilacButton({type='submit', title='Click Me' , onClick,
   return (
     <>
         <button className='lilacBtn' 
-        style={btnStyle}
+        // style={btnStyle}
         type={type}
         onClick={(e) => {onClick && onClick(e.target.vlaue)}}
         // onSubmit={(e) => {submit && submit(e.target.vlaue)}}
