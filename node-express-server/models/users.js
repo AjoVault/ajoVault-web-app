@@ -43,6 +43,9 @@ module.exports = (sequelize, DataTypes) => {
     dpPath: {
       type: DataTypes.STRING,
     },
+    resetTokenExpiration: {
+      type: DataTypes.DATE,
+    },
     createdAt: {
       type: DataTypes.DATE,
       defaultValue: Sequelize.NOW

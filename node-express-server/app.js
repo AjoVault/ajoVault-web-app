@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 //Add support for cors middleware and accept only request from own server
 var corsOptions = {
-  origin: "http://localhost"
+  origin: "*"
 };
 app.use(cors(corsOptions));
 
@@ -35,7 +35,7 @@ app.use(cors(corsOptions));
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: process.GOOGLE_AUTH_CALLBACK_URL,
+  callbackURL: 'https://ajovault.onrender.com/auth/google-auth-callback',
   scope: ['profile']
 }, function verify(issuer, profile, cb) {
   //Check if user has previously been profiled with a db query

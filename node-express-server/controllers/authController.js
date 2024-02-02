@@ -255,7 +255,7 @@ module.exports.forgottenPassword = async (req, res) => {
       res.status(401).json({"success":"false", "response":"User not found"});
     }
 
-    // Generate a unique token (you might use a library like crypto or uuid)
+    // Generate a unique token 
     const resetToken = generateToken(32);
 
     // Save the reset token and its expiration date in the user record
