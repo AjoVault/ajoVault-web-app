@@ -237,10 +237,15 @@ module.exports.googleAuthCallback = () => {
         };
 
       // Respond with JSON containing user data
-      res.json({"success":"true", "response":userDetailsToSend});
+      res.redirect('/index.html');    // static page redirect  
+      
+      // standard usage redirect 
+      //const encodedData = encodeURIComponent(JSON.stringify(userDetailsToSend));
+      //res.redirect(`/dashboard?user=${encodedData}`);      
     } else {
       // On authentication failure
-      res.status(401).json({"success":"false", "response":"User not authenticated"});
+      res.redirect('/login');
+      //res.status(401).json({"success":"false", "response":"User not authenticated"});
     }
   }
 

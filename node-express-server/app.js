@@ -121,6 +121,9 @@ passport.deserializeUser(async (id, done) => {
 });
 
 
+// Serve HTML files from the 'views' directory
+app.use(express.static('views'));
+
 //import authentication routes
 const authRoutes = require('./routes/authRoutes');    
 //add authentication routes to the app

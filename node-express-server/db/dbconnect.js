@@ -25,7 +25,7 @@ mysqlConnection.users = require('../models/users')(sequelize, DataTypes);
 
 // sync all models
 // force: false will not drop the table if it already exists
-mysqlConnection.sequelize.sync({ force: true })
+mysqlConnection.sequelize.sync({ force: false })
     .then(() => {
         console.log('Database & tables synced');
     }).catch(err => {
