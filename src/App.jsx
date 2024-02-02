@@ -24,15 +24,15 @@ import PersonalSavings from "./components/Modal/PersonalSavings.jsx";
 function App() {
     return (
         <UserContextProvider>
-            <Navbar />
+            {/* <Navbar />
             <Hero />
             <ProductF />
             <Success />
-            <Carousel />
+            <Carousel /> */}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/dashboard" element={<Dashboard />} />
-                <Route path='/register/' element={<RegisterOutlet />}>
+                <Route path='register/' element={<RegisterOutlet />}>
                     <Route path='checkemail' element={<Modal />} />
                     <Route path='otp' element={<OTPModal />} />
                     <Route path='inputotp' element={<EnterOTP />} />
