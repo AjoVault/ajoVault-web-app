@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, use } from 'react'
 import loginImg from '../../assets/login-img.png'
 import Logo from '../../assets/Logo.png';
 import unboardinText from '../../assets/Unboarding-text.png'
@@ -9,7 +9,8 @@ import Modal from '../Modal/modal';
 import OTPModal from '../Modal/OTPModal';
 import ModalContextProvider from '../../context/modalDisplayProvider';
 import ModalDisplayContex from '../../context/modalDisplay';
-import {Outlet, Link} from 'react-router-dom'
+import {Outlet, Link, useNavigate} from 'react-router-dom'
+import UserContext from '../../context/userContext';
 
 
 function Register() {
@@ -19,21 +20,61 @@ function Register() {
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const [promo, setPromo] = useState('');
-    const [isSignUp, setSignUp] = useState(false);
+    const [isSignUp, setIsSignUp] = useState(false);
+    const [role, setRole] = useState('saver');
+
+    const navigateTo = useNavigate();
 
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*_#?&])[A-Za-z\d@$!%*_#?&]{8,}$/
 
-    const handleSubmit = (e) => {
+    const {setUser} = useContext(UserContext)
+    
+
+    const handleSubmit = async () => {
         // e.preventDefault();
-        // console.log('hey') 
-        console.log(name, email, phone, password, promo);
         if(!passwordRegex.test(password)){
             console.log('incorrect')
             setDisplay('block')
             return
         }     
-        setSignUp(true)
-        console.log(isSignUp)
+
+        try {
+            const response = await fetch('https://ajovault.onrender.com/auth/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                  },
+                body: JSON.stringify(formData),
+            });
+            const userDetails = await response.json();
+
+            if(response.ok){
+                if(userDetails.success === 'true'){
+                    
+                    console.log(userDetails);
+                    // setIsSignUp(true);
+
+                    console.log('Registration successfull')
+                    setUser({email, password});
+                    navigateTo('/checkemail');
+                }else{
+                    console.log(userDetails.response);
+                }
+            } else{
+                console.error("Registration failed")
+            }
+        } catch (error) {
+            console.error(error)
+        } 
+    }
+
+    const formData = {
+        fullName:name,
+        email: email,
+        phone: phone,
+        password: password,
+        promoCode: promo,
+        role: role
     }
 
     let spanStyle = {
@@ -43,7 +84,7 @@ function Register() {
     
 
  
-  return (    
+  return ( 
         <div className='login-div'>
         <div className='img-div'>
             <img className='logo' src={Logo} alt="" />
@@ -52,7 +93,7 @@ function Register() {
         </div>
         <div className='form-div'>
             <div className='form-div__inner'>
-                <form className='' action=""
+                <form 
                 // onSubmit={handleSubmit}
                 > 
                     <div className='acct'>
@@ -61,17 +102,17 @@ function Register() {
                     </div>                  
                     
                     <div>
-                        <label htmlFor="name">Full Name</label>
+                        <label htmlFor="fullName">Full Name</label>
                     </div>
                     <div>
-                        <Input placeholder='Enter your full name' name='name'inputValue={name} inputChange={(e) => setName(e.target.value)}/>
+                        <Input placeholder='Enter your full name' name='fullname'inputValue={name} inputChange={(e) => setName(e.target.value)}/>
                     </div>
                     <div>
                         <label htmlFor="email">Email Address</label>
                     </div>
                     <div>
                         <Input placeholder='Enter your email address'
-                         name='phone'
+                         name='email'
                          type='email'
                         inputValue={email} 
                         inputChange={(e) => setEmail(e.target.value)}/>
@@ -91,7 +132,7 @@ function Register() {
                     </div>
                     <div>
                         <Input placeholder='Enter your password'
-                         name='name' 
+                         name='password' 
                          type='password'
                          inputValue={password}
                          inputChange={(e) => {setPassword(e.target.value) 
@@ -101,11 +142,11 @@ function Register() {
                          <span className='password-span' style={spanStyle}>Password must be at least 8 characters, one number and one special character</span>
                     </div>
                     <div>
-                        <label htmlFor='promo'>Promo Code</label>
+                        <label htmlFor='promoCode'>Promo Code</label>
                     </div>
                     <div>
                         <Input placeholder='Enter promo code' 
-                        name='promo'
+                        name='promoCode'
                         inputValue={promo}
                         inputChange={(e) => setPromo(e.target.value) }
                         required= {false}
@@ -115,18 +156,13 @@ function Register() {
                     <Link to={isSignUp ? 'checkemail' : '/register'}> 
 
                             <LilacButton 
-                            type='submit' 
-                            title='Create Account' 
-                            // onClick={() => setDisplay('block')}
-                            onClick={handleSubmit}
+                            title='Create Account'
+                            onClick={handleSubmit} 
                             />
                      </Link>
                        
                         <p className='acc-text'>Already have an account? <a className='login-span'>Log in</a> </p>
                     </div>
-                    
-                    {/* <Modal/>    */}
-                    {/* <OTPModal displayStyle={otpModal? otpModal : 'none'}/>            */}
                 </form>
             </div>
         </div>

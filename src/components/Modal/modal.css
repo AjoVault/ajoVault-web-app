@@ -1,143 +1,173 @@
 /* The Modal (background) */
 .modal {
-    display: block;
-     /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 31px;
-    border: 1px solid #888;
-    width: 40%; /* Could be more or less, depending on screen size */
-    border-radius: 20px;
-    box-sizing: border-box;
-    /* height: 60%; */
-  }
-  
-  /* The Close Button */
-  .close {
-    color: black;
-    float:inline-end;
-    font-size: 28px;
-    font-weight: bold;
-    background-color: white;
-    width: 30px;
-    border-radius: 50%;
-    text-align: center;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
- .modal-heading{
+  display: block;
+  /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 31px;
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+  border-radius: 20px;
+  box-sizing: border-box;
+  /* height: 60%; */
+}
+
+/* The Close Button */
+.close {
+  color: black;
+  float: inline-end;
+  font-size: 28px;
+  font-weight: bold;
+  background-color: white;
+  width: 30px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal-heading {
   font-weight: 400;
   font-size: 1.8rem;
   margin: 0;
   padding: 0;
-  text-align: center
- }
+  text-align: center;
+}
 
- .modal-para{
-    text-align: center;
- }
- .button-div{
+.modal-para {
+  text-align: center;
+}
+.button-div {
   display: flex;
   flex-direction: row;
- }
+}
 
- .forward-email{
+.forward-email {
   width: 10%;
- }
+}
 
- .forward-logo{
+.forward-logo {
   width: 100%;
- }
- .verify{
+}
+.verify {
   text-align: justify;
   padding: 0;
   margin: 0% 5%;
   /* border: 2px solid red */
- }
+}
 
- .modal-text{
+.modal-text {
   text-align: left;
- }
+}
 
- .otp-inbox{
+.otp-inbox {
   /* display: flex; */
   /* flex-direction: co */
-  padding: 30px;
+  padding: 40px;
   /* justify-content: center; */
   /* align-items: center; */
   /* height: ; */
+  /* width: 30%; */
   text-align: center;
- }
+}
 
- .input-logo{
-   margin:  auto;
- }
+.input-logo {
+  margin: auto;
+}
 
- .check-email{
+.check-email {
   margin: 20px 0px;
- }
+}
 
- .otp-input{
-    display: grid;
-    /* justify-content: space-around; */
-    grid-template-columns: repeat(4,1fr);
-    gap: 2rem;
-    margin: 0 8%;
-    width: 80%
- }
+.otp-input {
+  display: grid;
+  /* justify-content: space-around; */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin: 0 8%;
+  width: 80%;
+}
 
- .otp-box{
+.otp-box {
   width: 100%;
-  height: 3rem;
- }
+  height: 3.5rem;
+}
 
- .label{
+.otp-modal {
+  width: 30%;
+}
+
+.label {
   float: left;
   margin: 0px;
- }
+}
 
- .customer{
+.customer {
   margin: 0;
   text: white;
   font-weight: 600;
   font-size: 2.063rem;
- }
+}
 
- .customer-div{
+.customer-div {
   background-color: var(--blue);
   color: #fefefe;
   margin: 0px;
   padding: 0px;
- }
+}
 
- .modal-body{
+.modal-body {
   padding: 31px;
- }
- .modal-header{
+}
+.modal-header {
   padding: 0px;
   border-radius: 20px;
   overflow: hidden;
- }
- .customer-text{
+  width: 45%;
+  /* height: 100%; */
+}
+.customer-text {
   text-align: center;
-  color: var(--black2)
- }
+  color: var(--black2);
+}
+
+.select {
+  /* font-family: "Montserrat", sans-serif; */
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--black2);
+  padding: 2px;
+}
+.select-active {
+  color: black;
+}
+.pin-para {
+  padding: 15px;
+}
+
+.password-modal {
+  padding: 40px;
+  width: 40%;
+}
+
+.short-btn {
+  display: flex;
+  justify-content: space-between;
+}

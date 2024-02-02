@@ -60,7 +60,7 @@ function ConfirmPin({numberOfDigits=4}) {
                     }
               </div>
               <div>
-                <p>By clicking complete signup, I agree to AjoVaults <span className='login-span'>Terms</span> and <span className='login-span'>Privacy policy</span> </p>
+                <p className='pin-para'>By clicking complete signup, I agree to AjoVaults <span className='login-span'>Terms</span> and <span className='login-span'>Privacy policy</span> </p>
               </div>  
               <Link to='/login'>
               <LilacButton title='Complete Sign up'/>

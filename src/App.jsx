@@ -16,11 +16,14 @@ import Password from './components/Modal/Password.jsx'
 import PinModal from './components/Modal/PinModal.jsx'
 import ConfirmPin from './components/Modal/ConfirmPin.jsx'
 import KnowYourCustomer from "./components/Modal/KnowYourCustomer.jsx";
+import UserContextProvider from "./context/UserContextProvider.jsx";
+import PoolContribution from "./components/Modal/PoolContribution.jsx";
+import PersonalSavings from "./components/Modal/PersonalSavings.jsx";
 
 
 function App() {
     return (
-        <div>
+        <UserContextProvider>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/dashboard" element={<Dashboard />} />
@@ -35,8 +38,10 @@ function App() {
                 </Route>
                 <Route path='/login' element={<Login />} />
                 <Route path='/knowyourcustomer' element={<KnowYourCustomer />} />
+                <Route path='/pool' element={<PoolContribution/>} />
+                <Route path='/personalsavings' element={<PersonalSavings/>} />
             </Routes>
-        </div>
+        </UserContextProvider>
     );
 }
 export default App;

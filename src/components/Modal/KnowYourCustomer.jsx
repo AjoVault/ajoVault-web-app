@@ -68,8 +68,8 @@ function KnowYourCustomer() {
                     </div>
                     <div>
                         <select className='input' name="" id="" placeholder="">
-                        <option selected disabled>Select your Bank</option>
-                                                        <option value="044">Access Bank</option>
+                        <option className='select' selected disabled>Select your Bank</option>
+                                                        <option className='select-active' value="044">Access Bank</option>
                                                         <option value="023">  Citibank</option>
                                                         <option value="050">Ecobank</option>
                                                         <option value="214">First City Monument Bank (FCMB)</option>
@@ -120,7 +120,14 @@ function KnowYourCustomer() {
                         // required= {false}
                         />
                     </div>
-                   
+                    <div className='short-btn'>
+                        <div>
+                            <LilacButton title='Back' color='var(--pink)' textColor='black' width='240px'/>
+                        </div>
+                        <div>
+                            <LilacButton title='Submit' width='240px'/>
+                        </div>
+                    </div>
                     
                     </div>
                    

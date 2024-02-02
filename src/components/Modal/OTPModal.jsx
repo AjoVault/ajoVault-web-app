@@ -14,7 +14,7 @@ function OTPModal() {
 
             {/* Modal content */}
            
-            <div className="modal-content otp-inbox">
+            <div className="modal-content otp-inbox otp-modal">
               <div className='forward-email input-logo'>
                 <img className='forward-logo' src={forwardInbox} alt="" />
               </div>

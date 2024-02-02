@@ -1,14 +1,18 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import './modal.css'
 import LilacButton from '../Button/LilacButton';
 import forwardInbox from '../../assets/forward-inbox.png'
 import {Link} from 'react-router-dom';
+import UserContext from '../../context/userContext';
 
 function EnterOTP({numberOfDigits=4}) {   
 
     const [otp, setOtp] = useState(new Array(numberOfDigits).fill(""));
     const [otpError, setOtpError] = useState(null);
     const otpBoxReference = useRef([]);
+    // const []
+
+    const {user} = useContext(UserContext);
 
     const correctOTP = '1234'
 
@@ -20,7 +24,6 @@ function EnterOTP({numberOfDigits=4}) {
         } 
        }, [otp]);
   
-
     function handleChange(value, index) {
       let newArr = [...otp];
       newArr[index] = value;
@@ -28,6 +31,43 @@ function EnterOTP({numberOfDigits=4}) {
   
       if(value && index < numberOfDigits-1){
         otpBoxReference.current[index + 1].focus()
+      }
+    }
+
+    const otpData = {
+      email: user.email,
+      otp: otp.join("")
+    }
+    const submitOtp = async () => {
+
+      console.log(otpData.otp);
+      console.log(otpData.email);
+        try {
+          const response = await fetch('https://ajovault.onrender.com/auth/verify', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                },
+              body: JSON.stringify(otpData),
+          });
+          const userDetails = await response.json();
+
+          if(response.ok){
+              if(userDetails.success){
+                  
+                  console.log(userDetails);
+                  setSignUp(true);
+                  console.log('Otp successfull')
+                  setUser({email, password});
+
+              }else{
+                  console.log(userDetails.response);
+              }
+          } else{
+              console.error("Registration failed")
+          }
+      } catch (error) {
+          console.error(error)
       }
     }
 
@@ -48,7 +88,7 @@ function EnterOTP({numberOfDigits=4}) {
                            <div>
                                 <input key={index} value={digit} maxLength={1}
                             onChange={(e)=> handleChange(e.target.value, index)}
-                            onKeyUp={(e)=> handleBackspaceAndEnter(e, index)}
+                            // onKeyUp={(e)=> handleBackspaceAndEnter(e, index)}
                             ref={(reference) => (otpBoxReference.current[index] = reference)}
                             className={`otp-box`}
                             />
@@ -57,11 +97,11 @@ function EnterOTP({numberOfDigits=4}) {
                     }
               </div>
               <div>
-                <p>Didn't get a PIN? resend in 5:00</p>
+                <p className='pin-para'>Didn't get a PIN? resend in 5:00</p>
               </div>  
-              <Link to='/register/password'>
-              <LilacButton title='Next'/>
-              </Link>          
+              {/* <Link to='/register/password'> */}
+              <LilacButton title='Next' type='submit' onClick={submitOtp}/>
+              {/* </Link>           */}
                 
             </div>
       </div>

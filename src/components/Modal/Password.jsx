@@ -13,24 +13,29 @@ function Password({numberOfDigits=4}) {
             <div id="myModal" className="modal" >
             {/* Modal content */}
            
-            <div className="modal-content otp-inbox ">
+            <div className="modal-content otp-inbox password-modal">
 
               <div className='password'>
                 <h4 className='modal-heading check-email'> You are almost done. <br />
                 Enter your secure password.
                 </h4>
 
+                
                 <label className='label' htmlFor='password'>Password</label>
-                <Input placeholder='Enter your password' name='password' />  
+              <Input placeholder='Enter your password'
+                         name='password' 
+                        //  type='password'
+                        />
                     <Link to='/register/pin'>
                     <LilacButton title='Continue'/>
-                  </Link>      
+                  </Link>  
+                   
                 
               </div>
-              
-              
+               
                
             </div>
+            
       </div>
       </div>
     </> 
