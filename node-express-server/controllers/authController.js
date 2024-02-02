@@ -84,19 +84,24 @@ module.exports.signupUser = async (req, res) => {
                           `,  
                           });
                           const maskedEmail = maskEmail(req.body.email);
-                          res.json({"success":"true", "response": maskedEmail});
+                          const userDetailsToSend = {
+                            id: user.id,
+                            email: user.email,
+                            maskedEmail: maskedEmail,         
+                        };
+                          res.json({"success":"true", "response": userDetailsToSend});
                         } catch (error) {
                             res.json({"success":"false", "response": "Unable to complete signup"});
                         }
                     })
                     .catch(err => {
-                        res.json({"success":"false", "response": +err})
+                        res.json({"success":"false", "response": err})
                     })
             } else {
                 res.json({"success":"false", "response": "User exists"});
             }
         }).catch(err => {
-            res.json({"success":"false", "response": +err});
+            res.json({"success":"false", "response": err});
         })    
   };
 
