@@ -5,7 +5,7 @@ import unboardinText from '../../assets/Unboarding-text.png'
 import './register.css';
 import Input from '../Input/Input';
 import LilacButton from '../Button/LilacButton';
-import Modal from '../Modal/modal';
+import Modal from '../Modal/Modal';
 import OTPModal from '../Modal/OTPModal';
 import ModalContextProvider from '../../context/modalDisplayProvider';
 import ModalDisplayContex from '../../context/modalDisplay';
@@ -56,7 +56,8 @@ function Register() {
 
                     console.log('Registration successfull')
                     setUser({email, password});
-                    navigateTo('/checkemail');
+                    console.log(email);
+                    navigateTo('checkemail');
                 }else{
                     console.log(userDetails.response);
                 }
@@ -94,7 +95,7 @@ function Register() {
         <div className='form-div'>
             <div className='form-div__inner'>
                 <form 
-                // onSubmit={handleSubmit}
+                onSubmit={(e) => e.preventDefault()}
                 > 
                     <div className='acct'>
                         <h3 className='create'>Create a secure account</h3>
@@ -153,13 +154,14 @@ function Register() {
                         />
                     </div>
                     <div className='acc-div'>
-                    <Link to={isSignUp ? 'checkemail' : '/register'}> 
+                    {/* <Link to={isSignUp ? 'checkemail' : '/register'}>  */}
 
                             <LilacButton 
+                            type='button'
                             title='Create Account'
                             onClick={handleSubmit} 
                             />
-                     </Link>
+                     {/* </Link> */}
                        
                         <p className='acc-text'>Already have an account? <a className='login-span'>Log in</a> </p>
                     </div>
