@@ -6,7 +6,7 @@ const path = require('path');
 const passport = require('passport');
 const mysqlConnection = require('./db/dbconnect');
 const Users = mysqlConnection.users;
-const LocalStrategy = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local');
 const bcrypt = require('bcrypt');
 const GoogleStrategy = require('passport-google-oidc');
 const connectEnsureLogin = require('connect-ensure-login');
@@ -38,39 +38,58 @@ passport.use(new GoogleStrategy({
   callbackURL: 'https://ajovault.onrender.com/auth/google-auth-callback',
   scope: ['profile']
 }, function verify(issuer, profile, cb) {
-  //Check if user has previously been profiled with a db query
-  mysqlConnection.get('SELECT * FROM users WHERE federatedID = ?', [profile.id], function(err, row) {
-      //If db query error, return the error
-    if (err) { return cb(err); }
+  const { users } = mysqlConnection;
 
-    //If db query is empty, user has not been profiled. Go ahead and add user
-    if (!row) {
-      const dpPath = path.posix.join('/node-express-server', 'views', 'images', 'dp_images', 'default_avatar.png');
+  // Check if the user has been previously profiled
+  users.findOne({
+    where: {
+      federatedID: profile.id,
+    },
+  }).then((existingUser) => {
+    if (!existingUser) {
+      // User has not been profiled. Go ahead and add the user
+      const dpPath = '/node-express-server/views/images/dp_images/default_avatar.png';
       const userEmail = profile.emails && profile.emails.length > 0 ? profile.emails[0].value : null;
-      mysqlConnection.run('INSERT INTO users (email, fullName, federatedID, dpPath) VALUES (?,?)', [userEmail, profile.displayName,profile.id, dpPath], 
-      function(err) {
-          //If user insert error, return the error
-        if (err) {return cb(err);}
-        
-          //Otherwise, insert successful. Return user object
-        var id = this.lastID;
-        var user = {
-          id: id,
+  
+      // Insert the user
+      users.create({
+        email: userEmail,
+        fullName: profile.displayName,
+        federatedID: profile.id,
+        dpPath: dpPath,
+      }).then((createdUser) => {
+        // Insert successful. Return user object
+        const user = {
+          id: createdUser.id,
           email: userEmail,
           fullName: profile.displayName,
           dpPath: dpPath,
         };
-        return cb(null, user);          
+        return cb(null, user);
+      }).catch((insertErr) => {
+        // User insert error, return the error
+        return cb(insertErr);
       });
     } else {
-      //If db query returns a row, user has previously been profiled. Go ahead and select the user
-      mysqlConnection.get('SELECT id, email, fullName, dpPath FROM users WHERE id = ?', [row.user_id], function(err, user) {
-        if (err) {return cb(err);}
-        if (!user) {return cb(null, false);}
-        return cb(null, user);
+      // User has been previously profiled. Go ahead and select the user
+      users.findOne({
+        attributes: ['id', 'email', 'fullName', 'dpPath'],
+        where: {
+          id: existingUser.id,
+        },
+      }).then((selectedUser) => {
+        if (!selectedUser) {
+          return cb(null, false);
+        }
+        return cb(null, selectedUser);
+      }).catch((selectErr) => {
+        return cb(selectErr);
       });
     }
-  });
+  }).catch((findErr) => {
+    // Database query error, return the error
+    return cb(findErr);
+  });  
 }));    
 
 
@@ -104,22 +123,20 @@ app.use(session({
 app.use(passport.initialize()); 
 app.use(passport.session()); 
 
-
 // Serialize user to store in session
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  done(null, user.email);
 });
 
 // Deserialize user from session
-passport.deserializeUser(async (id, done) => {
+passport.deserializeUser(async (email, done) => {
   try {
-    const user = await Users.findByPk(id);
+    const user = await Users.findOne({ where: { email } });
     done(null, user);
   } catch (err) {
     done(err);
   }
 });
-
 
 // Serve HTML files from the 'views' directory
 app.use(express.static('views'));

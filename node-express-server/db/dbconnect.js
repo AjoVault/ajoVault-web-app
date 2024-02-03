@@ -7,7 +7,8 @@ console.log(process.env.dbpassword);
 const sequelize = new Sequelize(process.env.database, process.env.dbusername, process.env.dbpassword, {
   host: process.env.dbhost, 
   port: process.env.dbport,
-  dialect: process.env.dialect
+  dialect: process.env.dialect,
+  logging: process.env.NODE_ENV === 'development', // Only log queries in development
 });
 
 sequelize.authenticate()
