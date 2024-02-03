@@ -3,6 +3,7 @@ import Navbar from "./components-landingPage/navbar/navbar";
 import Hero from "./components-landingPage/hero/hero";
 import ProductF from "./components-landingPage/product-features/productF";
 import Success from "./components-landingPage/how-it-works/success";
+import Footer from "./components-landingPage/Footer/Footer.jsx"
 // import Carousel from "./components-landingPage/Carousel/Carousel";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
@@ -24,6 +25,7 @@ function App() {
             <Hero />
             <ProductF />
             <Success />
+            <Footer/>
             {/* <Carousel /> */}
             <Routes>
                 <Route path="/" element={<Home />} />
