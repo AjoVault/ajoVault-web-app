@@ -8,6 +8,9 @@ router.post('/signup', authController.signupUser);
 // Verify SignUp Email
 router.post('/verify', authController.verifyEmail);
 
+// Create User PIN
+router.post('/createUserPIN', authController.createUserPIN);
+
 // Login User
 router.post('/login', authController.loginUser);
 

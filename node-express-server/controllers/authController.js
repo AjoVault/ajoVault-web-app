@@ -154,6 +154,25 @@ module.exports.signupUser = async (req, res) => {
   };
 
 
+  
+//Create User PIN
+module.exports.createUserPIN = async (req, res) => {    
+  const userSuppliedPIN = req.body.userPIN;
+  const email = req.body.email;
+
+  // select user by email
+  var user = await Users.findOne({where: {email}});
+
+  // if user is not found
+  if (!user) {
+      res.json({"success":"false", "response": "User not found"});
+  }
+
+  user = await user.update({userPIN: userSuppliedPIN});
+  res.json({"success":"true", "response": "PIN created successfully"});
+};
+
+
 //Login user
 module.exports.loginUser = async (req, res, next) => {
   
@@ -221,7 +240,7 @@ module.exports.googleAuth = (req, res) => {
 }
 
 //Google Auth Callback
-module.exports.googleAuthCallback = () => {
+module.exports.googleAuthCallback = (req, res) => {
   passport.authenticate('google', {failureRedirect: '/login.html' }),
   (req, res) => {
     // Authentication successful. req.user contains the user object

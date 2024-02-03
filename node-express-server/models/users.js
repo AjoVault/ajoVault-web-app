@@ -39,6 +39,9 @@ module.exports = (sequelize, DataTypes) => {
     otp: {
       type: DataTypes.STRING,
     },
+    userPIN: {
+      type: DataTypes.STRING,
+    },
     role: {
       type: DataTypes.STRING,
     },
