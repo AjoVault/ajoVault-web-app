@@ -21,7 +21,7 @@
 .product-card-containers{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .product-card{
@@ -36,6 +36,7 @@
     border-radius: 8px;
     border-top: solid 12px #5A47CF;
     box-shadow: 4px 8px 8px 0px rgba(217, 217, 217, 0.20);
+    cursor: pointer;
 }
 
 .product-card img{
