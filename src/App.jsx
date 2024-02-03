@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Navbar from "./components-landingPage/navbar/navbar";
 import Hero from "./components-landingPage/hero/hero";
 import ProductF from "./components-landingPage/product-features/productF";
 import Success from "./components-landingPage/how-it-works/success";
 import Carousel from "./components-landingPage/Carousel/Carousel";
+import AOS from "aos";
+
 import {Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
@@ -18,6 +20,12 @@ import PinModal from "./components/Modal/PinModal.jsx";
 import ConfirmPin from "./components/Modal/ConfirmPin.jsx";
 
 function App() {
+	useEffect(() => {
+		AOS.init({
+			duration: 800,
+			easing: "ease-out-sine",
+		});
+	}, []);
 	return (
 		<div>
 			{/* <Navbar />
