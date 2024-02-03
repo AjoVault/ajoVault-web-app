@@ -3,7 +3,7 @@ import Navbar from "./components-landingPage/navbar/navbar";
 import Hero from "./components-landingPage/hero/hero";
 import ProductF from "./components-landingPage/product-features/productF";
 import Success from "./components-landingPage/how-it-works/success";
-import Carousel from "./components-landingPage/Carousel/Carousel";
+// import Carousel from "./components-landingPage/Carousel/Carousel";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
@@ -29,7 +29,7 @@ function App() {
             <Hero />
             <ProductF />
             <Success />
-            <Carousel /> */}
+            {/* <Carousel /> */}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/dashboard" element={<Dashboard />} />
