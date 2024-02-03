@@ -3,6 +3,7 @@ const OTP_LENGTH = 4;
 
 const OTP_CONFIG = {
   digits: true,
+  lowerCaseAlphabets: false,
   upperCaseAlphabets: false,
   specialChars: false,
 };

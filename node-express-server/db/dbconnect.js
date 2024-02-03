@@ -2,8 +2,6 @@ const { Sequelize, DataTypes } = require('sequelize');
 require('dotenv').config();
 
 const mysqlConnection = {}
-console.log(process.env.username);
-console.log(process.env.dbpassword);
 const sequelize = new Sequelize(process.env.database, process.env.dbusername, process.env.dbpassword, {
   host: process.env.dbhost, 
   port: process.env.dbport,
