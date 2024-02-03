@@ -9,7 +9,7 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Register from './components/Register/Register.jsx'
 import Login from './components/Login/Login.jsx'
-import Modal from './components/Modal/modal.jsx'
+import Modal from "./components/Modal/Modal.jsx";
 import RegisterOutlet from './RegisterLayout.jsx'
 import OTPModal from './components/Modal/OTPModal.jsx'
 import EnterOTP from './components/Modal/EnterOTP.jsx'
@@ -20,6 +20,7 @@ import KnowYourCustomer from "./components/Modal/KnowYourCustomer.jsx";
 import UserContextProvider from "./context/UserContextProvider.jsx";
 import PoolContribution from "./components/Modal/PoolContribution.jsx";
 import PersonalSavings from "./components/Modal/PersonalSavings.jsx";
+import Spinner from "./components/spinner/spinner.jsx";
 
 function App() {
     return (
@@ -44,6 +45,7 @@ function App() {
                 <Route path='/knowyourcustomer' element={<KnowYourCustomer />} />
                 <Route path='/pool' element={<PoolContribution/>} />
                 <Route path='/personalsavings' element={<PersonalSavings/>} />
+                <Route path="/spinner" element={<Spinner />} />
             </Routes>
         </UserContextProvider>
     );

@@ -11,6 +11,7 @@ import ModalContextProvider from '../../context/modalDisplayProvider';
 import ModalDisplayContex from '../../context/modalDisplay';
 import {Outlet, Link, useNavigate} from 'react-router-dom'
 import UserContext from '../../context/userContext';
+import Spinner from '../spinner/spinner';
 
 
 function Register() {
@@ -22,6 +23,7 @@ function Register() {
     const [promo, setPromo] = useState('');
     const [isSignUp, setIsSignUp] = useState(false);
     const [role, setRole] = useState('saver');
+    const [spin, setSpin] = useState('none')
 
     const navigateTo = useNavigate();
 
@@ -36,7 +38,9 @@ function Register() {
             console.log('incorrect')
             setDisplay('block')
             return
-        }     
+        }   
+        
+        setSpin('flex');
 
         try {
             const response = await fetch('https://ajovault.onrender.com/auth/signup', {
@@ -49,6 +53,7 @@ function Register() {
             const userDetails = await response.json();
 
             if(response.ok){
+                setSpin('none');
                 if(userDetails.success === 'true'){
                     
                     console.log(userDetails);
@@ -82,6 +87,7 @@ function Register() {
         display: display,
         color: 'red',   
     }
+    
     
 
  
@@ -153,9 +159,11 @@ function Register() {
                         required= {false}
                         />
                     </div>
+                   
                     <div className='acc-div'>
                     {/* <Link to={isSignUp ? 'checkemail' : '/register'}>  */}
-
+                            
+                            <Spinner display={spin}/>
                             <LilacButton 
                             type='button'
                             title='Create Account'

@@ -4,6 +4,7 @@ import LilacButton from '../Button/LilacButton';
 import forwardInbox from '../../assets/forward-inbox.png'
 import {Link} from 'react-router-dom';
 import UserContext from '../../context/userContext';
+import { useNavigate} from 'react-router-dom'
 
 function EnterOTP({numberOfDigits=4}) {   
 
@@ -11,6 +12,7 @@ function EnterOTP({numberOfDigits=4}) {
     const [otpError, setOtpError] = useState(null);
     const otpBoxReference = useRef([]);
     // const []
+    const navigateTo = useNavigate();
 
     const {user} = useContext(UserContext);
 
@@ -56,9 +58,8 @@ function EnterOTP({numberOfDigits=4}) {
               if(userDetails.success){
                   
                   console.log(userDetails);
-                  setSignUp(true);
                   console.log('Otp successfull')
-                  setUser({email, password});
+                  navigateTo('/register/pin')
 
               }else{
                   console.log(userDetails.response);

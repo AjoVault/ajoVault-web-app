@@ -108,6 +108,7 @@
 .otp-box {
   width: 100%;
   height: 3.5rem;
+  text-align: center;
 }
 
 .otp-modal {
