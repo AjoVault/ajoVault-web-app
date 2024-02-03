@@ -30,11 +30,11 @@ function App() {
 	}, []);
 	return (
 		<div>
-			<Navbar />
+			{/* <Navbar />
 			<Hero />
 			<ProductF />
 			<Success />
-			<Footer />
+			<Footer /> */}
 			{/* <Carousel /> */}
 			<Routes>
 				<Route path="/" element={<Home />} />

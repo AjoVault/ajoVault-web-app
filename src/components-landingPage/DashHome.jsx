@@ -54,7 +54,7 @@ const DashHome = () => {
 
 			<section className="flex flex-col">
 				<h1 className="text-[33px] font-semibold text-nowrap">Quick Access</h1>
-				<section className="pt-10 flex gap-10 lg:justify-between flex-col">
+				<section className="pt-10 flex gap-10 lg:justify-between flex-col lg:flex-row">
 					<div className="flex flex-col gap-4 shrink-0 bg-[#5A47CF] text-white card1 py-6 px-10">
 						<h3 className="text-2xl">
 							Pooled <br /> Contribution
