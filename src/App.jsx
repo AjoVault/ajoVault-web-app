@@ -7,6 +7,8 @@ import Carousel from "./components-landingPage/Carousel/Carousel";
 import AOS from "aos";
 
 import {Route, Routes} from "react-router-dom";
+import Footer from "./components-landingPage/Footer/Footer.jsx";
+// import Carousel from "./components-landingPage/Carousel/Carousel";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Register from "./components/Register/Register.jsx";
@@ -28,11 +30,12 @@ function App() {
 	}, []);
 	return (
 		<div>
-			{/* <Navbar />
-            <Hero />
-            <ProductF />
-            <Success />
-            <Carousel /> */}
+			<Navbar />
+			<Hero />
+			<ProductF />
+			<Success />
+			<Footer />
+			{/* <Carousel /> */}
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/dashboard" element={<Dashboard />} />
