@@ -1,8 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Carousel.css";
 
 const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const nextSlide = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % items.length);
+  };
+
+  useEffect(() => {
+    const intervalId = setInterval(nextSlide, 5000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [activeIndex]);
 
   const handleIndicatorClick = (index) => {
     setActiveIndex(index);
@@ -23,20 +35,19 @@ const Carousel = () => {
   return (
     <div className="carousel-container">
       <div className="carousel-header">
-        <h1>Success Stories</h1>
+        <h1></h1>
       </div>
-      <div className="review-card-containers">
+      <div className="stacked-carousel-cards">
         {items.map((item, index) => (
           <div
             key={index}
-            className={`carousel-card ${activeIndex === index ? "active" : ""}`}
+            className={`carousel-card ${
+              activeIndex === index ? "active" : ""
+            } ${activeIndex === index ? "front" : ""}`}
           >
-            <div classNamee="img-container">
-              <img
-                className="card-img"
-                src={item.img}
-                alt={`Review by ${item.name}`}
-              />
+            <div className="img-container">
+              <img className="card-img" src={item.img} 
+              alt={`Review by ${item.name}`} />
             </div>
             <p>{item.review}</p>
             <h2>{item.name}</h2>

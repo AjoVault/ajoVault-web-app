@@ -5,9 +5,9 @@ import Hero from "../components-landingPage/hero/hero";
 const Home = () => {
     return (
         <section>
-            <Navbar />
-            <Hero />
-            <ProductF />
+            {/* <Navbar /> */}
+            {/* <Hero /> */}
+            {/* <ProductF /> */}
         </section>
     );
 };
