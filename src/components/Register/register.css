@@ -82,16 +82,6 @@ form {
   /* border: 2px solid red; */
 }
 
-@media only screen and (max-width: 600px) {
-  .img-div {
-    display: none;
-  }
-
-  .form-div__inner {
-    margin: 20px;
-  }
-}
-
 .logo {
   position: absolute;
   width: 60%;
@@ -122,4 +112,33 @@ label {
 .link {
   text-decoration: none;
   padding: 0px;
+}
+.log-logo {
+  display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+  .img-div {
+    display: none;
+  }
+  .login-div {
+    display: block;
+    width: 100%;
+  }
+
+  .form-div {
+    width: 85%;
+    margin: auto;
+    /* background-color: red; */
+  }
+  .form-div__inner {
+    width: 100%;
+  }
+  .logo {
+    position: relative;
+  }
+  .log-logo {
+    display: block;
+    background-color: var(--lilac);
+  }
 }

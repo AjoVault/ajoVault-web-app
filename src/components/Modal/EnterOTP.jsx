@@ -62,7 +62,7 @@ function EnterOTP({numberOfDigits=4}) {
                   navigateTo('/register/pin')
 
               }else{
-                  console.log(userDetails.response);
+                  console.log("Verification failed");
               }
           } else{
               console.error("Registration failed")

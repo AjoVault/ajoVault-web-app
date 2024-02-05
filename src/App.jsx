@@ -9,7 +9,7 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Register from './components/Register/Register.jsx'
 import Login from './components/Login/Login.jsx'
-import Modal from "./components/Modal/Modal.jsx";
+import Modal from "./components/Modal/modal.jsx";
 import RegisterOutlet from './RegisterLayout.jsx'
 import OTPModal from './components/Modal/OTPModal.jsx'
 import EnterOTP from './components/Modal/EnterOTP.jsx'

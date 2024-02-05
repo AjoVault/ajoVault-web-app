@@ -5,7 +5,7 @@ import unboardinText from '../../assets/Unboarding-text.png'
 import './register.css';
 import Input from '../Input/Input';
 import LilacButton from '../Button/LilacButton';
-import Modal from '../Modal/Modal';
+import Modal from '../Modal/modal';
 import OTPModal from '../Modal/OTPModal';
 import ModalContextProvider from '../../context/modalDisplayProvider';
 import ModalDisplayContex from '../../context/modalDisplay';
@@ -60,7 +60,7 @@ function Register() {
                     // setIsSignUp(true);
 
                     console.log('Registration successfull')
-                    setUser({email, password});
+                    setUser({email, pin:''});
                     console.log(email);
                     navigateTo('checkemail');
                 }else{
@@ -75,7 +75,7 @@ function Register() {
     }
 
     const formData = {
-        fullName:name,
+        fullName:name.trim(),
         email: email,
         phone: phone,
         password: password,
@@ -92,6 +92,11 @@ function Register() {
 
  
   return ( 
+        <>
+        <div className='log-logo'>
+            <img className='logo' src={Logo} alt="" />
+        </div>
+
         <div className='login-div'>
         <div className='img-div'>
             <img className='logo' src={Logo} alt="" />
@@ -178,6 +183,8 @@ function Register() {
         </div>
         
     </div>
+        </>
+        
     
   )
 }

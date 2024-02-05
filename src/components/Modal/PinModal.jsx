@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import './modal.css'
 import LilacButton from '../Button/LilacButton';
 import forwardInbox from '../../assets/forward-inbox.png'
 import {Link} from 'react-router-dom';
+import UserContext from '../../context/userContext';
 
 function PinModal({numberOfDigits=4}) {
 
@@ -11,6 +12,8 @@ function PinModal({numberOfDigits=4}) {
     const [otp, setOtp] = useState(new Array(numberOfDigits).fill(""));
     const [otpError, setOtpError] = useState(null);
     const otpBoxReference = useRef([]);
+    const {user, setUser} = useContext(UserContext)
+    
 
     const correctOTP = '1234'
 
@@ -33,6 +36,13 @@ function PinModal({numberOfDigits=4}) {
       }
     }
 
+    const pin = otp.join("");
+
+    const handleSubmit = () => {
+      setUser({email: user.email, pin});
+    }
+    
+
   return (
     <>
     <div>
@@ -51,7 +61,7 @@ function PinModal({numberOfDigits=4}) {
                            <div>
                                 <input key={index} value={digit} maxLength={1}
                             onChange={(e)=> handleChange(e.target.value, index)}
-                            onKeyUp={(e)=> handleBackspaceAndEnter(e, index)}
+                            // onKeyUp={(e)=> handleBackspaceAndEnter(e, index)}
                             ref={(reference) => (otpBoxReference.current[index] = reference)}
                             className={`otp-box`}
                             />
@@ -63,7 +73,7 @@ function PinModal({numberOfDigits=4}) {
 
               </div>  
               <Link to='/register/confirmpin'>
-              <LilacButton title='Next'/>
+              <LilacButton title='Next' onClick={handleSubmit}/>
               </Link>          
                 
             </div>
