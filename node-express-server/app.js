@@ -162,7 +162,8 @@ app.use((err, req, res, next) => {
 const staticClientPath = __dirname + '/node-express-server/views/';
 app.use(express.static(staticClientPath));
 app.get('/*', function (req,res) {
-    res.sendFile(staticClientPath + "index.html");
+  res.status(401).json({"success":"false", "response": "Sorry, access to the requested resource is restricted!"});
+  //res.redirect('/login.html');
   });
 
 

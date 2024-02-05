@@ -1,0 +1,194 @@
+[
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 1,
+          "name": "Access Bank",
+          "code": "044"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 2,
+          "name": "Citibank",
+          "code": "023"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 3,
+          "name": "Ecobank Nigeria",
+          "code": "050"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 4,
+          "name": "Fidelity Bank Nigeria",
+          "code": "070"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 5,
+          "name": "First Bank of Nigeria",
+          "code": "011"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 6,
+          "name": "First City Monument Bank",
+          "code": "214"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 7,
+          "name": "Globus Bank Limited",
+          "code": "103"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 8,
+          "name": "Guaranty Trust Bank",
+          "code": "058"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 9,
+          "name": "Heritage Bank Plc",
+          "code": "030"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 10,
+          "name": "Keystone Bank Limited",
+          "code": "082"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 11,
+          "name": "Parallex Bank Ltd",
+          "code": "104"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 12,
+          "name": "Polaris Bank",
+          "code": "076"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 13,
+          "name": "Premium Trust Bank",
+          "code": "105"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 14,
+          "name": "Providus Bank",
+          "code": "101"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 15,
+          "name": "Stanbic IBTC Bank Nigeria Limited",
+          "code": "039"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 16,
+          "name": "Standard Chartered Bank",
+          "code": "068"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 17,
+          "name": "Sterling Bank",
+          "code": "232"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 18,
+          "name": "Suntrust Bank Nigeria Limited",
+          "code": "100"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 19,
+          "name": "Titan Trust Bank Ltd",
+          "code": "102"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 20,
+          "name": "Union Bank of Nigeria",
+          "code": "032"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 21,
+          "name": "United Bank for Africa",
+          "code": "033"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 22,
+          "name": "Unity Bank Plc",
+          "code": "215"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 23,
+          "name": "Wema Bank",
+          "code": "035"
+      }
+  },
+  {
+      "model": "ngBanks",
+      "data": {
+          "id": 24,
+          "name": "Zenith Bank",
+          "code": "057"
+      }
+  }
+]

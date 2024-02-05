@@ -1,4 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
+const sequelize_fixtures = require('sequelize-fixtures');
+const path = require('path');
+
 require('dotenv').config();
 
 const mysqlConnection = {}
@@ -21,12 +24,31 @@ mysqlConnection.Sequelize = Sequelize;
 
 // Add tables
 mysqlConnection.users = require('../models/users')(sequelize, DataTypes);
+mysqlConnection.caDetails = require('../models/caDetails')(sequelize, DataTypes);
+mysqlConnection.ngBanks = require('../models/ngBanks')(sequelize, DataTypes);
 
 // sync all models
-// force: false will not drop the table if it already exists
-mysqlConnection.sequelize.sync({ force: true})
+mysqlConnection.sequelize.sync({ force: false})
     .then(() => {
+// Populate the ngBanks table if necessary
+        const populateBanksTable = async () => {
+            const recordCount = await mysqlConnection.ngBanks.count({ where: { id: 1 } });
+            if (recordCount === 0) {
+                const jsonFilePath = path.join(__dirname, 'banks.json');
+                sequelize_fixtures.loadFile(jsonFilePath, mysqlConnection).then(() => {
+                    //console.log('ngBanks table populated');
+                }).catch(err => {
+                    console.error('Unable to populate ngBanks table:', err);
+                });
+            }
+        };
+
+        populateBanksTable();
+    
         console.log('Database & tables synced');
+        console.log('Server up and running...');
+        
+
     }).catch(err => {
         console.error('Unable to sync database & tables:', err);
     })

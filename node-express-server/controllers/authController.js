@@ -107,14 +107,14 @@ module.exports.signupUser = async (req, res) => {
 
 
 
-//Verify signup email
+//Verify email
   module.exports.verifyEmail = async (req, res, next) => {
     const {email, otp} = req.body;
     const verifiedUser = await validateUserSignUp(email, otp);
 
     if (verifiedUser[0]) {
 
-            const user = await Users.findOne({where: { email }});
+            const user = await Users.findOne({where: { email: email }});
 
               req.login(user, (err) => {
                 if (err) {
@@ -156,8 +156,8 @@ module.exports.signupUser = async (req, res) => {
 
   
 //Create User PIN
-module.exports.createUserPIN = async (req, res) => {    
-  const userSuppliedPIN = req.body.userPIN;
+module.exports.createUserPIN = async (req, res) => {
+  const userSuppliedPIN = bcrypt.hashSync(req.body.userPIN, 10);                
   const email = req.body.email;
 
   // select user by email
@@ -255,7 +255,7 @@ module.exports.googleAuthCallback = (req, res) => {
             firstName: req.user.name
         };
 
-      // Respond with JSON containing user data
+      // For Testing purposes
       res.redirect('/index.html');    // static page redirect  
       
       // standard usage redirect 
