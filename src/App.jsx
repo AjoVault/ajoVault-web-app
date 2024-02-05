@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Navbar from "./components-landingPage/navbar/navbar";
 import Hero from "./components-landingPage/hero/hero";
 import ProductF from "./components-landingPage/product-features/productF";
 import Success from "./components-landingPage/how-it-works/success";
+import Carousel from "./components-landingPage/Carousel/Carousel";
+import AOS from "aos";
+
+import {Route, Routes} from "react-router-dom";
+import Footer from "./components-landingPage/Footer/Footer.jsx";
 // import Carousel from "./components-landingPage/Carousel/Carousel";
-import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Register from './components/Register/Register.jsx'

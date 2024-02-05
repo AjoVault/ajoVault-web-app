@@ -11,7 +11,6 @@ function EnterOTP({numberOfDigits=4}) {
     const [otp, setOtp] = useState(new Array(numberOfDigits).fill(""));
     const [otpError, setOtpError] = useState(null);
     const otpBoxReference = useRef([]);
-    // const []
     const navigateTo = useNavigate();
 
     const {user} = useContext(UserContext);
