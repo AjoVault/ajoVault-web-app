@@ -1,0 +1,60 @@
+import gtLogo from "../../../assets/gtLogo.jpg";
+
+export const TransactionData = [
+	{
+		id: "1",
+		img: gtLogo,
+		name: "Isaac Emmanuel",
+		amount: "NGN 50.000.00",
+		date: "Jan 12/02/24",
+		time: "8:02pm",
+	},
+	{
+		id: "2",
+		img: gtLogo,
+		name: "Isaac Emmanuel",
+		amount: "NGN 50.000.00",
+		date: "Jan 12/02/24",
+		time: "8:02pm",
+	},
+	{
+		id: "3",
+		img: gtLogo,
+		name: "Isaac Emmanuel",
+		amount: "NGN 50.000.00",
+		date: "Jan 12/02/24",
+		time: "8:02pm",
+	},
+	{
+		id: "4",
+		img: gtLogo,
+		name: "Isaac Emmanuel",
+		amount: "NGN 50.000.00",
+		date: "Jan 12/02/24",
+		time: "8:02pm",
+	},
+	{
+		id: "5",
+		img: gtLogo,
+		name: "Isaac Emmanuel",
+		amount: "NGN 50.000.00",
+		date: "Jan 12/02/24",
+		time: "8:02pm",
+	},
+	{
+		id: "6",
+		img: gtLogo,
+		name: "Isaac Emmanuel",
+		amount: "NGN 50.000.00",
+		date: "Jan 12/02/24",
+		time: "8:02pm",
+	},
+	{
+		id: "7",
+		img: gtLogo,
+		name: "Isaac Emmanuel",
+		amount: "NGN 50.000.00",
+		date: "Jan 12/02/24",
+		time: "8:02pm",
+	},
+];
