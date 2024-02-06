@@ -3,9 +3,9 @@ import "./hero.css";
 
 const hero = () => {
 	return (
-		<section className="hero-wrapper">
+		<section className="hero-wrapper ">
 			<div className="hero-container">
-				<div className="hero-right-text-content">
+				<div className="hero-right-text-content ">
 					<h1
 						data-aos="fade-up"
 						data-aos-duration="600"

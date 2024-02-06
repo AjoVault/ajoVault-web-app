@@ -20,6 +20,7 @@ import EnterOTP from "./components/Modal/EnterOTP.jsx";
 import Password from "./components/Modal/Password.jsx";
 import PinModal from "./components/Modal/PinModal.jsx";
 import ConfirmPin from "./components/Modal/ConfirmPin.jsx";
+import {TransactionPage} from "./pages/TransactionPage/TransactionPage.jsx";
 
 function App() {
 	useEffect(() => {
@@ -47,6 +48,7 @@ function App() {
 					<Route path="pin" element={<PinModal />} />
 					<Route path="confirmpin" element={<ConfirmPin />} />
 				</Route>
+
 				<Route path="/login" element={<Login />} />
 			</Routes>
 		</div>

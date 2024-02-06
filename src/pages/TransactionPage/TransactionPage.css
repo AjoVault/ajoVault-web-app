@@ -1,0 +1,15 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.transaction_history {
+	@apply text-[1.5rem] lg:text-[2.5rem] font-bold text-center lg:text-left;
+}
+
+.btn_container {
+	@apply font-medium rounded-lg text-[1.1rem] p-3 bg-[#AE809A];
+}
+.btn_load_container {
+	@apply font-medium text-[1.1rem] p-4 rounded-lg border-[#AE809A] border-2;
+}
