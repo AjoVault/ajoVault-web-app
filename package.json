@@ -11,8 +11,10 @@
     },
     "dependencies": {
         "@headlessui/react": "^1.7.18",
+        "framer-motion": "^11.0.3",
         "@mui/icons-material": "^5.15.7",
         "aos": "^2.3.4",
+
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-icons": "^5.0.1",

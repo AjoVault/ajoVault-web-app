@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import "./Footer.css";
+import { FaYoutube } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import { FaRss } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -40,26 +45,83 @@ const Footer = () => {
                 Want to be the first to hear about our performance report, and
                 events?
               </p>
-              <form className="subscription-form" onSubmit={handleSubmit}>
-                {/* <label htmlFor="email">Subscribe to our newsletter:</label> */}
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="Enter your email address"
-                  value={email}
-                  onChange={handleEmailChange}
-                  required
-                />
-                <button type="submit">Hop In</button>
-              </form>
+              <div className="submission-form-container">
+                <form className="subscription-form" onSubmit={handleSubmit}>
+                  {/* <label htmlFor="email">Subscribe to our newsletter:</label> */}
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email address"
+                    value={email}
+                    onChange={handleEmailChange}
+                    required
+                  />
+                  <button type="submit">Hop In</button>
+                </form>
+              </div>
             </div>
             <div className="Social-media-links">
-                <p>AjoVault Contact Center</p>
+              <div className="social-icons">
+                <a
+                  href="https://www.facebook.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="Facebook"
+                >
+                  <FaFacebook />
+                </a>
+                <a
+                  href="https://www.twitter.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="Twitter"
+                >
+                  <FaTwitter />
+                </a>
+                <a
+                  href="https://www.YouTube.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="Youtube"
+                >
+                  <FaYoutube />
+                </a>
+                <a
+                  href="https://www.Instagram.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="Instagram"
+                >
+                  <FaInstagram />
+                </a>
+                <a
+                  href="https://www.linkedin.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="Rss"
+                >
+                  <FaRss />
+                </a>
+              </div>
+              <p>AjoVault Contact Center</p>
+              <p>(+234) CALL AJOVAULT Info@ajovault.org</p>
             </div>
           </div>
         </div>
-        <p>&copy; 2023 Your Company</p>
-        {/* Add more footer content as needed */}
+        <div className="last-footer-content">
+          <div className="content">
+          <div className="top-section">
+            <a href="#">About Us</a>
+            <a href="#">FAQs</a>
+            <a href="#">Data Processisng Agreement</a>
+          </div>
+          <div className="bottom-section">
+            <a href="#">Support</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Performance reports</a>
+          </div>
+          </div>
+        </div>
       </div>
     </footer>
   );
