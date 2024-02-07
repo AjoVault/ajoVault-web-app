@@ -1,10 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import React, {useEffect} from "react";
 import Navbar from "./components-landingPage/navbar/navbar";
 import Hero from "./components-landingPage/hero/hero";
 import ProductF from "./components-landingPage/product-features/productF";
 import Success from "./components-landingPage/how-it-works/success";
 import Footer from "./components-landingPage/Footer/Footer.jsx";
+import AOS from "aos";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Register from "./components/Register/Register.jsx";
@@ -16,6 +18,8 @@ import EnterOTP from "./components/Modal/EnterOTP.jsx";
 import Password from "./components/Modal/Password.jsx";
 import PinModal from "./components/Modal/PinModal.jsx";
 import ConfirmPin from "./components/Modal/ConfirmPin.jsx";
+import {TransactionPage} from "./pages/TransactionPage/TransactionPage.jsx";
+
 
 function App() {
   return (
@@ -41,6 +45,13 @@ function App() {
       <Footer />
     </div>
   );
+function App() {
+	useEffect(() => {
+		AOS.init({
+			duration: 800,
+			easing: "ease-out-sine",
+		});
+	}, []);
 }
 
 export default App;
