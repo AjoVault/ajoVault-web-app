@@ -1,11 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import React, {useEffect} from "react";
-import Navbar from "./components-landingPage/navbar/navbar";
-import Hero from "./components-landingPage/hero/hero";
-import ProductF from "./components-landingPage/product-features/productF";
-import Success from "./components-landingPage/how-it-works/success";
-import Footer from "./components-landingPage/Footer/Footer.jsx";
+import {useEffect} from "react";
 import AOS from "aos";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
@@ -24,7 +19,6 @@ import {TransactionPage} from "./pages/TransactionPage/TransactionPage.jsx";
 function App() {
   return (
     <div>
-      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -39,20 +33,16 @@ function App() {
         </Route>
         <Route path="/login" element={<Login />} />
       </Routes>
-      <Hero />
-      <ProductF />
-      <Success />
-      <Footer />
     </div>
   );
 };
-function App() {
-	useEffect(() => {
-		AOS.init({
-			duration: 800,
-			easing: "ease-out-sine",
-		});
-	}, []);
-}
+// function App() {
+// 	useEffect(() => {
+// 		AOS.init({
+// 			duration: 800,
+// 			easing: "ease-out-sine",
+// 		});
+// 	}, []);
+// }
 
 export default App;

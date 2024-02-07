@@ -8,7 +8,7 @@
 
 .testimonial-header{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     /* border: 1px solid black; */
 }
 /* .testimonials-container */
