@@ -45,6 +45,7 @@ function App() {
       <Footer />
     </div>
   );
+};
 function App() {
 	useEffect(() => {
 		AOS.init({
