@@ -1,5 +1,6 @@
 import React from 'react'
 import "./hero.css"
+import { Link } from "react-router-dom";
 
 const hero = () => {
   return (
@@ -16,7 +17,7 @@ const hero = () => {
             personal finance, by combining <br />
             individual savings and collaborative <br /> pooled contributions.
           </p>
-          <button className="secondary-button">Get Started</button>
+          <Link to={'./Register'}><button className="secondary-button">Get Started</button></Link>
         </div>
         <div className="hero-left-img-content">
           <div className="image-container">
