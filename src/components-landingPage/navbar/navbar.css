@@ -8,6 +8,7 @@ nav {
     /* position: sticky; */
   }
   
+
   .nav-logo-container {
     margin: 0 80px;
   }
@@ -16,10 +17,15 @@ nav {
       width: 294px;
       height: 64px;
     }
+
+    .navbar-link-container{
+      display: flex;
+      align-items: center;
+    }
   
   .navbar-link-container a {
     justify-content: center;
-    margin-left: -150px;
+    /* margin-left: -150px; */
     text-align: center;
     text-decoration: none;
     color: black;

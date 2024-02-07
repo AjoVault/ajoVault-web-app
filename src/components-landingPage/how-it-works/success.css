@@ -8,7 +8,7 @@
 
 .testimonial-header{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     /* border: 1px solid black; */
 }
 /* .testimonials-container */
@@ -62,5 +62,10 @@
     list-style-type: disc;
     list-style-image: url(); 
 
+}
+
+.list-container1 li::marker{
+    font-size: 1.5rem;
+    color: #5A47CF;
 }
 
