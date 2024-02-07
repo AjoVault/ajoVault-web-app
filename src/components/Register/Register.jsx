@@ -10,7 +10,7 @@ import OTPModal from '../Modal/OTPModal';
 import ModalContextProvider from '../../context/modalDisplayProvider';
 import ModalDisplayContex from '../../context/modalDisplay';
 import {Outlet, Link, useNavigate} from 'react-router-dom'
-import UserContext from '../../context/UserContext';
+import UserContext from '../../context/userContext';
 import Spinner from '../spinner/spinner';
 
 
