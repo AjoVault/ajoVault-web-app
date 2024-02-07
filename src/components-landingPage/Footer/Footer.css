@@ -41,8 +41,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* Center vertically */
   border: solid blue 1px;
+  padding: 20px;
+  text-align: center; /* Center text */
 }
 
 .enter-mail p {
@@ -56,35 +58,37 @@
   align-items: center;
 }
 
-.subscription-form{
-  border: solid 1px red;
-  width: 100%;
-  /* display: flex; */
-  /* justify-content: space-between; */
+.subscription-form {
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+}
+
+.subscription-form input,
+.subscription-form button {
+  height: 43px; 
 }
 
 .subscription-form input {
   border-radius: 20px 0 0 20px;
-  /* width: 236px; */
-  height: 43px;
   border: solid 2px #5a47cf;
-  /* position: relative; */
+  padding: 0 10px; 
+  flex-grow: 1; 
 }
-.subscription-form input::placeholder {
-  padding: 16px 24px;
-  /* margin-right: 10px; */
+
+.subscription-form input::placeholder{
   color: #fff;
 }
 
-.subscription-form button {
+.submission-form-container button{
   background-color: #5a47cf;
   color: #fff;
-  padding: 12px 32px;
+  padding: 0 32px;
   border-radius: 0 20px 20px 0;
-  /* position: absolute; */
-  /* right: 8px; */
-  
+  cursor: pointer;
 }
+
+
 
 .social-icons {
   display: flex;

@@ -15,9 +15,8 @@ const Footer = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your logic for handling the submitted email, like sending it to a server or storing it in state
+
     console.log(`Email submitted: ${email}`);
-    // You might want to clear the email input after submission
     setEmail("");
   };
 
@@ -56,8 +55,8 @@ const Footer = () => {
                     onChange={handleEmailChange}
                     required
                   />
-                  <button type="submit">Hop In</button>
                 </form>
+                <button type="submit">Hop In</button>
               </div>
             </div>
             <div className="Social-media-links">
