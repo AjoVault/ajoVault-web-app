@@ -35,10 +35,13 @@ function Modal() {
                 <h4 className='modal-heading'> We need you to verify your email address ar**@gmail.com</h4>
                 <p className='modal-para'>Please select how you want to be verified below</p>
               </div>
-              <Link to='/otp'>
+              <Link to='/register/otp'>
+
                 <button 
                 className='lilacBtn'
-                type='button'>            
+                type='button'
+                style={{backgroundColor: 'var(--lilacBtn)'}}
+                >            
 
                 <div className='button-div'>
                   <div className='forward-email'>

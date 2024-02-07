@@ -14,7 +14,7 @@ function OTPModal() {
 
             {/* Modal content */}
            
-            <div className="modal-content otp-inbox">
+            <div className="modal-content otp-inbox otp-modal">
               <div className='forward-email input-logo'>
                 <img className='forward-logo' src={forwardInbox} alt="" />
               </div>
@@ -23,7 +23,7 @@ function OTPModal() {
                   <h4 className='modal-heading check-email'> Check your email for an OTP</h4>
                 </div >
 
-                <Link to='/inputotp'>
+                <Link to='/register/inputotp'>
               <LilacButton
               type='text'
               title='Next'

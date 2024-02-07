@@ -4,8 +4,8 @@ import {useEffect} from "react";
 import AOS from "aos";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
-import Register from "./components/Register/Register.jsx";
-import Login from "./components/Login/Login.jsx";
+import Register from './components/Register/Register.jsx'
+import Login from './components/Login/Login.jsx'
 import Modal from "./components/Modal/modal.jsx";
 import RegisterOutlet from "./RegisterLayout.jsx";
 import OTPModal from "./components/Modal/OTPModal.jsx";
