@@ -3,7 +3,7 @@ import './modal.css'
 import LilacButton from '../Button/LilacButton';
 import forwardInbox from '../../assets/forward-inbox.png'
 import {Link} from 'react-router-dom';
-import UserContext from '../../context/userContext';
+// import UserContext from '../../context/userContext';
 
 function PinModal({numberOfDigits=4}) {
 

@@ -3,7 +3,7 @@ import './modal.css'
 import LilacButton from '../Button/LilacButton';
 import forwardInbox from '../../assets/forward-inbox.png'
 import {Link, useNavigate} from 'react-router-dom';
-import UserContext from '../../context/userContext';
+// import UserContext from '../../context/userContext';
 
 function ConfirmPin({numberOfDigits=4}) {  
 

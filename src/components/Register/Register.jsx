@@ -10,7 +10,7 @@ import OTPModal from '../Modal/OTPModal';
 import ModalContextProvider from '../../context/modalDisplayProvider';
 import ModalDisplayContex from '../../context/modalDisplay';
 import {Outlet, Link, useNavigate} from 'react-router-dom'
-import UserContext from '../../context/userContext';
+// import UserContext from '../../context/userContext';
 import Spinner from '../spinner/spinner';
 
 
@@ -29,7 +29,7 @@ function Register() {
 
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*_#?&])[A-Za-z\d@$!%*_#?&]{8,}$/
 
-    const {setUser} = useContext(UserContext)
+    // const {setUser} = useContext(UserContext)
     
 
     const handleSubmit = async () => {
