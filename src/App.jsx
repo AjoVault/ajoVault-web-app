@@ -18,11 +18,12 @@ import PoolContribution from "./components/Modal/PoolContribution.jsx";
 import PersonalSavings from "./components/Modal/PersonalSavings.jsx";
 import Spinner from "./components/spinner/spinner.jsx";
 import {TransactionPage} from "./pages/TransactionPage/TransactionPage.jsx";
+import UserContextProvider from "./context/UserContextProvider.jsx";
 
 
 function App() {
   return (
-    <div>
+    <UserContextProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -41,7 +42,7 @@ function App() {
                 <Route path='/personalsavings' element={<PersonalSavings/>} />
                 <Route path="/spinner" element={<Spinner />} />
       </Routes>
-    </div>
+    </UserContextProvider>
   );
 };
 // function App() {
