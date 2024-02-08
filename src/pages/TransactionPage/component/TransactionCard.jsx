@@ -1,11 +1,11 @@
 import {Button} from "./button";
+import {IoIosArrowDown} from "react-icons/io";
 
 export const TransactionCard = ({data}) => {
-	console.log(data);
 	return (
-		<div className="flex  justify-between p-4 bg-[#FFFFFF] drop-shadow-lg w-[60%]">
-			<div key={data.id} className="w-1/2">
-				<div className="flex gap-6">
+		<div className="flex  justify-between lg:p-4 bg-[#FFFFFF]  drop-shadow-lg w-full lg:w-[60%]">
+			<div key={data.id} className=" w-full lg:w-1/2">
+				<div className="flex lg:gap-6">
 					<div>
 						<img
 							className="h-12 w-12 rounded-full object-cover"
@@ -25,12 +25,12 @@ export const TransactionCard = ({data}) => {
 					</div>
 				</div>
 			</div>
-			<div className="w-1/2 flex justify-end">
+			<div className="w-full lg:w-1/2 flex justify-end">
 				<div className="flex w-[40%]">
 					<span className="text-[#319F43] text-[1.5rem] font-medium">
 						NGN 50,000
 					</span>
-					<Button btn_text="t " btn_style="ml-3" />
+					<Button btn_text={<IoIosArrowDown />} btn_style="ml-3 " />
 				</div>
 			</div>
 		</div>

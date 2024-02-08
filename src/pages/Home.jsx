@@ -5,7 +5,7 @@ import Hero from "../components-landingPage/hero/hero";
 const Home = () => {
 	return (
 		<section>
-			<Navbar /> */}
+			<Navbar />
 			<Hero />
 			<ProductF />
 		</section>

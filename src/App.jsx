@@ -11,7 +11,6 @@ import Footer from "./components-landingPage/Footer/Footer.jsx";
 // import Carousel from "./components-landingPage/Carousel/Carousel";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
-import Register from "./components/Register/Register.jsx";
 import Login from "./components/Login/Login.jsx";
 import Modal from "./components/Modal/modal.jsx";
 import RegisterOutlet from "./RegisterLayout.jsx";
@@ -20,7 +19,6 @@ import EnterOTP from "./components/Modal/EnterOTP.jsx";
 import Password from "./components/Modal/Password.jsx";
 import PinModal from "./components/Modal/PinModal.jsx";
 import ConfirmPin from "./components/Modal/ConfirmPin.jsx";
-import {TransactionPage} from "./pages/TransactionPage/TransactionPage.jsx";
 
 function App() {
 	useEffect(() => {
