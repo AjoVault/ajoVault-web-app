@@ -18,7 +18,7 @@ import PoolContribution from "./components/Modal/PoolContribution.jsx";
 import PersonalSavings from "./components/Modal/PersonalSavings.jsx";
 import Spinner from "./components/spinner/spinner.jsx";
 import {TransactionPage} from "./pages/TransactionPage/TransactionPage.jsx";
-import UserContextProvider from "./context/UserContextProvider.jsx";
+import {UserContextProvider} from "./context/UserContextProvider.jsx";
 
 
 function App() {
@@ -42,8 +42,8 @@ function App() {
                 <Route path='/personalsavings' element={<PersonalSavings/>} />
                 <Route path="/spinner" element={<Spinner />} />
       </Routes>
-    </UserContextProvider>
-  );
+    </UserContextProvider>   
+  )
 };
 // function App() {
 // 	useEffect(() => {
