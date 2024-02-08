@@ -46,8 +46,8 @@ function PoolContribution() {
                         <label htmlFor="email">Savings Frequency</label>
                     </div>
                     <div>
-                    <select className='input' name="" id="" placeholder="">
-                        <option className='select' selected disabled>Select your savings frequency</option>
+                    <select className='input' name="" id="">
+                        <option className='select' selected disabled >Select your savings frequency</option>
                                         <option value="">Daily</option>                    
                                         <option value="">Weekly</option>                    
                                         <option value="">Monthly</option>                    
@@ -57,8 +57,8 @@ function PoolContribution() {
                         <label htmlFor="phone">Savings Duration</label>
                     </div>
                     <div>
-                    <select className='input' name="" id="" placeholder="">
-                        <option className='select' selected disabled>Select your savings duration</option>
+                    <select className='input' name="" id="" >
+                        <option className='select' selected disabled hidden>Select your savings duration</option>
                                         <option value="5000">NGN 5,000</option>                    
                                         <option value="5000">NGN 10,000</option>                    
                                         <option value="5000">NGN 20,000</option>                    
@@ -86,18 +86,24 @@ function PoolContribution() {
                          {/* <span className='password-span' style={spanStyle}>Password must be at least 8 characters, one number and one special character</span> */}
                     </div>
 
-                    <div>
-                        <label htmlFor=""><p>Accept Terms and Rules of Savings</p></label>
-
-                        <input type="checkbox" name="" id="" />
+                    <div className='checkbox-div terms-para'>
+                        <div>
+                            <input className='check' type="checkbox" name="" id="" /> 
+                        </div>
+                        <div>
+                            <p>Accept <span className='modal-span'>Terms and Rules</span> of Savings</p>
+                        </div>  
+                    </div>
+                    <div className='checkbox-div terms-para'>
+                        <p>By Clicking on submit yo agreed to a direct debit from the bank privided in your <span className='modal-span'>KYC</span> </p>
                     </div>
 
                     <div className='short-btn'>
-                        <div>
-                            <LilacButton title='Back' color='var(--pink)' textColor='black' width='240px'/>
+                         <div style={{width: '45%'}}>
+                            <LilacButton title='Back' color='var(--pink)' textColor='black' width='100%'/>
                         </div>
-                        <div>
-                            <LilacButton title='Submit' width='240px'/>
+                        <div style={{width: '45%'}}>
+                            <LilacButton title='Submit' width='100%'/>
                         </div>
                     </div>
                     

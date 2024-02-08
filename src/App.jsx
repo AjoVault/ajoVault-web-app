@@ -4,7 +4,7 @@ import Hero from "./components-landingPage/hero/hero";
 import ProductF from "./components-landingPage/product-features/productF";
 import Success from "./components-landingPage/how-it-works/success";
 import Carousel from "./components-landingPage/Carousel/Carousel";
-import AOS from "aos";
+// import AOS from "aos";
 
 import {Route, Routes} from "react-router-dom";
 import Footer from "./components-landingPage/Footer/Footer.jsx";
@@ -29,11 +29,11 @@ import Spinner from "./components/spinner/spinner.jsx";
 function App() {
     return (
         <UserContextProvider>
-            {/* <Navbar />
+             {/* <Navbar />
             <Hero />
             <ProductF />
             <Success />
-            {/* <Carousel /> */}
+             <Carousel />  */}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/dashboard" element={<Dashboard />} />

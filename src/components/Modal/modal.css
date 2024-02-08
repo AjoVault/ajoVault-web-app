@@ -150,14 +150,17 @@
 }
 
 .select {
-  /* font-family: "Montserrat", sans-serif; */
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 1rem;
-  color: var(--black2);
+  color: var(--black3);
   padding: 2px;
 }
 .select-active {
   color: black;
+}
+.inactive {
+  color: var(--black2);
 }
 .pin-para {
   padding: 15px;
@@ -173,10 +176,30 @@
   justify-content: space-between;
 }
 
+.checkbox-div {
+  display: flex;
+  /* justify-content: space-between; */
+  /* width: 70%; */
+}
+
+.check {
+  margin-right: 50px;
+}
+
+.terms-para {
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  padding: 20px 0px;
+}
+.modal-span {
+  color: var(--lilac);
+}
+
 @media only screen and (max-width: 1024px) {
   .modal-content {
-    width: 95%;
-    padding: 20px;
+    width: 97%;
+    /* padding: 20px; */
   }
   .otp-input {
     gap: 1rem;

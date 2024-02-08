@@ -176,7 +176,7 @@ function Register() {
                             />
                      {/* </Link> */}
                        
-                        <p className='acc-text'>Already have an account? <a className='login-span'>Log in</a> </p>
+                        <p className='acc-text'>Already have an account? <a className='login-span'><Link to={'/login'}>Log in</Link></a> </p>
                     </div>
                 </form>
             </div>

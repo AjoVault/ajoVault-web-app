@@ -67,15 +67,14 @@ function KnowYourCustomer() {
                         <label htmlFor="phone">Bank</label>
                     </div>
                     <div>
-                        <select className='input' name="" id="" placeholder="">
-                        <option className='select' selected disabled>Select your Bank</option>
+                        <select className='input select' name="" id="">
+                        <option className='select inactive' selected disabled>Select your Bank</option>
                                                         <option className='select-active' value="044">Access Bank</option>
                                                         <option value="023">  Citibank</option>
                                                         <option value="050">Ecobank</option>
                                                         <option value="214">First City Monument Bank (FCMB)</option>
                                                         <option value="070">Fidelity Bank</option>
                                                         <option value="011">First Bank</option>
-                                                       
                                                         <option value="058">Guaranty Trust Bank (GTB)</option>
                                                         <option value="030">Heritage Bank</option>
                                                         <option value="301">Jaiz Bank</option>
@@ -120,12 +119,18 @@ function KnowYourCustomer() {
                         // required= {false}
                         />
                     </div>
+                    <div>
+                        <label htmlFor='date'>Date of Birth</label>
+                    </div>
+                    <div>
+                        <input type="date"  className='input'/>
+                    </div>
                     <div className='short-btn'>
-                        <div>
-                            <LilacButton title='Back' color='var(--pink)' textColor='black' width='240px'/>
+                        <div style={{width: '45%'}}>
+                            <LilacButton title='Back' color='var(--pink)' textColor='black' width='100%'/>
                         </div>
-                        <div>
-                            <LilacButton title='Submit' width='240px'/>
+                        <div style={{width: '45%'}}>
+                            <LilacButton title='Submit' width='100%'/>
                         </div>
                     </div>
                     

@@ -115,11 +115,11 @@ function PersonalSavings() {
                     </div>
 
                     <div className='short-btn'>
-                        <div>
-                            <LilacButton title='Back' color='var(--pink)' textColor='black' width='240px'/>
+                         <div style={{width: '45%'}}>
+                            <LilacButton title='Back' color='var(--pink)' textColor='black' width='100%'/>
                         </div>
-                        <div>
-                            <LilacButton title='Submit' width='240px'/>
+                        <div style={{width: '45%'}}>
+                            <LilacButton title='Submit' width='100%'/>
                         </div>
                     </div>
                     

@@ -63,7 +63,7 @@ function PinModal({numberOfDigits=4}) {
                             onChange={(e)=> handleChange(e.target.value, index)}
                             // onKeyUp={(e)=> handleBackspaceAndEnter(e, index)}
                             ref={(reference) => (otpBoxReference.current[index] = reference)}
-                            className={`otp-box`}
+                            className={`input otp-box`}
                             />
                            </div> 
                         ))

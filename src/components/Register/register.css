@@ -1,4 +1,4 @@
-input {
+/* input {
   width: 33rem;
   height: 1.8rem;
   margin: 15px 0px 10px;
@@ -7,7 +7,7 @@ input {
   background-color: var(--inputBackground);
   outline: 0.5px solid var(--lilac);
   padding: 5px 10px;
-}
+} */
 
 .form-div__inner {
   display: flex;
