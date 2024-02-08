@@ -110,7 +110,7 @@ function Login() {
                     
                     <div className='acc-div acc-login'>
 
-                        <Spinner display={spin}/>
+                        <Spinner display={spin}/>ng
                         <LilacButton type='button' title='Login' onClick={handleSubmit}/>
                         <div className='separator'>
                            Or                           

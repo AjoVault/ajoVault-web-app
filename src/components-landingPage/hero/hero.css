@@ -1,67 +1,66 @@
-.hero-container{
-    display: flex;
-    justify-content: space-between;
-    margin: 64px 80px;
-    /* background-color: red; */
-    min-height:863px;
-  }
+.hero-container {
+	display: flex;
+	justify-content: space-between;
+	margin: 64px 80px;
 
-  .hero-right-text-content{
-    /* display: flex; */
-    flex-direction: column;
-    /* margin: 20px; */
-    /* padding: 0; */
-  }
+	/* background-color: red; */
+	min-height: 863px;
+}
 
-  .primary-heading{
-    font-size: 4rem;
-    font-weight: 600;
-    line-height: 140%;
-    color: #020202;
-    margin-top: 25%;
-    margin-bottom: 32px;
-  }
+.hero-right-text-content {
+	/* display: flex; */
+	flex-direction: column;
+	/* margin: 20px; */
+	/* padding: 0; */
+}
 
-  .primary-heading span{
-    color: #5E0035;
-  }
+.primary-heading {
+	font-size: 4rem;
+	font-weight: 600;
+	line-height: 140%;
+	color: #020202;
+	margin-top: 25%;
+	margin-bottom: 32px;
+}
 
-  .primary-text{
-    font-size: 1.75rem;
-    color: #2C2C2C;
-    font-weight: 500;
-    line-height: 149%;
-    margin-bottom: 32px;
-  }
+.primary-heading span {
+	color: #5e0035;
+}
 
-  .secondary-button{
-    padding: 16px 32px;
-    width:413px;
-    background-color: #5a47cf;
-    color: #fcfcfc;
-    outline: none;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    /* font-weight: 600;
+.primary-text {
+	font-size: 1.75rem;
+	color: #2c2c2c;
+	font-weight: 500;
+	line-height: 149%;
+	margin-bottom: 32px;
+}
+
+.secondary-button {
+	padding: 16px 32px;
+	width: 413px;
+	background-color: #5a47cf;
+	color: #fcfcfc;
+	outline: none;
+	border: none;
+	border-radius: 8px;
+	font-size: 1.5rem;
+	cursor: pointer;
+	/* font-weight: 600;
     transition: 0.2s; */
-  }
+}
 
-  .hero-left-img-content{
-    width: 50%;
-    border-radius: 8px;
-    height: 50%;
-    /* border: 5px solid blue !important; */
+.hero-left-img-content {
+	width: 50%;
+	border-radius: 8px;
+	height: 50%;
+	/* border: 5px solid blue !important; */
+}
 
-  }
+.image.container {
+	height: 30%;
+}
 
-  .image.container{
-    height: 30%;
-  }
-
-  img{
-    /* height: 100%; */
-    width: 100%;
-
-  }
+img {
+	/* height: 100%; */
+	width: 100%;
+}
