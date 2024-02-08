@@ -8,13 +8,13 @@ const Carousel = () => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % items.length);
   };
 
-  useEffect(() => {
-    const intervalId = setInterval(nextSlide, 5000);
+  // useEffect(() => {
+  //   const intervalId = setInterval(nextSlide, 5000);
 
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [activeIndex]);
+  //   return () => {
+  //     clearInterval(intervalId);
+  //   };
+  // }, [activeIndex]);
 
   const handleIndicatorClick = (index) => {
     setActiveIndex(index);
