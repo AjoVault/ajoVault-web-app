@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import {useEffect} from "react";
+import { useEffect } from "react";
 import AOS from "aos";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
@@ -17,7 +17,7 @@ import KnowYourCustomer from "./components/Modal/KnowYourCustomer.jsx";
 import PoolContribution from "./components/Modal/PoolContribution.jsx";
 import PersonalSavings from "./components/Modal/PersonalSavings.jsx";
 import Spinner from "./components/spinner/spinner.jsx";
-import {TransactionPage} from "./pages/TransactionPage/TransactionPage.jsx";
+import { TransactionPage } from "./pages/TransactionPage/TransactionPage.jsx";
 import {UserContextProvider} from "./context/UserContextProvider.jsx";
 
 

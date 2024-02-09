@@ -13,3 +13,10 @@
 .btn_load_container {
 	@apply font-medium text-[1.1rem] p-4 rounded-lg border-[#AE809A] border-2;
 }
+.hide {
+	@apply hidden;
+}
+
+.visible {
+	@apply absolute top-0 left-0 bg-black opacity-80 z-50 w-full h-full;
+}

@@ -1,0 +1,51 @@
+export const SettingPageObject = [
+	{
+		id: "1",
+		name: "Isaac Emmanuel",
+		amount: "NGN 50.000.00",
+		date: "Jan 12/02/24",
+		time: "8:02pm",
+	},
+	{
+		id: "2",
+		name: "Isaac Emmanuel",
+		amount: "NGN 50.000.00",
+		date: "Jan 12/02/24",
+		time: "8:02pm",
+	},
+	{
+		id: "3",
+		name: "Isaac Emmanuel",
+		amount: "NGN 50.000.00",
+		date: "Jan 12/02/24",
+		time: "8:02pm",
+	},
+	{
+		id: "4",
+		name: "Isaac Emmanuel",
+		amount: "NGN 50.000.00",
+		date: "Jan 12/02/24",
+		time: "8:02pm",
+	},
+	{
+		id: "5",
+		name: "Isaac Emmanuel",
+		amount: "NGN 50.000.00",
+		date: "Jan 12/02/24",
+		time: "8:02pm",
+	},
+	{
+		id: "6",
+		name: "Isaac Emmanuel",
+		amount: "NGN 50.000.00",
+		date: "Jan 12/02/24",
+		time: "8:02pm",
+	},
+	{
+		id: "7",
+		name: "Isaac Emmanuel",
+		amount: "NGN 50.000.00",
+		date: "Jan 12/02/24",
+		time: "8:02pm",
+	},
+];

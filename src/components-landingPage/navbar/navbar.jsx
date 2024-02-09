@@ -16,7 +16,7 @@ const navbar = () => {
       </div>
       <div className="navbar-link-container">
         <a href="#">Contact Us</a>
-      <Link to={'./Register'}>
+      <Link to={'/Register'}>
         <button className="primary-button">Get Started</button>
       </Link>
       {/* <div className="hamburger-menu">
