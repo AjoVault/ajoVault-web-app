@@ -10,7 +10,7 @@ import OTPModal from '../Modal/OTPModal';
 import ModalContextProvider from '../../context/modalDisplayProvider';
 import ModalDisplayContex from '../../context/modalDisplay';
 import {Outlet, Link, useNavigate} from 'react-router-dom'
-// import UserContext from '../../context/userContext';
+import UserContext from '../../context/userContext';
 import Spinner from '../spinner/spinner';
 
 
@@ -29,9 +29,10 @@ function Register() {
 
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*_#?&])[A-Za-z\d@$!%*_#?&]{8,}$/
 
-    // const {setUser} = useContext(UserContext)
+    const {setUser} = useContext(UserContext)
     
-
+    let firstName = name.split(' ');
+    firstName = firstName[0];
     const handleSubmit = async () => {
         // e.preventDefault();
         if(!passwordRegex.test(password)){
@@ -60,7 +61,7 @@ function Register() {
                     // setIsSignUp(true);
 
                     console.log('Registration successfull')
-                    setUser({email, pin:''});
+                    setUser({firstName, email, pin:''});
                     console.log(email);
                     navigateTo('checkemail');
                 }else{

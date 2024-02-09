@@ -18,32 +18,31 @@ import PoolContribution from "./components/Modal/PoolContribution.jsx";
 import PersonalSavings from "./components/Modal/PersonalSavings.jsx";
 import Spinner from "./components/spinner/spinner.jsx";
 import { TransactionPage } from "./pages/TransactionPage/TransactionPage.jsx";
-// import UserContextProvider from "./context/UserContextProvider.jsx";
+import {UserContextProvider} from "./context/UserContextProvider.jsx";
 
 
 function App() {
   return (
-    // <UserContextProvider>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/register/*" element={<Register />}></Route>
-      <Route path="/register/*" element={<RegisterOutlet />}>
-        <Route path="checkemail" element={<Modal />} />
-        <Route path="otp" element={<OTPModal />} />
-        <Route path="inputotp" element={<EnterOTP />} />
-        <Route path="password" element={<Password />} />
-        <Route path="pin" element={<PinModal />} />
-        <Route path="confirmpin" element={<ConfirmPin />} />
-      </Route>
-      <Route path="/login" element={<Login />} />
-      <Route path='/knowyourcustomer' element={<KnowYourCustomer />} />
-      <Route path='/pool' element={<PoolContribution />} />
-      <Route path='/personalsavings' element={<PersonalSavings />} />
-      <Route path="/spinner" element={<Spinner />} />
-    </Routes>
-    // </UserContextProvider>
-  );
+    <UserContextProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/register/*" element={<Register />}></Route>
+        <Route path="/register/*" element={<RegisterOutlet />}>
+          <Route path="checkemail" element={<Modal />} />
+          <Route path="otp" element={<OTPModal />} />
+          <Route path="inputotp" element={<EnterOTP />} />
+          <Route path="password" element={<Password />} />
+          <Route path="pin" element={<PinModal />} />
+          <Route path="confirmpin" element={<ConfirmPin />} />
+        </Route>
+        <Route path="/login" element={<Login />} />
+        <Route path='/knowyourcustomer' element={<KnowYourCustomer />} />
+        <Route path='/pool' element={<PoolContribution/>} />
+        <Route path='/personalsavings' element={<PersonalSavings/>} />
+      </Routes>
+    </UserContextProvider>   
+  )
 };
 // function App() {
 // 	useEffect(() => {

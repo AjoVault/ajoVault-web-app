@@ -5,6 +5,7 @@ import forwardEmail from '../../assets/forward_to_inbox.png'
 import OTPModal from './OTPModal';
 import ModalDisplayContex from '../../context/modalDisplay';
 import { Link } from 'react-router-dom';
+import UserContext from '../../context/userContext';
 
 function Modal() {
   
@@ -19,6 +20,13 @@ function Modal() {
     display: dis
   }
 
+  const {user} = useContext(UserContext);
+  console.log(user);
+  const email = user.email.split('@');
+  console.log(email)
+  const emailAdressHead = `${email[0].substring(0, 3)}**`;
+  const emailAddressTitle = email[1];
+
 
   return (
     <>
@@ -32,7 +40,7 @@ function Modal() {
             {/* Modal content */}
             <div className="modal-content" >
               <div>
-                <h4 className='modal-heading'> We need you to verify your email address ar**@gmail.com</h4>
+                <h4 className='modal-heading'> We need you to verify your email address {emailAdressHead}@{emailAddressTitle}</h4>
                 <p className='modal-para'>Please select how you want to be verified below</p>
               </div>
               <Link to='/register/otp'>
