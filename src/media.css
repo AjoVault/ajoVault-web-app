@@ -1,0 +1,36 @@
+/* Responsive styles for different screen sizes */
+/* Mobile devices */
+@media only screen and(min-width: 320px) and (max-width: var(--mobile-max-width)) {
+  .hamburger-menu{
+    display:block;
+  }
+}
+
+/* iPads and Tablets */
+@media only screen and (min-width: var(--mobile-max-width)) and (max-width: var(--tablet-max-width)) {
+  /* .header {
+    font-size: var(--base-font-size);
+  } */
+}
+
+
+/* Small screens, laptops */
+@media only screen and (min-width: var(--tablet-max-width)) and (max-width: var(--laptop-max-width)) {
+  .hamburger{
+    display: none;
+  }
+}
+
+/* Desktops, large screens */
+@media only screen and (min-width: var(--laptop-max-width)) and (max-width: var(--desktop-max-width)) {
+  .hamburger{
+    display: none;
+  }
+}
+
+/* Extra large screens, TV */
+@media only screen and (min-width: var(--extra-large-min-width)) {
+  /* .hamburger-menu{
+
+  } */
+  }

@@ -2,6 +2,7 @@ import React from "react";
 import "./navbar.css";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
+// import "./media.css";
 
 const navbar = () => {
   return (
@@ -19,9 +20,9 @@ const navbar = () => {
       <Link to={'./Register'}>
         <button className="primary-button">Get Started</button>
       </Link>
-      {/* <div className="hamburger-menu">
+      <div className="hamburger">
       <RxHamburgerMenu />
-      </div> */}
+      </div>
       </div>
     </nav>
   );

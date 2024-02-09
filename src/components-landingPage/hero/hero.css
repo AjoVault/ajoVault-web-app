@@ -3,8 +3,8 @@
 	justify-content: space-between;
 	margin: 64px 80px;
 
-	/* background-color: red; */
-	min-height: 863px;
+	/* border: solid 1px red; */
+	/* min-height: 863px; */
 }
 
 .hero-right-text-content {
@@ -19,7 +19,7 @@
 	font-weight: 600;
 	line-height: 140%;
 	color: #020202;
-	margin-top: 25%;
+	margin-top: 5%;
 	margin-bottom: 32px;
 }
 
