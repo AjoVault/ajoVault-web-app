@@ -1,3 +1,7 @@
-export const Button = ({btn_style, btn_text}) => {
-	return <button className={`${btn_style}`}>{btn_text}</button>;
+export const Button = ({btn_style, btn_text, onClick}) => {
+	return (
+		<button onClick={onClick} className={`${btn_style}`}>
+			{btn_text}
+		</button>
+	);
 };

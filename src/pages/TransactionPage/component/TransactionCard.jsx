@@ -3,8 +3,8 @@ import {IoIosArrowDown} from "react-icons/io";
 
 export const TransactionCard = ({data}) => {
 	return (
-		<div className="flex  justify-between lg:p-4 bg-[#FFFFFF]  drop-shadow-lg w-full lg:w-[60%]">
-			<div key={data.id} className=" w-full lg:w-1/2">
+		<div className="flex   justify-between max-sm:w-[80%] lg:p-4 bg-[#FFFFFF]  drop-shadow-lg  lg:w-[60%]">
+			<div key={data.id} className=" max-sm:w-[50%] lg:w-1/2">
 				<div className="flex lg:gap-6">
 					<div>
 						<img
@@ -16,7 +16,7 @@ export const TransactionCard = ({data}) => {
 					<div>
 						<h2 className="text-[#151415] font-medium">{data.name}</h2>
 						<h4
-							className=" text-[0.75rem] font-normal text-[#808080]
+							className=" max-sm:text-[0.6rem] text-[0.75rem] font-normal text-[#808080]
 "
 						>
 							<span>Jan 12/02/24</span>
@@ -25,9 +25,9 @@ export const TransactionCard = ({data}) => {
 					</div>
 				</div>
 			</div>
-			<div className="w-full lg:w-1/2 flex justify-end">
+			<div className="w-[40%] lg:w-1/2 flex justify-end">
 				<div className="flex w-[40%]">
-					<span className="text-[#319F43] text-[1.5rem] font-medium">
+					<span className="text-[#319F43]  max-sm:text-[1rem] text-[1.5rem] font-medium">
 						NGN 50,000
 					</span>
 					<Button btn_text={<IoIosArrowDown />} btn_style="ml-3 " />
