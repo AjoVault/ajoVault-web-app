@@ -31,7 +31,8 @@ function Register() {
 
     const {setUser} = useContext(UserContext)
     
-
+    let firstName = name.split(' ');
+    firstName = firstName[0];
     const handleSubmit = async () => {
         // e.preventDefault();
         if(!passwordRegex.test(password)){
@@ -60,7 +61,7 @@ function Register() {
                     // setIsSignUp(true);
 
                     console.log('Registration successfull')
-                    setUser({email, pin:''});
+                    setUser({firstName, email, pin:''});
                     console.log(email);
                     navigateTo('checkemail');
                 }else{

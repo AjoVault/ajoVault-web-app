@@ -37,10 +37,9 @@ function App() {
           <Route path="confirmpin" element={<ConfirmPin />} />
         </Route>
         <Route path="/login" element={<Login />} />
-                <Route path='/knowyourcustomer' element={<KnowYourCustomer />} />
-                <Route path='/pool' element={<PoolContribution/>} />
-                <Route path='/personalsavings' element={<PersonalSavings/>} />
-                <Route path="/spinner" element={<Spinner />} />
+        <Route path='/knowyourcustomer' element={<KnowYourCustomer />} />
+        <Route path='/pool' element={<PoolContribution/>} />
+        <Route path='/personalsavings' element={<PersonalSavings/>} />
       </Routes>
     </UserContextProvider>   
   )

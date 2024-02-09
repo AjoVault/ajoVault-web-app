@@ -39,7 +39,7 @@ function PinModal({numberOfDigits=4}) {
     const pin = otp.join("");
 
     const handleSubmit = () => {
-      setUser({email: user.email, pin});
+      setUser({firstName: user.firstName, email: user.email, pin});
     }
     
 

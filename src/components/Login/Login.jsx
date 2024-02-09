@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import loginImg from '../../assets/login-img.png'
 import Logo from '../../assets/Logo.png';
 import loginText from '../../assets/login-text.png'
@@ -10,12 +10,14 @@ import './login.css';
 import Spinner from '../spinner/spinner';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import UserContext from '../../context/userContext';
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [spin, setSpin] = useState('none');
     const [spanData, setSpanData] = useState('');
+    const {setUser} = useContext(UserContext);
     const navigateTo = useNavigate();
 
     const handleSubmit = async () => {
@@ -39,7 +41,7 @@ function Login() {
                     
                     console.log(userDetails);
                     // setIsSignUp(true);
-
+                    setUser({firstName: userDetails.response.firstName, email: userDetails.response.email});
                     console.log('Registration successfull')
                     navigateTo('/dashboard');
                 }else{
