@@ -10,6 +10,7 @@ import contract from "../assets/contract.svg";
 import settingsIcon from "../assets/settingsIcon.svg";
 import settingsIcon2 from "../assets/settingsIcon2.svg";
 import support from "../assets/support.svg";
+import {GrTransaction} from "react-icons/gr";
 
 import DashHome from "./DashHome";
 import Savings from "./Savings";

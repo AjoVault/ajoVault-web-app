@@ -9,6 +9,7 @@ import googleLogo from '../../assets/google.png'
 import './login.css';
 import Spinner from '../spinner/spinner';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -109,7 +110,7 @@ function Login() {
                     
                     <div className='acc-div acc-login'>
 
-                        <Spinner display={spin}/>ng
+                        <Spinner display={spin}/>
                         <LilacButton type='button' title='Login' onClick={handleSubmit}/>
                         <div className='separator'>
                            Or                           
@@ -117,7 +118,7 @@ function Login() {
                         <div className='google-div'>
                             <img className='google-img' src={googleLogo} alt="" />
                         </div>
-                        <p className='acc-text'>Don't have an account? <a className='login-span'>Register</a> </p>
+                        <p className='acc-text'>Don't have an account? <span className='login-span'><Link to={'/register'}>Register</Link></span> </p>
                     </div>                                     
                 </form>
             </div>  

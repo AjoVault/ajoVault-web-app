@@ -16,15 +16,12 @@ export const TransactionPage = () => {
 				/>
 			</span>
 			<div className="flex flex-col gap-2">
-				{TransactionData.map((data) => (
-					<TransactionCard data={data} />
+				{TransactionData.map((data, index) => (
+					<TransactionCard key={index} data={data} />
 				))}
 			</div>
-			<div className="w-[60%] pt-8 flex justify-center">
-				<Button
-					btn_style="btn_load_container"
-					btn_text="Load more Transaction History"
-				/>
+			<div className="w-full lg:w-[60%] pt-8 flex justify-center">
+				<Button btn_style="btn_load_container" btn_text="Load more  History" />
 			</div>
 		</div>
 	);

@@ -8,29 +8,29 @@ import { Link } from 'react-router-dom';
 
 function Modal() {
   
-  const [dis, setDis] = useState('none');
+  const [dis, setDis] = useState('block');
   // const {setOtpModal} = useContext(ModalDisplayContex)
 
   //     useEffect(() => {
   //       setDis(displayStyle)
   //     }, [displayStyle]);
 
-  // let modalstyle = {
-  //   display: dis
-  // }
+  let modalstyle = {
+    display: dis
+  }
 
 
   return (
     <>
     <div>
-            <div id="myModal" className="modal">
+            <div id="myModal" className="modal" style={modalstyle}>
 
             <span className="close"
             onClick={() => setDis('none')}
             >&times;</span>
 
             {/* Modal content */}
-            <div className="modal-content">
+            <div className="modal-content" >
               <div>
                 <h4 className='modal-heading'> We need you to verify your email address ar**@gmail.com</h4>
                 <p className='modal-para'>Please select how you want to be verified below</p>

@@ -3,7 +3,7 @@ import './modal.css'
 import LilacButton from '../Button/LilacButton';
 import forwardInbox from '../../assets/forward-inbox.png'
 import {Link} from 'react-router-dom';
-import UserContext from '../../context/userContext';
+// import UserContext from '../../context/userContext';
 
 function PinModal({numberOfDigits=4}) {
 
@@ -63,7 +63,7 @@ function PinModal({numberOfDigits=4}) {
                             onChange={(e)=> handleChange(e.target.value, index)}
                             // onKeyUp={(e)=> handleBackspaceAndEnter(e, index)}
                             ref={(reference) => (otpBoxReference.current[index] = reference)}
-                            className={`otp-box`}
+                            className={`input otp-box`}
                             />
                            </div> 
                         ))
