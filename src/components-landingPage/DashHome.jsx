@@ -9,12 +9,12 @@ const DashHome = () => {
 	const {user} = useContext(UserContext)
 	return (
 		
-		<section className="flex flex-col pr-4 pt-10 pb-4 pb-16 lg:w-[90%] lg:mx-auto">
+		<section className="flex flex-col pr-4 pt-10 pb-16 lg:w-[90%] lg:mx-auto">
 			<div className="flex gap-3 justify-end items-center">
 				<DashLoginProfile />
 			</div>
 			<div className="pt-4 pb-6">
-				<h1 className="text-[40px] font-semibold">{user.firstName}</h1>
+				<h1 className="text-[40px] font-semibold">{user.firstName ? user.firstName : "Isaac"}</h1>
 				<p className="text-[#808080] text-lg text-nowrap">
 					Hello, let&apos;s build today!
 				</p>

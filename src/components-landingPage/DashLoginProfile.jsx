@@ -8,7 +8,7 @@ const DashLoginProfile = () => {
     return (
         <div className="flex gap-3 md:justify-end items-center">
             <img src={notification} alt="notification" className="w-6" />
-            <p>{user.firstName}</p>
+            <p>{user.firstName ? user.firstName : "Isaac"}</p>
             <img
                 src={dashProfilepic}
                 alt="dashboard profile picture"
