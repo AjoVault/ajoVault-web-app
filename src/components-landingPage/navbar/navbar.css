@@ -5,27 +5,38 @@ nav {
     min-height: 90px;
     background-color: #fff;
     box-shadow: 0px 4px 8px 0px rgba(204, 204, 204, 0.2);
+    padding: 0 3% 0 5%;
+    width: 100%;
+    height: 130px;
     /* position: sticky; */
   }
   
+  .nav-container{
+    width: 40%;
+    /* background: orange; */
+    display: flex;
+    align-items: center;
+  }
 
   .nav-logo-container {
-    margin: 0 80px;
+    width: 300px;
+    height: 64px;
   }
   
   img {
-      width: 294px;
-      height: 64px;
+      width: 100%;
+      height: 100%;
     }
 
     .navbar-link-container{
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      /* background: red; */
+      width: 40%;
     }
   
   .navbar-link-container a {
-    justify-content: center;
-    /* margin-left: -150px; */
     text-align: center;
     text-decoration: none;
     color: black;
@@ -35,15 +46,84 @@ nav {
   
   .primary-button {
     padding: 16px 32px;
-    margin: 32px 80px;
-    /* width: 250px; */
+    width: 100%;
     background-color: #5a47cf;
     color: #fcfcfc;
-    outline: none;
     border: none;
     border-radius: 8px;
     font-size: 1.5rem;
     cursor: pointer;
-    /* font-weight: 600;
-    transition: 0.2s; */
+    /* transition: 0.2s; */
   }
+
+  .hamburger{
+    display: none;
+  }
+
+/* Responsive styles for different screen sizes */
+/* Mobile devices */
+@media (max-width: 480px) {
+
+  nav{
+    padding: 0% 5%;
+  }
+  .hamburger {
+    display: block;
+    font-size: 1.5rem;
+  }
+
+  .nav-container{
+    display: flex;
+    align-items: center;
+    padding-top: 5%;
+  }
+
+  .nav-logo-container{
+    width: 150px;
+    height: 55px;
+  }
+
+  .navbar-link-container{
+    width: 60%;
+    align-items: end;
+    justify-content: end;
+  }
+
+  .navbar-link-container a{
+    display: none;
+  } 
+
+  .primary-button{
+    display: none;
+  }
+}
+
+/* iPads and Tablets */
+@media only screen and (min-width: var(--mobile-max-width)) and (max-width: var(--tablet-max-width)) {
+  /* .header {
+    font-size: var(--base-font-size);
+  } */
+}
+
+
+/* Small screens, laptops */
+@media only screen and (min-width: var(--tablet-max-width)) and (max-width: var(--laptop-max-width)) {
+  .hamburger{
+    visibility: hidden; 
+  }
+}
+
+/* Desktops, large screens */
+@media only screen and (min-width: var(--laptop-max-width)) and (max-width: var(--desktop-max-width)) {
+  .hamburger{
+    display: none; 
+  }
+}
+
+/* Extra large screens, TV */
+@media only screen and (min-width: var(--extra-large-min-width)) {
+  .hamburger{
+    display: none; 
+  }
+  }
+

@@ -1,65 +1,71 @@
-.product-features-contianer{
-    /* border: 5px solid red; */
-    margin: 64px 80px;
-    display: flex;
-    flex-direction: column;
+.product-features-contianer {
+  /* border: 5px solid red; */
+
+  display: flex;
+  flex-direction: column;
 }
 
-.feature-header{
-    text-align: center;
+.feature-header {
+  text-align: center;
 }
 
-.feature-header h1{
-    font-size: 3rem;
-    color: #5A47CF;
-    font-weight: 600;
-    line-height: 140%;
-    font-style: normal;
-    margin-bottom: 72px;
+.feature-header h1 {
+  font-size: 3rem;
+  color: #5a47cf;
+  font-weight: 600;
+  line-height: 140%;
+  font-style: normal;
+  margin-bottom: 48px;
 }
 
-.product-card-containers{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+.product-card-containers {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 64px 80px;
 }
 
-.product-card{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* justify-content: center; */
-    width: 350px;
-    height: 559px;
-    padding: 16px 32px;
-    background-color: #fff;
-    border-radius: 8px;
-    border-top: solid 12px #5A47CF;
-    box-shadow: 4px 8px 8px 0px rgba(217, 217, 217, 0.20);
-    cursor: pointer;
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  /* gap: 0.5em; */
+  max-width: 300px;
+  height: 559px;
+  padding: 16px 32px;
+  background-color: #fff;
+  border-radius: 8px;
+  border-top: solid 12px #5a47cf;
+  box-shadow: 4px 8px 8px 0px rgba(217, 217, 217, 0.2);
+  cursor: pointer;
 }
 
-.product-card img{
-    width: 150px;
-    height: 150px;
-    margin: 40px 0 40px 0;
-    /* border: solid 5px red;
-    border-radius: 100% ; */
+.product-card img {
+  width: 150px;
+  height: 150px;
+  margin: 40px 0 40px 0;
 }
 
-.product-card h2{
-    font-size: 1.75rem;
-    color: #020202;
-    font-weight: 600;
-    line-height: 140%;
-    margin-bottom: 24px;
-    text-align: center;
+.product-card img:hover {
+  border: solid 3px #5E0035;
+  border-radius: 100%;
 }
 
-.product-card p{
-    font-size: 1.4rem;
-    color: #020202;
-    font-weight: 400;
-    line-height: 140%;
-    margin-bottom: 24px;
+.product-card h2 {
+  font-size: 1.75rem;
+  color: #020202;
+  font-weight: 600;
+  line-height: 140%;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.product-card p {
+  font-size: 1.4rem;
+  color: #020202;
+  font-weight: 400;
+  line-height: 140%;
+  margin-bottom: 24px;
 }

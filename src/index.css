@@ -56,4 +56,9 @@ body {
   --black2: hsla(0, 0%, 50%, 1);
   --blue: hsla(248, 49%, 44%, 1);
   --pink: hsla(326, 23%, 84%, 1);
+  --mobile-max-width: 480px;
+  --tablet-max-width: 768px;
+  --laptop-max-width: 1024px;
+  --desktop-max-width: 1440px;
+  --extra-large-min-width: 2560px;
 }
