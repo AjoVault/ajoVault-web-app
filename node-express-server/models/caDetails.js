@@ -14,26 +14,32 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
     internalAcctNo: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       unique: true,
     },
     nin: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       unique: true,
+      required: true,
     },
     bvn: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       unique: true,
+      required: true,
     },
     bankId: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      required: true,
     },
     externalAcctNo: {
-      type: DataTypes.INTEGER,
-      unique: true,
+      type: DataTypes.STRING,
+      required: true,
     },
     occupation: {
       type: DataTypes.STRING
+    },
+    kycVerified: {
+      type: DataTypes.BOOLEAN,
     },
     createdAt: {
       type: DataTypes.DATE,

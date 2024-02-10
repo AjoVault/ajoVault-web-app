@@ -19,9 +19,18 @@ module.exports = (sequelize, DataTypes) => {
     fullName: {
       type: DataTypes.STRING
     },
+    firstName: {
+      type: DataTypes.STRING
+    },
+    lastName: {
+      type: DataTypes.STRING
+    },
     phone: {
       type: DataTypes.STRING,
       unique: true,
+    },
+    address: {
+      type: DataTypes.STRING
     },
     federatedID: {
       type: DataTypes.STRING
@@ -36,6 +45,9 @@ module.exports = (sequelize, DataTypes) => {
     active: {
       type: DataTypes.BOOLEAN,
     },
+    hasLiveImg: {
+      type: DataTypes.BOOLEAN,
+    },
     otp: {
       type: DataTypes.STRING,
     },
@@ -46,6 +58,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
     dpPath: {
+      type: DataTypes.STRING,
+    },
+    base64Image: {
       type: DataTypes.STRING,
     },
     resetTokenExpiration: {
