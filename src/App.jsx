@@ -22,12 +22,12 @@ import Logo from "./components-landingPage/navbar/logo.jsx"
 import Card from "./components-landingPage/Carousel/Card.jsx";
 import Testimonial from "./components-landingPage/Carousel/testimonial.jsx";
 import { TransactionPage } from "./pages/TransactionPage/TransactionPage.jsx";
-// import UserContextProvider from "./context/UserContextProvider.jsx";
+import {UserContextProvider} from "./context/UserContextProvider.jsx";
 
 
 function App() {
   return (
-    // <UserContextProvider>
+    <UserContextProvider>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/dashboard" element={<Dashboard />} />
@@ -50,8 +50,8 @@ function App() {
       <Route path="/logo" element={<Logo />} />
       <Route path="/testimonial" element={<Testimonial/>} />
     </Routes>
-    // </UserContextProvider>
-  );
+    </UserContextProvider>   
+  )
 };
 // function App() {
 // 	useEffect(() => {

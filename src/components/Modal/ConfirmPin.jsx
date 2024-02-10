@@ -3,16 +3,16 @@ import './modal.css'
 import LilacButton from '../Button/LilacButton';
 import forwardInbox from '../../assets/forward-inbox.png'
 import {Link, useNavigate} from 'react-router-dom';
-// import UserContext from '../../context/userContext';
+ import UserContext from '../../context/userContext';
 
 function ConfirmPin({numberOfDigits=4}) {  
 
     const [otp, setOtp] = useState(new Array(numberOfDigits).fill(""));
     const [otpError, setOtpError] = useState(null);
     const otpBoxReference = useRef([]);
-    const {user} = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
     const navigateTo = useNavigate();
-
+ 
     const correctOTP = '1234'
 
     useEffect(() => { 

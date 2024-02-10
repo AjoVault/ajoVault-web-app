@@ -10,7 +10,7 @@ import contract from "../assets/contract.svg";
 import settingsIcon from "../assets/settingsIcon.svg";
 import settingsIcon2 from "../assets/settingsIcon2.svg";
 import support from "../assets/support.svg";
-import {GrTransaction} from "react-icons/gr";
+import Settings from "../pages/SettingsPage/SettingsPage";
 
 import DashHome from "./DashHome";
 import Savings from "./Savings";
@@ -164,7 +164,9 @@ const Sidebar = () => {
 						<Tab.Panel>
 							<TransactionPage />
 						</Tab.Panel>
-						<Tab.Panel></Tab.Panel>
+						<Tab.Panel>
+							<Settings />
+						</Tab.Panel>
 					</Tab.Panels>
 				</div>
 			</Tab.Group>
