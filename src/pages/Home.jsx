@@ -9,9 +9,9 @@ const Home = () => {
 		<section>
 			<Navbar />
 			<Hero />
-			<ProductF />
+			{/* <ProductF />
             <Success />
-            <Footer />
+            <Footer />  */}
 		</section>
 	);
 };

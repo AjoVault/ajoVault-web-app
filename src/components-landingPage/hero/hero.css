@@ -1,66 +1,100 @@
 .hero-container {
-	display: flex;
-	justify-content: space-between;
-	margin: 64px 80px;
-
-	/* border: solid 1px red; */
-	/* min-height: 863px; */
+  display: flex;
+  /* align-items: start; */
+  justify-content: space-between;
+  width: 100%;
+  padding: 5% 0 0 5%;
+  height: 100vh;
+  gap: 5%;
 }
-
+.hero-right-content {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  /* flex-direction: column; */
+  justify-content: space-between;
+}
 .hero-right-text-content {
-	/* display: flex; */
-	flex-direction: column;
-	/* margin: 20px; */
-	/* padding: 0; */
+  width: 100%;
+  height: 80%;
 }
-
+.primary {
+  width: 100%;
+}
 .primary-heading {
-	font-size: 4rem;
-	font-weight: 600;
-	line-height: 140%;
-	color: #020202;
-	margin-top: 5%;
-	margin-bottom: 32px;
+  font-size: 3.2rem;
+  font-weight: 600;
+  line-height: 140%;
+  color: #020202;
 }
 
 .primary-heading span {
-	color: #5e0035;
+  color: #5e0035;
+}
+
+.primary-container {
+  padding-top: 5%;
 }
 
 .primary-text {
-	font-size: 1.75rem;
-	color: #2c2c2c;
-	font-weight: 500;
-	line-height: 149%;
-	margin-bottom: 32px;
+  font-size: 1.1rem;
+  color: #2c2c2c;
+  font-weight: 500;
+  line-height: 140%;
+  margin-bottom: 32px;
 }
 
 .secondary-button {
-	padding: 16px 32px;
-	width: 413px;
-	background-color: #5a47cf;
-	color: #fcfcfc;
-	outline: none;
-	border: none;
-	border-radius: 8px;
-	font-size: 1.5rem;
-	cursor: pointer;
-	/* font-weight: 600;
+  padding: 16px 32px;
+  width: 413px;
+  background-color: #5a47cf;
+  color: #fcfcfc;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  /* font-weight: 600;
     transition: 0.2s; */
 }
 
 .hero-left-img-content {
-	width: 50%;
-	border-radius: 8px;
-	height: 50%;
-	/* border: 5px solid blue !important; */
-}
-
-.image.container {
-	height: 30%;
+  border-radius: 8px;
+  height: 100%;
+  width: 80%;
 }
 
 img {
-	/* height: 100%; */
+  height: 400px;
+  width: 600px;
+}
+
+@media (max-width: 480px) {
+  .hero-container {
+    align-items: center;
+	padding-top: 5%;
+  }
+.hero-right-content{
+	align-items: start;
 	width: 100%;
+}
+  .primary-container{
+	padding-top: 0%;
+  }
+  .primary-heading {
+    font-size: 2.5rem;
+  }
+
+  .primary-text {
+    font-size: 1.2rem;
+  }
+
+  .secondary-button{
+	width: 430px;
+  }
+
+  .hero-left-img-content{
+	display: none;
+  }
 }
