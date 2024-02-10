@@ -18,13 +18,21 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
     nin: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       unique: true,
       required: true,
     },
-    bvn: {
+    nin_iv: {
       type: DataTypes.STRING,
+      required: true,
+    },
+    bvn: {
+      type: DataTypes.TEXT,
       unique: true,
+      required: true,
+    },
+    bvn_iv: {
+      type: DataTypes.STRING,
       required: true,
     },
     bankId: {
@@ -32,6 +40,10 @@ module.exports = (sequelize, DataTypes) => {
       required: true,
     },
     externalAcctNo: {
+      type: DataTypes.TEXT,
+      required: true,
+    },
+    externalAcctNo_iv: {
       type: DataTypes.STRING,
       required: true,
     },

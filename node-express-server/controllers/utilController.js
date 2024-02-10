@@ -15,9 +15,6 @@ const Sequelize = require('sequelize');
 
 const axios = require('axios');
 
-const {ninSelfieVerifier} = require('../services/ninSelfieVerifier');
-const {generateNuban} = require('../services/nubanGenerator');
-
 const moment = require('moment');
 const currenttime = new moment().format('YYYY-MM-DD HH:MM:SS');
 
@@ -39,16 +36,28 @@ module.exports.getBanks = async (req, res) => {
   };
   
 // add KYC data
+const {ninSelfieVerifier} = require('../services/ninSelfieVerifier'); // Import the NIN/Selfie verification function
+const {generateNuban} = require('../services/nubanGenerator'); // Import the NUBAN generating function
+const { encrypt } = require('../services/encryptDecrypt'); // Import the encryption utility function
+
 module.exports.kycDataCapture = async (req, res) => {
     const userId = req.body.userId;
     const email = req.body.email;
 
+    // Encrypt sensitive information
+    const encryptedNIN = encrypt(req.body.nin);
+    const encryptedBVN = encrypt(req.body.bvn);
+    const encryptedExternalAcctNo = encrypt(req.body.externalAcctNo);
+
     var newKycInfo = {
         userId: req.body.userId,
-        nin: req.body.nin,
-        bvn: req.body.bvn,
+        nin: encryptedNIN.encryptedData,
+        nin_iv: encryptedNIN.iv,
+        bvn: encryptedBVN.encryptedData,
+        bvn_iv: encryptedBVN.iv,
         bankId: req.body.bankId,
-        externalAcctNo: req.body.externalAcctNo,
+        externalAcctNo: encryptedExternalAcctNo.encryptedData,
+        externalAcctNo_iv: encryptedExternalAcctNo.iv,
         occupation: req.body.occupation,
         created_at: currenttime
     }
@@ -67,38 +76,35 @@ module.exports.kycDataCapture = async (req, res) => {
     // if KYC has not been captured. Go ahead and add KYC data
     if (!yesKYC) {
         try {
-            const kycRecord = await caDetails.create(newKycInfo);
+            const kycRecord = await caDetails.create(newKycInfo);            
+            await user.update({base64Image: req.body.base64Image});
             
             // If selfie has been captured for user, go ahead and attempt NIN verification
-            if (user.hasLiveImg) {
-                const NIN = req.body.nin;
-                const base64Image = user.base64Image;
+            const NIN = req.body.nin;
+            const base64Image = req.body.base64Image;
 
-                // Call ninSelfieVerifier and await its result
-                const isVerified = await ninSelfieVerifier(NIN, base64Image);
+            // Call ninSelfieVerifier and await its result
+            const isVerified = await ninSelfieVerifier(NIN, base64Image);
 
-                if (!isVerified) {
-                    return res.status(500).json({"success":"false", "response": "Could not verify the user at this time"});
-                } else {
-                    // If verification is successful, generate and assign an account number based off last insert id
-                    const acctSerial = kycRecord.id;
-                    nuban = await generateNuban(acctSerial);
-                    await kycRecord.update({internalAcctNo: nuban});
-                    
-                    // Set user as KYC verified
-                    await kycRecord.update({kycVerified: true});
-                    
-                    return res.status(200).json({"success":"true", "response": "KYC data saved and verified successfully"});
-                }
+            if (!isVerified) {
+                return res.status(500).json({"success":"false", "response": "Could not verify the user at this time"});
+            } else {
+                // If verification is successful, generate and assign an account number based off last insert id
+                const acctSerial = kycRecord.id;
+                nuban = await generateNuban(acctSerial);
+                await kycRecord.update({internalAcctNo: nuban});
+                
+                // Set user as KYC verified
+                await kycRecord.update({kycVerified: true});
+                
+                return res.status(200).json({"success":"true", "response": "KYC data saved and verified successfully"});
             }
             
-            // If no selfie in profile, inform user that verification will be performed later
-            return res.status(200).json({"success":"true", "response": "KYC data saved successfully. Please update your profile with a selfie to enable verification"});
         } catch (err) {
-            console.log("Error while saving KYC record:" + err);
-            return res.status(500).json({"success":"false", "response": "Error while saving KYC record"})
+            console.log("Error while processing KYC data:" + err);
+            return res.status(500).json({"success":"false", "response": "Error while processing KYC data"})
         }
-    } else {        
+    } else {
         return res.status(400).json({"success":"false", "response": "KYC data has previously been captured for this user. Use the update-kyc-data endpoint for modifications."});
     }
 };

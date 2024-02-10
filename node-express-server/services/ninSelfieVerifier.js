@@ -4,8 +4,6 @@ const { promisify } = require('util');
 const axios = require('axios');
 require('dotenv').config();
 
-sdk.auth(process.env.DOJAH_KEY);
-
 // Helper function to convert an image to base64
 //async function convertImageToBase64(filename) {
 //  const imageBuffer = await fs.readFile(filename);

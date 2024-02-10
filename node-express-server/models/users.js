@@ -61,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
     base64Image: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     resetTokenExpiration: {
       type: DataTypes.DATE,
