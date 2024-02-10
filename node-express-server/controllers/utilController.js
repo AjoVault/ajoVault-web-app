@@ -55,7 +55,7 @@ module.exports.kycDataCapture = async (req, res) => {
         nin_iv: encryptedNIN.iv,
         bvn: encryptedBVN.encryptedData,
         bvn_iv: encryptedBVN.iv,
-        bankId: req.body.bankId,
+        bankCode: req.body.bankCode,
         externalAcctNo: encryptedExternalAcctNo.encryptedData,
         externalAcctNo_iv: encryptedExternalAcctNo.iv,
         occupation: req.body.occupation,

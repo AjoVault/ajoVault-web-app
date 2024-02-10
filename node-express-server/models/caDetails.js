@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       required: true,
     },
-    bankId: {
+    bankCode: {
       type: DataTypes.STRING,
       required: true,
     },

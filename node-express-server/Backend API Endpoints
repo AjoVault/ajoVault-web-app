@@ -1,0 +1,182 @@
+Tested Endpoints
+
+AUTHENTICATION ENDPOINTS
+---------------------------------------------------------------------------------
+1) /auth/signup
+---------------------------------------------------------------------------------
+Request Format
+--------------
+
+- Request url: 	https://ajovault.onrender.com/auth/signup
+- Request Type:	Post
+- Request Header: Content-Type: application/json
+- Request Body:	 {"fullName":"Example Name", "email":"examplemail@gmail.com", "phone":"+2348012345678", "password":"examplepassword", "promoCode":"example-code-if-any","role":"saver"}
+
+
+Response Format
+--------------
+
+- On Success, returns: 	{"success": "true", "response": "exa******il@gmail.com"}
+- On Failure, returns: 	{"success": "false", "response": "User exists"}
+
+
+
+---------------------------------------------------------------------------------
+2) /auth/verify
+---------------------------------------------------------------------------------
+Request Format
+--------------
+
+- Request url: 	https://ajovault.onrender.com/auth/verify
+- Request Type:	Post
+- Request Header: Content-Type: application/json
+- Request Body:	 {"email":"examplemail@gmail.com", "otp":"AAPU0X"}
+
+
+Response Format
+--------------
+
+- On Success, returns: 	{
+    			"success": "true",
+    			"response": {
+        			"id": 2,
+        			"email": "examplemail@gmail.com",
+        			"firstName": "Example",
+        			"dpPath": "/node-express-server/views/images/dp_images/default_avatar.png"
+    				}
+			}
+
+- On Failure, returns: 	{"success": "false", "response": "Email validation failed"}
+
+
+
+
+
+---------------------------------------------------------------------------------
+3) /auth/login
+---------------------------------------------------------------------------------
+Request Format
+--------------
+
+- Request url: 	https://ajovault.onrender.com/auth/login
+- Request Type:	Post
+- Request Header: Content-Type: application/json
+- Request Body:	 {"email":"examplemail@gmail.com", "password":"examplepassword"}
+
+
+Response Format
+--------------
+
+- On Success, returns: 	{
+    			"success": "true",
+    			"response": {
+        			"id": 2,
+        			"email": "examplemail@gmail.com",
+        			"firstName": "Example",
+        			"dpPath": "/node-express-server/views/images/dp_images/default_avatar.png"
+    				}
+			}
+
+- On Failure, returns: 	{"success": "false", "response": "Username or Password Incorrect"}
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+4) /auth/logout
+---------------------------------------------------------------------------------
+Request Format
+--------------
+
+- Request url: 	https://ajovault.onrender.com/auth/logout
+- Request Type:	Post
+- Request Header: Content-Type: application/json
+- Request Body:	 {"id":"2", "email":"examplemail@gmail.com"}
+
+
+Response Format
+--------------
+
+- On Success, returns: 	{"success": "true", "response": "User logged out successfully"}
+
+- No failure here. Logout is straight forward and will always logout the user in the session.
+
+
+
+
+UTILITY ENDPOINTS
+---------------------------------------------------------------------------------
+1) /api/get-banks
+---------------------------------------------------------------------------------
+Request Format
+--------------
+
+- Request url: 	https://ajovault.onrender.com/api/get-banks
+- Request Type:	GET
+- Request Header: Content-Type: application/json
+- Request Body:	 Empty
+
+
+Response Format
+--------------
+
+- On Success, returns: 	{"success": "true", "response":  [
+        {
+            "id": 1,
+            "code": "044",
+            "name": "Access Bank"
+        },
+        {
+            "id": 2,
+            "code": "023",
+            "name": "Citibank"
+        },
+        {
+            "id": 3,
+            "code": "050",
+            "name": "Ecobank Nigeria"
+        },
+	...
+	]
+        }
+- On Failure, returns: 	{"success": "false", "response": error}
+
+
+
+---------------------------------------------------------------------------------
+2) /api/add-kyc-data
+---------------------------------------------------------------------------------
+Request Format
+--------------
+
+- Request url: 	https://ajovault.onrender.com/api/add-kyc-data
+- Request Type:	GET
+- Request Header: Content-Type: application/json
+- Request Body:	 {
+                    "userId":1, 
+                    "email":"examplemail7@gmail.com", 
+                    "nin":"70123456789", 
+                    "bvn":"22218568075", 
+                    "base64Image":"/9j/4AAQSkZ/...YCU00UViwCmnrRRWbGf/9k=", 
+                    "bankCode":"020", 
+                    "externalAcctNo":"8164513139", 
+                    "occupation":"Techie"
+                    }
+
+
+Response Format
+--------------
+
+- On Success, returns: 	{
+                        "success": "true",
+                        "response": "KYC data saved and verified successfully"
+                    	}
+
+- On Failure, returns: 	{"success": "false", "response": error}
+
+
+
+
