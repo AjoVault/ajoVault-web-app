@@ -1,4 +1,3 @@
-const sdk = require('api')('@dojahinc/v1.0#15p1c81fml12ajfr1');
 const fs = require('fs').promises;
 const { promisify } = require('util');
 const axios = require('axios');
