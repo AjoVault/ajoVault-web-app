@@ -45,9 +45,6 @@ module.exports = (sequelize, DataTypes) => {
     active: {
       type: DataTypes.BOOLEAN,
     },
-    hasLiveImg: {
-      type: DataTypes.BOOLEAN,
-    },
     otp: {
       type: DataTypes.STRING,
     },

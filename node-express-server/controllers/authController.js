@@ -185,7 +185,7 @@ module.exports.loginUser = async (req, res, next) => {
 
       req.login(user, (err) => {
         if (err) {
-          return res.status(500).json({ success: false, "response": "Authentication failed"});
+          return res.status(500).json({ success: false, "response ": verifiedUser[1]});
         }
 
         // The user is now logged in                            
@@ -214,10 +214,15 @@ const loginManual = async (email, password) => {
   if (!verifiedUser) {
       return [false, 'User not found'];
   }
+
+  if (verifiedUser && !(verifiedUser.active)) {
+    return [false, 'Not an active user'];
+  }
+
   if (verifiedUser && !(await bcrypt.compare(password, verifiedUser.password))) {
       return [false, 'Incorrect Password'];
   }
-  
+    
   return [true, verifiedUser];
 };
 
@@ -225,7 +230,8 @@ const loginManual = async (email, password) => {
 
 
 //Logout user
-module.exports.logoutUser = (req, res) => {
+module.exports.logoutUser = async (req, res) => {
+  
   req.logout(function(err) {
       if (err) {
           return res.json({"success": "false", "response": "Error logging out"});

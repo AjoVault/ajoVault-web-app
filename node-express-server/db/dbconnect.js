@@ -28,7 +28,7 @@ mysqlConnection.caDetails = require('../models/caDetails')(sequelize, DataTypes)
 mysqlConnection.ngBanks = require('../models/ngBanks')(sequelize, DataTypes);
 
 // sync all models
-mysqlConnection.sequelize.sync({ force: false})
+mysqlConnection.sequelize.sync({ force: true})
     .then(() => {
 // Populate the ngBanks table if necessary
         const populateBanksTable = async () => {

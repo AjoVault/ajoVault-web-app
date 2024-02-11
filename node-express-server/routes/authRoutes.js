@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const connectEnsureLogin = require('connect-ensure-login');
 const authController = require('../controllers/authController')
 
 // SignUp User
@@ -9,7 +10,7 @@ router.post('/signup', authController.signupUser);
 router.post('/verify', authController.verifyEmail);
 
 // Create User PIN
-router.post('/createUserPIN', authController.createUserPIN);
+router.post('/createUserPIN', connectEnsureLogin.ensureLoggedIn(), authController.createUserPIN);
 
 // Login User
 router.post('/login', authController.loginUser);
