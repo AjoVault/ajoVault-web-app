@@ -9,9 +9,9 @@ const Users = mysqlConnection.users;
 const LocalStrategy = require('passport-local');
 const bcrypt = require('bcrypt');
 const GoogleStrategy = require('passport-google-oidc');
-const connectEnsureLogin = require('connect-ensure-login');
 const session = require('express-session');
 const cookieSession = require('cookie-session');
+const connectEnsureLogin = require('connect-ensure-login');
 const mysql = require('mysql2/promise');
 
 require('dotenv').config()
@@ -125,13 +125,13 @@ app.use(passport.session());
 
 // Serialize user to store in session
 passport.serializeUser((user, done) => {
-  done(null, user.email);
+  done(null, user.id);
 });
 
 // Deserialize user from session
-passport.deserializeUser(async (email, done) => {
+passport.deserializeUser(async (id, done) => {
   try {
-    const user = await Users.findOne({ where: { email } });
+    const user = await Users.findByPk(id);
     done(null, user);
   } catch (err) {
     done(err);

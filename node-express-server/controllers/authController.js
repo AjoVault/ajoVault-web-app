@@ -4,12 +4,6 @@ const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const mysqlConnection = require('../db/dbconnect');
 const Users = mysqlConnection.users;
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const GoogleStrategy = require('passport-google-oidc');
-const session = require('express-session');
-const cookieSession = require('cookie-session');
-const connectEnsureLogin = require('connect-ensure-login');
 const Sequelize = require('sequelize');
 const mysql = require('mysql2/promise');
 const path = require('path');
@@ -141,7 +135,7 @@ module.exports.signupUser = async (req, res) => {
     }
 };
 
-  const validateUserSignUp = async (email, otp) => {
+const validateUserSignUp = async (email, otp) => {
     var verifiedUser = await Users.findOne({where: {email}});
     if (!verifiedUser) {
         return [false, 'User not found'];
@@ -151,7 +145,7 @@ module.exports.signupUser = async (req, res) => {
     }
     verifiedUser = await verifiedUser.update({active: true});
     return [true, verifiedUser];
-  };
+};
 
 
   
@@ -231,14 +225,17 @@ const loginManual = async (email, password) => {
 
 //Logout user
 module.exports.logoutUser = async (req, res) => {
-  
-  req.logout(function(err) {
-      if (err) {
-          return res.json({"success": "false", "response": "Error logging out"});
-      }
-      return res.json({"success": "true", "response": "User logged out successfully"});
+  // Destroy the session
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Error destroying session:', err);
+      return res.status(500).json({ success: false, response: 'Error logging out' });
+    }
+
+    return res.json({"success": "true", "response": "User logged out successfully"});
+    
   });
-}
+};
 
 //Google Auth - redirects user to Google
 module.exports.googleAuth = (req, res) => {
