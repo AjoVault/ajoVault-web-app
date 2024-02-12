@@ -26,6 +26,8 @@ mysqlConnection.Sequelize = Sequelize;
 mysqlConnection.users = require('../models/users')(sequelize, DataTypes);
 mysqlConnection.caDetails = require('../models/caDetails')(sequelize, DataTypes);
 mysqlConnection.ngBanks = require('../models/ngBanks')(sequelize, DataTypes);
+mysqlConnection.contributionschedule = require("../models/contributionSchedule")(sequelize, DataTypes);
+mysqlConnection.personalsavings = require("../models/personalSavings")(sequelize, DataTypes);
 
 // sync all models
 mysqlConnection.sequelize.sync({ force: true})

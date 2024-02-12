@@ -7,6 +7,8 @@ const mysqlConnection = require('../db/dbconnect');
 const Users = mysqlConnection.users;
 const caDetails = mysqlConnection.caDetails;
 const ngBanks  = mysqlConnection.ngBanks;
+const Pool = mysqlConnection.contributionschedule;
+const PersonalSavings = mysqlConnection.personalsavings;
 const passport = require('passport');
 const session = require('express-session');
 const cookieSession = require('cookie-session');
@@ -108,3 +110,82 @@ module.exports.kycDataCapture = async (req, res) => {
         return res.status(400).json({"success":"false", "response": "KYC data has previously been captured for this user. Use the update-kyc-data endpoint for modifications."});
     }
 };
+
+
+//pool contribution post request
+module.exports.createContributionSchedule = async (req, res) => {
+    let poolDetails = {
+      debitAmount: req.body.debitAmount,
+      savingsFrequency: req.body.savingsFrequency,
+      savingsDuration: req.body.savingsDuration,
+      debitDate: req.body.debitDate,
+    };
+  
+    const pool = await Pool.create(poolDetails);
+    return res.status(201).send(pool);
+  };
+  
+  //get pool contribution
+  module.exports.getContributionSchedule = async (req, res) => {
+    let id = req.params.userId;
+    const pool = await Pool.findOne({ where: { id: id } });
+    return res.status(200).send(pool);
+  };
+  
+  //update pool contribution
+  module.exports.UpdateContributionSchedule = async (req, res) => {
+    let id = req.params.userId;
+  
+    const pool = await Pool.update(req.body, { where: { id: id } });
+    return res.status(200).send(pool);
+  };
+  
+  //delete pool contribution
+  module.exports.deleteContributionSchedule = async (req, res) => {
+    let id = req.params.userId;
+  
+    await Pool.destroy({ where: { id: id } });
+    return res.status(200).send("Pool has been deleted");
+  };
+  
+
+  //Personal Savings Controller
+  
+  // create PersonalSavings  
+  module.exports.createPersonalSavings = async (req, res) => {
+    let savingsDetails = {
+      debitAmount: req.body.debitAmount,
+      savingsFrequency: req.body.savingsFrequency,
+      savingsDuration: req.body.savingsDuration,
+      debitDate: req.body.debitDate,
+      savingsTarget: req.body.savingsTarget,
+    };
+  
+    const details = await PersonalSavings.create(savingsDetails);
+    return res.status(201).send(details);
+  };
+  
+  //get PersonalSavings
+  module.exports.getPersonalSavings = async (req, res) => {
+    let id = req.params.userId;
+    const details = await PersonalSavings.findOne({ where: { id: id } });
+    return res.status(200).send(details);
+  };
+  
+  //update PersonalSavings
+  module.exports.UpdatePersonalSavings = async (req, res) => {
+    let id = req.params.userId;
+  
+    const details = await PersonalSavings.update(req.body, { where: { id: id } });
+    return res.status(200).send(details);
+  };
+  
+  //delete PersonalSavings
+  module.exports.deletePersonalSavings = async (req, res) => {
+    let id = req.params.userId;
+  
+    await PersonalSavings.destroy({ where: { id: id } });
+    return res.status(200).send("details has been deleted");
+  };
+  
+
