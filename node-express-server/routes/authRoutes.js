@@ -10,7 +10,8 @@ router.post('/signup', authController.signupUser);
 router.post('/verify', authController.verifyEmail);
 
 // Create User PIN
-router.post('/createUserPIN', connectEnsureLogin.ensureLoggedIn(), authController.createUserPIN);
+//router.post('/createUserPIN', connectEnsureLogin.ensureLoggedIn(), authController.createUserPIN);
+router.post('/createUserPIN', authController.createUserPIN);
 
 // Login User
 router.post('/login', authController.loginUser);

@@ -27,8 +27,10 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 //Add support for cors middleware and accept only request from own server
 var corsOptions = {
-  origin: "*"
+  origin: "*",
+  credentials: true,
 };
+
 app.use(cors(corsOptions));
 
 // Configure Google Auth Strategy
@@ -118,6 +120,16 @@ app.use(session({
   saveUninitialized: true,
   cookie: { maxAge: 60 * 60 * 1000 } // 1 hour
 }));
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: true, 
+    maxAge: 60 * 60 * 1000, 
+    sameSite: 'none',
+  }
+}));
 
 // initialize passport middleware and attach passport session to app
 app.use(passport.initialize()); 
@@ -150,7 +162,8 @@ app.use('/auth', authRoutes);
 //import utility routes
 const utilRoutes = require('./routes/utilRoutes');    
 //add utility routes to the app ensuring user is logged in
-app.use('/api', connectEnsureLogin.ensureLoggedIn(), utilRoutes);
+//app.use('/api', connectEnsureLogin.ensureLoggedIn(), utilRoutes);
+app.use('/api', utilRoutes);
 
 //catch any errors from middleware
 app.use((err, req, res, next) => {
