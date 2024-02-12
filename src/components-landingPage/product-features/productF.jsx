@@ -3,7 +3,7 @@ import './productF.css';
 
 const ProductF = () => {
   return (
-    <section className="product-features-container">
+    <div className="product-features-container">
       <div className="feature-header">
         <h1>Product Features</h1>
       </div>
@@ -16,7 +16,7 @@ const ProductF = () => {
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 

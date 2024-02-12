@@ -17,8 +17,8 @@ import KnowYourCustomer from "./components/Modal/KnowYourCustomer.jsx";
 import PoolContribution from "./components/Modal/PoolContribution.jsx";
 import PersonalSavings from "./components/Modal/PersonalSavings.jsx";
 import Spinner from "./components/spinner/spinner.jsx";
-import Nav from "./components-landingPage/navbar/nav.jsx";
-import Logo from "./components-landingPage/navbar/logo.jsx"
+// import Nav from "./components-landingPage/navbar/nav.jsx";
+// import Logo from "./components-landingPage/navbar/logo.jsx"
 import Card from "./components-landingPage/Carousel/Card.jsx";
 import Testimonial from "./components-landingPage/Carousel/testimonial.jsx";
 import { TransactionPage } from "./pages/TransactionPage/TransactionPage.jsx";
@@ -46,8 +46,8 @@ function App() {
       <Route path='/personalsavings' element={<PersonalSavings />} />
       <Route path="/spinner" element={<Spinner />} />
       <Route path="/card" element={<Card />} />
-      <Route path="/nav" element={<Nav />} />
-      <Route path="/logo" element={<Logo />} />
+      {/* <Route path="/nav" element={<Nav />} />
+      <Route path="/logo" element={<Logo />} /> */}
       <Route path="/testimonial" element={<Testimonial/>} />
     </Routes>
     </UserContextProvider>   
