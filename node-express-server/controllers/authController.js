@@ -121,7 +121,7 @@ module.exports.signupUser = async (req, res) => {
                 const firstName = fullNameArray[0];
                 const dpPath = path.posix.join('/node-express-server', 'views', 'images', 'dp_images', 'default_avatar.png');
                 const userDetailsToSend = {
-                    id: user.id,
+                    userId: user.id,
                     email: user.email,
                     firstName: firstName,
                     dpPath: dpPath,             
@@ -188,7 +188,7 @@ module.exports.loginUser = async (req, res, next) => {
         const firstName = fullNameArray[0];
         const dpPath = user.dpPath;
         const userDetailsToSend = {
-            id: user.id,
+          userId: user.id,
             email: user.email,
             firstName: firstName,
             dpPath: dpPath,             
