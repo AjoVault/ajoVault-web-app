@@ -8,7 +8,7 @@ nav {
     padding: 0 3% 0 5%;
     width: 100%;
     height: 130px;
-    /* position: sticky; */
+    /* position: fixed; */
   }
   
   .nav-container{
@@ -32,8 +32,7 @@ nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      /* background: red; */
-      width: 40%;
+      width: 35%;
     }
   
   .navbar-link-container a {
@@ -99,31 +98,80 @@ nav {
 }
 
 /* iPads and Tablets */
-@media only screen and (min-width: var(--mobile-max-width)) and (max-width: var(--tablet-max-width)) {
-  /* .header {
-    font-size: var(--base-font-size);
-  } */
-}
+@media (min-width: 481px) and (max-width: 768px) {
 
+  nav{
+    /* padding: 0% 5%; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5%;
+  }
 
-/* Small screens, laptops */
-@media only screen and (min-width: var(--tablet-max-width)) and (max-width: var(--laptop-max-width)) {
-  .hamburger{
-    visibility: hidden; 
+  .nav-container{
+    display: flex;
+    align-items: center;
+    padding-top: 2%;
+    width: 55%;
+  }
+
+  .nav-logo-container{
+    width: 200px;
+    height: 55px;
+  }
+
+  .navbar-link-container{
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 5%;
+  }
+
+  .navbar-link-container a{
+    font-size: 1.1rem;
+  } 
+
+  .primary-button{
+   font-size: 1.1rem;
   }
 }
 
-/* Desktops, large screens */
-@media only screen and (min-width: var(--laptop-max-width)) and (max-width: var(--desktop-max-width)) {
-  .hamburger{
-    display: none; 
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  nav{
+    /* padding: 0% 5%; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5%;
+  }
+
+  .nav-container{
+    display: flex;
+    align-items: center;
+    padding-top: 2%;
+    width: 55%;
+  }
+
+  .nav-logo-container{
+    width: 200px;
+    height: 55px;
+  }
+
+  .navbar-link-container{
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 5%;
+  }
+
+  .navbar-link-container a{
+    font-size: 1.5rem;
+  } 
+
+  .primary-button{
+   font-size: 1.5rem;
   }
 }
-
-/* Extra large screens, TV */
-@media only screen and (min-width: var(--extra-large-min-width)) {
-  .hamburger{
-    display: none; 
-  }
-  }
-

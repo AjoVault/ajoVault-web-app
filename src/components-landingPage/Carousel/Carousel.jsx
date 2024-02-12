@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./Carousel.css";
 
 const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -33,7 +32,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="carousel-container">
+    <div className="">
       <div className="carousel-header">
         <h1></h1>
       </div>

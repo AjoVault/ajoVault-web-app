@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./testimonial.css";
 
 const TestimonialCarousel = () => {
   const testimonials = [
@@ -34,18 +35,18 @@ const TestimonialCarousel = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 30,
     slidesToShow: 1,
     slidesToScroll: 1,
     centerMode: true,
-    centerPadding: "60px",
+    centerPadding: "40px",
   };
 
   return (
     <Slider {...settings}>
       {testimonials.map((testimonial) => (
-        <div key={testimonial.id} className="px-8 py-4 relative ">
-          <div className="w-2/5 mx-auto bg-[#4839A6] mt-6 rounded-lg image shadow-lg text-center ">
+        <div key={testimonial.id} className="carousel-container">
+          <div className=" w-4/5 mx-auto bg-[#4839A6] mt-6 rounded-lg image shadow-lg text-center ">
             <img
               src={testimonial.image}
               alt={testimonial.name}
