@@ -118,7 +118,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 60 * 60 * 1000 } // 1 hour
+  cookie: { maxAge: 60 * 60 * 1000 }
 }));
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -150,20 +150,22 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-// Serve HTML files from the 'views' directory
+// In a case of same backend/frontend deployment, serve HTML files from the 'views' directory
 app.use(express.static('views'));
 
 //import authentication routes
-const authRoutes = require('./routes/authRoutes');    
-//add authentication routes to the app
+const authRoutes = require('./routes/authRoutes');
+
+//add Google authentication route
 app.use('/auth/google-auth', passport.authenticate('google'));
+
+//add other authentication routes
 app.use('/auth', authRoutes);
 
 //import utility routes
 const utilRoutes = require('./routes/utilRoutes');    
 //add utility routes to the app ensuring user is logged in
-//app.use('/api', connectEnsureLogin.ensureLoggedIn(), utilRoutes);
-app.use('/api', utilRoutes);
+app.use('/api', connectEnsureLogin.ensureLoggedIn(), utilRoutes);
 
 //catch any errors from middleware
 app.use((err, req, res, next) => {
@@ -171,17 +173,14 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something broke!');
 });
 
-// Catch all other routes and send to home page
-const staticClientPath = __dirname + '/node-express-server/views/';
-app.use(express.static(staticClientPath));
+// Catch all other routes and send access denied response
 app.get('/*', function (req,res) {
   res.status(401).json({"success":"false", "response": "Sorry, access to the requested resource is restricted!"});
-  //res.redirect('/login.html');
   });
 
 
 //start listening for requests
-app.listen(port, function() {console.log('Server started at http://localhost:'+port+'/');});
+app.listen(port, function() {console.log('Server started on port:'+port+'/');});
 
 
 

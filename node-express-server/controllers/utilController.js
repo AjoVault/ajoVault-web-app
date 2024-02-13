@@ -37,6 +37,7 @@ module.exports.getBanks = async (req, res) => {
       }
   };
   
+
 // add KYC data
 const {ninSelfieVerifier} = require('../services/ninSelfieVerifier'); // Import the NIN/Selfie verification function
 const {generateNuban} = require('../services/nubanGenerator'); // Import the NUBAN generating function
@@ -72,7 +73,7 @@ module.exports.kycDataCapture = async (req, res) => {
         return res.status(400).json({"success":"false", "response": "Associated user not found"});
     }
   
-    // Check if KYC has been previously captured
+    // Check if KYC has previously been captured
     var yesKYC = await caDetails.findOne({where: {userId}});
   
     // if KYC has not been captured. Go ahead and add KYC data
@@ -81,7 +82,7 @@ module.exports.kycDataCapture = async (req, res) => {
             const kycRecord = await caDetails.create(newKycInfo);            
             await user.update({base64Image: req.body.base64Image});
             
-            // If selfie has been captured for user, go ahead and attempt NIN verification
+            // Go ahead and attempt NIN verification
             const NIN = req.body.nin;
             const base64Image = req.body.base64Image;
 
@@ -112,48 +113,12 @@ module.exports.kycDataCapture = async (req, res) => {
 };
 
 
-//pool contribution post request
-module.exports.createContributionSchedule = async (req, res) => {
-    let poolDetails = {
-      debitAmount: req.body.debitAmount,
-      savingsFrequency: req.body.savingsFrequency,
-      savingsDuration: req.body.savingsDuration,
-      debitDate: req.body.debitDate,
-    };
-  
-    const pool = await Pool.create(poolDetails);
-    return res.status(201).send(pool);
-  };
-  
-  //get pool contribution
-  module.exports.getContributionSchedule = async (req, res) => {
-    let id = req.params.userId;
-    const pool = await Pool.findOne({ where: { id: id } });
-    return res.status(200).send(pool);
-  };
-  
-  //update pool contribution
-  module.exports.UpdateContributionSchedule = async (req, res) => {
-    let id = req.params.userId;
-  
-    const pool = await Pool.update(req.body, { where: { id: id } });
-    return res.status(200).send(pool);
-  };
-  
-  //delete pool contribution
-  module.exports.deleteContributionSchedule = async (req, res) => {
-    let id = req.params.userId;
-  
-    await Pool.destroy({ where: { id: id } });
-    return res.status(200).send("Pool has been deleted");
-  };
-  
-
-  //Personal Savings Controller
-  
-  // create PersonalSavings  
+  //Personal Savings Controller  
+  // create PersonalSavings Schedule
   module.exports.createPersonalSavings = async (req, res) => {
+
     let savingsDetails = {
+      userID: req.body.userId,
       debitAmount: req.body.debitAmount,
       savingsFrequency: req.body.savingsFrequency,
       savingsDuration: req.body.savingsDuration,
@@ -161,8 +126,35 @@ module.exports.createContributionSchedule = async (req, res) => {
       savingsTarget: req.body.savingsTarget,
     };
   
-    const details = await PersonalSavings.create(savingsDetails);
-    return res.status(201).send(details);
+    try {
+      const scheduleRecord = await PersonalSavings.create(savingsDetails);          
+      
+      //get customer bank and update savingsDetails
+      const bankQuery = await caDetails.findOne({
+        where: { userId: req.body.userId},
+        attributes: ['bankCode']
+      });      
+      savingsDetails.bank = bankQuery.bankCode;
+
+      // Generate the Okra payment authorization link
+      const linkReqResponse = await payLinkGenerator(savingsDetails);
+    
+      const payAuthLink = linkReqResponse.payLink;
+      const payAuthID = linkReqResponse.payID;
+      
+      if (!linkReqResponse.status) {
+          return res.status(500).json({"success":"false", "response": "Could not generate a payment authorization link"});
+      } else {
+          // If link generation is successful, set payment authorization ID
+          await scheduleRecord.update({payAuthID: payAuthID});
+          
+          return res.status(200).json({"success":"true", "response ": payAuthLink});
+      }
+      
+    } catch (err) {
+      console.log("Error while processing Savings Schedule:" + err);
+      return res.status(500).json({"success":"false", "response": "Error while processing Savings Schedule"})
+    }
   };
   
   //get PersonalSavings
@@ -187,5 +179,71 @@ module.exports.createContributionSchedule = async (req, res) => {
     await PersonalSavings.destroy({ where: { id: id } });
     return res.status(200).send("details has been deleted");
   };
+
+
+//pooled contribution post request
+module.exports.createContributionSchedule = async (req, res) => {
+    let poolDetails = {
+      userID: req.body.userId,
+      debitAmount: req.body.debitAmount,
+      savingsFrequency: req.body.savingsFrequency,
+      savingsDuration: req.body.savingsDuration,
+      debitDate: req.body.debitDate,
+    };
+  
+try {
+  const scheduleRecord = await Pool.create(savingsDetails);          
+  
+  //get customer bank and update savingsDetails
+  const bankQuery = await caDetails.findOne({
+    where: { userId: req.body.userId},
+    attributes: ['bankCode']
+  });      
+  poolDetails.bank = bankQuery.bankCode;
+
+  // Generate the Okra payment authorization link
+  const linkReqResponse = await payLinkGenerator(poolDetails);
+
+  const payAuthLink = linkReqResponse.payLink;
+  const payAuthID = linkReqResponse.payID;
+  
+  if (!linkReqResponse.status) {
+      return res.status(500).json({"success":"false", "response": "Could not generate a payment authorization link"});
+  } else {
+      // If link generation is successful, set payment authorization ID
+      await scheduleRecord.update({payAuthID: payAuthID});
+      
+      return res.status(200).json({"success":"true", "response ": payAuthLink});
+  }
+  
+} catch (err) {
+  console.log("Error while processing Pool Schedule:" + err);
+  return res.status(500).json({"success":"false", "response": "Error while processing Pool Schedule"})
+}
+  };
+  
+  //get pooled contribution
+  module.exports.getContributionSchedule = async (req, res) => {
+    let id = req.params.userId;
+    const pool = await Pool.findOne({ where: { id: id } });
+    return res.status(200).send(pool);
+  };
+  
+  //update pooled contribution
+  module.exports.UpdateContributionSchedule = async (req, res) => {
+    let id = req.params.userId;
+  
+    const pool = await Pool.update(req.body, { where: { id: id } });
+    return res.status(200).send(pool);
+  };
+  
+  //delete pooled contribution
+  module.exports.deleteContributionSchedule = async (req, res) => {
+    let id = req.params.userId;
+  
+    await Pool.destroy({ where: { id: id } });
+    return res.status(200).send("Pool has been deleted");
+  };
+  
   
 

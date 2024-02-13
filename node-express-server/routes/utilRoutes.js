@@ -8,8 +8,6 @@ router.get('/get-banks', utilController.getBanks);
 //add KYC data
 router.post('/add-kyc-data', utilController.kycDataCapture);
 
-
-
 //contribution schedule
 router.post("/add-cont-schedule", utilController.createContributionSchedule);
 router.get("/get-cont-schedule/:userId", utilController.getContributionSchedule);

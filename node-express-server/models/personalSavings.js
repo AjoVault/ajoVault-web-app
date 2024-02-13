@@ -31,8 +31,12 @@ module.exports = (sequelize, DataTypes) => {
         // allowNull: false
       },
       savingsTarget: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         // allowNull: false
+      },
+      payAuthID: {
+        type: DataTypes.STRING,
+         allowNull: true,
       },
     },
     {

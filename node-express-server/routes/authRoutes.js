@@ -10,14 +10,10 @@ router.post('/signup', authController.signupUser);
 router.post('/verify', authController.verifyEmail);
 
 // Create User PIN
-//router.post('/createUserPIN', connectEnsureLogin.ensureLoggedIn(), authController.createUserPIN);
-router.post('/createUserPIN', authController.createUserPIN);
+router.post('/createUserPIN', connectEnsureLogin.ensureLoggedIn(), authController.createUserPIN);
 
 // Login User
 router.post('/login', authController.loginUser);
-
-// Google auth
-router.get('/google-auth', authController.googleAuth);
 
 // Google auth callback
 router.get('/google-auth-callback', authController.googleAuthCallback);

@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
       },
       debitAmount: {
-        type: DataTypes.STRING,
+        type: DataTypes.FLOAT,
         // allowNull: false
       },
       savingsFrequency: {
@@ -29,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         defaultValue: Sequelize.NOW,
         // allowNull: false
+      },
+      payAuthID: {
+        type: DataTypes.STRING,
+         allowNull: true,
       },
     },
     {

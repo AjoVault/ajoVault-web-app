@@ -3,13 +3,6 @@ const { promisify } = require('util');
 const axios = require('axios');
 require('dotenv').config();
 
-// Helper function to convert an image to base64
-//async function convertImageToBase64(filename) {
-//  const imageBuffer = await fs.readFile(filename);
-//  return imageBuffer.toString('base64');
-//}
-//const base64Image = await convertImageToBase64(selfieFilename);
-
 module.exports.ninSelfieVerifier = async (NIN, base64Image) => {
     try {
         // Set request parameters
