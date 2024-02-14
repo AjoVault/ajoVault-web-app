@@ -5,8 +5,8 @@ import Register from "./components/Register/Register";
 function RegisterOutlet() {
   return (
     <>
-      <Outlet />
       <Register />
+      <Outlet />
     </>
   );
 }

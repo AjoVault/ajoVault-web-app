@@ -17,7 +17,7 @@ function Login() {
     const [password, setPassword] = useState('');
     const [spin, setSpin] = useState('none');
     const [spanData, setSpanData] = useState('');
-    const {setUser} = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
     const navigateTo = useNavigate();
 
     const handleSubmit = async () => {
@@ -41,7 +41,10 @@ function Login() {
                     
                     console.log(userDetails);
                     // setIsSignUp(true);
-                    setUser({firstName: userDetails.response.firstName, email: userDetails.response.email});
+                    setUser({id: userDetails.response.id, firstName: userDetails.response.firstName, email: userDetails.response.email});
+                    console.log(user.id);
+                    console.log(user.email);
+                    console.log(user.firstName);
                     console.log('Registration successfull')
                     navigateTo('/dashboard');
                 }else{

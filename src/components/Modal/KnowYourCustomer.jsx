@@ -5,26 +5,43 @@ import forwardEmail from '../../assets/forward_to_inbox.png'
 import OTPModal from './OTPModal';
 import ModalDisplayContex from '../../context/modalDisplay';
 import { Link } from 'react-router-dom';
+import UserContext from '../../context/userContext';
 import Input from '../Input/Input';
 
 function KnowYourCustomer() {
+  const [nin, setNin] = useState('');
+  const [bvn, setBvn] = useState('');
+  const [acctNumber, setAcctNumber] = useState('');
+  const [occupation, setOccupation] = useState('');
+  const [date, setDate] = useState('');
+  const [bankCode, setBankCode] = useState('');
+  const {user,setUser} = useContext(UserContext)
+
+
+  const [dis, setDis] = useState('block');
+
+  let modalstyle = {
+    display: dis
+  }
+ 
+ 
+
+  const submitDetails = () => {
+    setUser({id: 1, email: "alizzyshire@gmail", nin, bvn, acctNumber, occupation, date, bankCode})
+  }
+    
+ console.log(user.id);
+ console.log(user.email);
   
-  const [dis, setDis] = useState('none');
-  // const {setOtpModal} = useContext(ModalDisplayContex)
 
-  //     useEffect(() => {
-  //       setDis(displayStyle)
-  //     }, [displayStyle]);
 
-  // let modalstyle = {
-  //   display: dis
-  // }
+//   console.log(formData)
 
 
   return (
     <>
     <div>
-            <div id="myModal" className="modal">
+            <div id="myModal" className="modal" style={{modalstyle}}>
 
             <span className="close"
             onClick={() => setDis('none')}
@@ -44,30 +61,32 @@ function KnowYourCustomer() {
                     
                     <div className='modal-body'>
                     <div>
-                        <label htmlFor="name">National Identity Number</label>
+                        <label htmlFor="nin">National Identity Number</label>
                     </div>
                     <div>
-                        <Input placeholder='Enter your NIN' name='name'
-                        // inputValue={name} 
-                        // inputChange={(e) => setName(e.target.value)}
+                        <Input placeholder='Enter your NIN' name='nin'
+                        inputValue={nin} 
+                        inputChange={(e) => setNin(e.target.value)}
                         />
                     </div>
                     <div>
-                        <label htmlFor="email">Bank Verification Number</label>
+                        <label htmlFor="BVN">Bank Verification Number</label>
                     </div>
                     <div>
                         <Input placeholder='Enter your BVN'
                          name='phone'
-                         type='email'
-                        // inputValue={email} 
-                        //inputChange={(e) => setEmail(e.target.value)}
+                         type='password'
+                        inputValue={bvn} 
+                        inputChange={(e) => setBvn(e.target.value)}
                         />
                     </div>
                     <div>
-                        <label htmlFor="phone">Bank</label>
+                        <label htmlFor="bank">Bank</label>
                     </div>
                     <div>
-                        <select className='input select' name="" id="">
+                        <select className='input select' name="bank" id="" 
+                        value={bankCode} 
+                        onChange={(e) => setBankCode(e.target.value)}>
                         <option className='select inactive' selected disabled>Select your Bank</option>
                                                         <option className='select-active' value="044">Access Bank</option>
                                                         <option value="023">  Citibank</option>
@@ -95,42 +114,49 @@ function KnowYourCustomer() {
                         </select>
                     </div>
                     <div>
-                        <label htmlFor="password">Account Number</label>
+                        <label htmlFor="accountNumber">Account Number</label>
                     </div>
                     <div>
                         <Input placeholder='Enter the account number'
-                         name='name' 
+                         name='accountNumber' 
                          type='text'
-                        //  inputValue={password}
-                        //  inputChange={(e) => {setPassword(e.target.value) 
-                        //     setDisplay('none')
-                        // }}
+                         inputValue={acctNumber}
+                         inputChange={(e) => setAcctNumber(e.target.value) 
+                        }
                          />
                          {/* <span className='password-span' style={spanStyle}>Password must be at least 8 characters, one number and one special character</span> */}
                     </div>
                     <div>
-                        <label htmlFor='promo'>Occupation</label>
+                        <label htmlFor='occupation'>Occupation</label>
                     </div>
                     <div>
                         <Input placeholder='Enter your occupation' 
-                        name='promo'
-                        // inputValue={promo}
-                        // inputChange={(e) => setPromo(e.target.value) }
-                        // required= {false}
+                        name='occupation'
+                        inputValue={occupation}
+                        inputChange={(e) => setOccupation(e.target.value) }
+                        required= {false}
                         />
                     </div>
                     <div>
                         <label htmlFor='date'>Date of Birth</label>
                     </div>
                     <div>
-                        <input type="date"  className='input'/>
+                        <input type="date" 
+                         className='input'
+                         value={date}
+                        onChange={(e) => setDate(e.target.value)}
+                        />
                     </div>
+
                     <div className='short-btn'>
                         <div style={{width: '45%'}}>
                             <LilacButton title='Back' color='var(--pink)' textColor='black' width='100%'/>
                         </div>
                         <div style={{width: '45%'}}>
-                            <LilacButton title='Submit' width='100%'/>
+                            <Link to={'/captureimage'}>
+                            <LilacButton title='Next' width='100%' onClick={submitDetails} />
+                            </Link>
+                            
                         </div>
                     </div>
                     

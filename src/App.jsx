@@ -19,6 +19,8 @@ import PersonalSavings from "./components/Modal/PersonalSavings.jsx";
 import Spinner from "./components/spinner/spinner.jsx";
 import { TransactionPage } from "./pages/TransactionPage/TransactionPage.jsx";
 import {UserContextProvider} from "./context/UserContextProvider.jsx";
+import CaptureImage from "./components/Modal/CaptureImage.jsx";
+import BvnSubmitted from "./components/Modal/BvnSumbitted.jsx";
 
 
 function App() {
@@ -27,8 +29,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/register/*" element={<Register />}></Route>
-        <Route path="/register/*" element={<RegisterOutlet />}>
+        {/* <Route path="/register/*" element={<Register />}></Route> */}
+        <Route path="/register/" element={<RegisterOutlet />}>
           <Route path="checkemail" element={<Modal />} />
           <Route path="otp" element={<OTPModal />} />
           <Route path="inputotp" element={<EnterOTP />} />
@@ -40,6 +42,9 @@ function App() {
         <Route path='/knowyourcustomer' element={<KnowYourCustomer />} />
         <Route path='/pool' element={<PoolContribution/>} />
         <Route path='/personalsavings' element={<PersonalSavings/>} />
+        <Route path="/captureImage" element={<CaptureImage />}/>
+        <Route path="/kycsubmitted" element={<BvnSubmitted />}/>
+        
       </Routes>
     </UserContextProvider>   
   )
