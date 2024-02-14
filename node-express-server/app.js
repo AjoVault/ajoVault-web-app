@@ -26,8 +26,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 //Add support for cors middleware and accept only request from own server
+const allowedOrigins = [
+  'https://ajo-vault-web-app.vercel.app', 
+  'http://localhost', 
+];
+
 var corsOptions = {
-  origin: "*",
+  origin: function(origin, callback) {
+    // Check if the origin is in the list of allowed origins
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 };
 
