@@ -6,22 +6,24 @@ import { Link } from "react-router-dom";
 const navbar = () => {
   return (
     <nav>
+      <div className="nav-container">
       <div className="nav-logo-container">
-        <a href="">
+        <Link to={"/"}>
           <img
             src="https://res.cloudinary.com/dws3lnn4d/image/upload/v1706269001/AjoVault%20App/logo_cn0nrq.svg"
             alt="AjoVault Logo"
           />
-        </a>
+       </Link>
+      </div>
       </div>
       <div className="navbar-link-container">
         <a href="#">Contact Us</a>
-      <Link to={'/Register'}>
-        <button className="primary-button">Get Started</button>
-      </Link>
-      {/* <div className="hamburger-menu">
-      <RxHamburgerMenu />
-      </div> */}
+        <Link to={"/Register"}>
+          <button className="primary-button">Get Started</button>
+        </Link>
+        <div className="">
+          <RxHamburgerMenu className="hamburger"/>
+        </div>
       </div>
     </nav>
   );

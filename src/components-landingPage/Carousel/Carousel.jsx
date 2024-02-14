@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./Carousel.css";
 
 const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -8,13 +7,13 @@ const Carousel = () => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % items.length);
   };
 
-  // useEffect(() => {
-  //   const intervalId = setInterval(nextSlide, 5000);
+  useEffect(() => {
+    const intervalId = setInterval(nextSlide, 5000);
 
-  //   return () => {
-  //     clearInterval(intervalId);
-  //   };
-  // }, [activeIndex]);
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [activeIndex]);
 
   const handleIndicatorClick = (index) => {
     setActiveIndex(index);
@@ -33,7 +32,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="carousel-container">
+    <div className="">
       <div className="carousel-header">
         <h1></h1>
       </div>

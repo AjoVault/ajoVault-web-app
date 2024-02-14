@@ -2,6 +2,8 @@ import React from "react";
 import "./success.css";
 import SmilingGirl from "../../assets/smiling_girl.png";
 import Carousel from "../Carousel/Carousel";
+// import Slides from "../../assets/slides";
+import Testimonial from "../Carousel/testimonial";
 
 const Success = () => {
 	return (
@@ -23,9 +25,9 @@ const Success = () => {
 							</ul>
 						</div>
 					</div>
-					{/* <div className="carousel-container"><Carousel /></div> */}
+					{/* <div className="carousel-container"><slides/></div> */}
 					{/* static carousel  */}
-					<div className=" flex  items-center flex-col w-[40%] mt-24  rounded-md   	bg-[#5a47cf]">
+					{/* <div className=" flex  items-center flex-col w-[40%] mt-24  rounded-md   	bg-[#5a47cf]">
 						<span className="">
 							<img
 								className="w-36 h-36 -mt-12"
@@ -43,6 +45,9 @@ const Success = () => {
 								Tosin James
 							</button>
 						</span>
+					</div> */}
+					<div className="carousel-container">
+						<Testimonial/>
 					</div>
 				</div>
 			</section>

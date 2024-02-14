@@ -17,6 +17,10 @@ import KnowYourCustomer from "./components/Modal/KnowYourCustomer.jsx";
 import PoolContribution from "./components/Modal/PoolContribution.jsx";
 import PersonalSavings from "./components/Modal/PersonalSavings.jsx";
 import Spinner from "./components/spinner/spinner.jsx";
+// import Nav from "./components-landingPage/navbar/nav.jsx";
+// import Logo from "./components-landingPage/navbar/logo.jsx"
+import Card from "./components-landingPage/Carousel/Card.jsx";
+import Testimonial from "./components-landingPage/Carousel/testimonial.jsx";
 import { TransactionPage } from "./pages/TransactionPage/TransactionPage.jsx";
 import {UserContextProvider} from "./context/UserContextProvider.jsx";
 import CaptureImage from "./components/Modal/CaptureImage.jsx";
@@ -26,26 +30,30 @@ import BvnSubmitted from "./components/Modal/BvnSumbitted.jsx";
 function App() {
   return (
     <UserContextProvider>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        {/* <Route path="/register/*" element={<Register />}></Route> */}
-        <Route path="/register/" element={<RegisterOutlet />}>
-          <Route path="checkemail" element={<Modal />} />
-          <Route path="otp" element={<OTPModal />} />
-          <Route path="inputotp" element={<EnterOTP />} />
-          <Route path="password" element={<Password />} />
-          <Route path="pin" element={<PinModal />} />
-          <Route path="confirmpin" element={<ConfirmPin />} />
-        </Route>
-        <Route path="/login" element={<Login />} />
-        <Route path='/knowyourcustomer' element={<KnowYourCustomer />} />
-        <Route path='/pool' element={<PoolContribution/>} />
-        <Route path='/personalsavings' element={<PersonalSavings/>} />
-        <Route path="/captureImage" element={<CaptureImage />}/>
-        <Route path="/kycsubmitted" element={<BvnSubmitted />}/>
-        
-      </Routes>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/register/*" element={<Register />}></Route>
+      <Route path="/register/*" element={<RegisterOutlet />}>
+        <Route path="checkemail" element={<Modal />} />
+        <Route path="otp" element={<OTPModal />} />
+        <Route path="inputotp" element={<EnterOTP />} />
+        <Route path="password" element={<Password />} />
+        <Route path="pin" element={<PinModal />} />
+        <Route path="confirmpin" element={<ConfirmPin />} />
+      </Route>
+      <Route path="/login" element={<Login />} />
+      <Route path='/knowyourcustomer' element={<KnowYourCustomer />} />
+      <Route path='/pool' element={<PoolContribution />} />
+      <Route path='/personalsavings' element={<PersonalSavings />} />
+      <Route path="/captureImage" element={<CaptureImage />}/>
+      <Route path="/kycsubmitted" element={<BvnSubmitted />}/>
+      <Route path="/spinner" element={<Spinner />} />
+      <Route path="/card" element={<Card />} />
+      {/* <Route path="/nav" element={<Nav />} />
+      <Route path="/logo" element={<Logo />} /> */}
+      <Route path="/testimonial" element={<Testimonial/>} />
+    </Routes>
     </UserContextProvider>   
   )
 };
