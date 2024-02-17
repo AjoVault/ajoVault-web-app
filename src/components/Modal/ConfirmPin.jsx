@@ -50,13 +50,16 @@ function ConfirmPin({numberOfDigits=4}) {
         } 
 
         try {
+          console.log('here');
           const response = await fetch('https://ajovault.onrender.com/auth/createUserPIN', {
               method: 'POST',
+              credentials: "include",
               headers: {
                   'Content-Type': 'application/json',
                 },
               body: JSON.stringify(pinData),
           });
+          console.log('here');
           const userDetails = await response.json();
 
           if(response.ok){
@@ -64,13 +67,14 @@ function ConfirmPin({numberOfDigits=4}) {
                   
                   console.log(userDetails);
                   console.log('Otp successfull')
+                  setUser({id: userDetails.response.id, firstName: user.firstName, email: user.email  })
                   navigateTo('/dashboard')
 
               }else{
                   console.log(userDetails.response);
               }
           } else{
-              console.error("Registration failed")
+              console.error("Pin creation failed")
           }
       } catch (error) {
           console.error(error)

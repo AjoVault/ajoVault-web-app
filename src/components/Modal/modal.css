@@ -195,6 +195,11 @@
 .modal-span {
   color: var(--lilac);
 }
+.check-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @media only screen and (max-width: 1024px) {
   .modal-content {

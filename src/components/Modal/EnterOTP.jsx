@@ -16,6 +16,7 @@ function EnterOTP({numberOfDigits=4}) {
 
     const {user} = useContext(UserContext);
 
+
     setInterval(function () {
       var d = new Date();
       var seconds = d.getMinutes() * 60 + d.getSeconds(); //convet 00:00 to seconds for easier caculation
@@ -56,6 +57,7 @@ function EnterOTP({numberOfDigits=4}) {
         try {
           const response = await fetch('https://ajovault.onrender.com/auth/verify', {
               method: 'POST',
+              credentials: "include",
               headers: {
                   'Content-Type': 'application/json',
                 },

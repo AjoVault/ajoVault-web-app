@@ -23,6 +23,8 @@ import Card from "./components-landingPage/Carousel/Card.jsx";
 import Testimonial from "./components-landingPage/Carousel/testimonial.jsx";
 import { TransactionPage } from "./pages/TransactionPage/TransactionPage.jsx";
 import {UserContextProvider} from "./context/UserContextProvider.jsx";
+import CaptureImage from "./components/Modal/CaptureImage.jsx";
+import BvnSubmitted from "./components/Modal/BvnSumbitted.jsx";
 
 
 function App() {
@@ -44,6 +46,8 @@ function App() {
       <Route path='/knowyourcustomer' element={<KnowYourCustomer />} />
       <Route path='/pool' element={<PoolContribution />} />
       <Route path='/personalsavings' element={<PersonalSavings />} />
+      <Route path="/captureImage" element={<CaptureImage />}/>
+      <Route path="/kycsubmitted" element={<BvnSubmitted />}/>
       <Route path="/spinner" element={<Spinner />} />
       <Route path="/card" element={<Card />} />
       {/* <Route path="/nav" element={<Nav />} />
