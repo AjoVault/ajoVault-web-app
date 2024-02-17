@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     nin: {
       type: DataTypes.TEXT,
-      unique: true,
       required: true,
     },
     nin_iv: {
@@ -28,7 +27,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     bvn: {
       type: DataTypes.TEXT,
-      unique: true,
       required: true,
     },
     bvn_iv: {
