@@ -57,6 +57,7 @@ function EnterOTP({numberOfDigits=4}) {
         try {
           const response = await fetch('https://ajovault.onrender.com/auth/verify', {
               method: 'POST',
+              credentials: "include",
               headers: {
                   'Content-Type': 'application/json',
                 },

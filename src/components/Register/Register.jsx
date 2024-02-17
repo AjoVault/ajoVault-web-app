@@ -46,6 +46,7 @@ function Register() {
         try {
             const response = await fetch('https://ajovault.onrender.com/auth/signup', {
                 method: 'POST',
+                credentials: "include",
                 headers: {
                     'Content-Type': 'application/json',
                   },
