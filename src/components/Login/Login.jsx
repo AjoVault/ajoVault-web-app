@@ -27,6 +27,7 @@ function Login() {
         try {
             const response = await fetch('https://ajovault.onrender.com/auth/login', {
                 method: 'POST',
+                credentials: "include",
                 headers: {
                     'Content-Type': 'application/json',
                   },
