@@ -28,6 +28,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 //Add support for cors middleware and accept only request from own server
 const allowedOrigins = [
   'https://ajo-vault-web-app.vercel.app', 
+  'https://ajovault.onrender.com', 
   'http://localhost', 
 ];
 
