@@ -25,27 +25,6 @@ app.use(bodyParser.json());
 //Enable parsing as urlencoded and json.
 app.use(bodyParser.urlencoded({extended:true}));
 
-//Add support for cors middleware and accept only request from own server
-const allowedOrigins = [
-  'https://ajo-vault-web-app.vercel.app', 
-  'https://ajovault.onrender.com', 
-  'http://localhost', 
-];
-
-var corsOptions = {
-  origin: function(origin, callback) {
-    // Check if the origin is in the list of allowed origins
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
-
 // Configure Google Auth Strategy
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
@@ -126,13 +105,34 @@ passport.use(new LocalStrategy({
   }
 }));
 
+//Add support for cors middleware and accept only request from own server
+const allowedOrigins = [
+  'https://ajo-vault-web-app.vercel.app', 
+  'https://ajovault.onrender.com', 
+  'http://localhost', 
+];
+
+var corsOptions = {
+  origin: function(origin, callback) {
+    // Check if the origin is in the list of allowed origins
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
 // Configure sessions
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
-    secure: true, 
+    secure: false, 
     maxAge: 60 * 60 * 1000, 
     sameSite: 'none',
   }
