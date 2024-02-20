@@ -126,7 +126,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: {
     secure: false, 
-    maxAge: 60 * 60 * 1000, 
+    maxAge: 60 * 60 * 100000, 
     sameSite: 'none',
   }
 }));
