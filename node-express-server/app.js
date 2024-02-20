@@ -113,14 +113,7 @@ const allowedOrigins = [
 ];
 
 var corsOptions = {
-  origin: function(origin, callback) {
-    // Check if the origin is in the list of allowed origins
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: 'https://ajo-vault-web-app.vercel.app',
   credentials: true,
 };
 
@@ -129,7 +122,7 @@ app.use(cors(corsOptions));
 // Configure sessions
 app.use(session({
   secret: process.env.SESSION_SECRET,
-  resave: false,
+  resave: true,
   saveUninitialized: true,
   cookie: {
     secure: false, 

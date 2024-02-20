@@ -83,7 +83,8 @@ module.exports.signupUser = async (req, res) => {
                             email: user.email,
                             maskedEmail: maskedEmail,         
                         };
-                          res.json({"success":"true", "response": userDetailsToSend});
+                        res.header('Access-Control-Allow-Credentials', 'true');
+                        res.json({"success":"true", "response": userDetailsToSend});
                         } catch (error) {
                             res.json({"success":"false", "response": "Unable to complete signup"});
                         }
@@ -126,7 +127,7 @@ module.exports.signupUser = async (req, res) => {
                     firstName: firstName,
                     dpPath: dpPath,             
                 };
-        
+                res.header('Access-Control-Allow-Credentials', 'true');        
                 return res.json({"success":"true", "response": userDetailsToSend});
               });
     } else {
@@ -163,6 +164,7 @@ module.exports.createUserPIN = async (req, res) => {
   }
 
   user = await user.update({userPIN: userSuppliedPIN});
+  res.header('Access-Control-Allow-Credentials', 'true');
   res.json({"success":"true", "response": "PIN created successfully"});
 };
 
@@ -193,7 +195,7 @@ module.exports.loginUser = async (req, res, next) => {
             firstName: firstName,
             dpPath: dpPath,             
         };
-
+        res.header('Access-Control-Allow-Credentials', 'true');
         return res.json({"success":"true", "response": userDetailsToSend});
       });
 } else {
@@ -231,7 +233,7 @@ module.exports.logoutUser = async (req, res) => {
       console.error('Error destroying session:', err);
       return res.status(500).json({ success: false, response: 'Error logging out' });
     }
-
+    res.header('Access-Control-Allow-Credentials', 'true');
     return res.json({"success": "true", "response": "User logged out successfully"});
     
   });
@@ -313,6 +315,7 @@ module.exports.forgottenPassword = async (req, res) => {
    </div>
     `,  
     });
+    res.header('Access-Control-Allow-Credentials', 'true');
     res.json({"success":"true", "response": "Password reset link sent successfully"});
   } catch (error) {
       res.json({"success":"false", "response": "Unable to complete your request"});
