@@ -1,8 +1,8 @@
 import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import "./testimonial.css";
+// import Slider from "react-slick";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+// import "./testimonial.css";
 
 const TestimonialCarousel = () => {
   const testimonials = [
@@ -43,26 +43,27 @@ const TestimonialCarousel = () => {
   };
 
   return (
-    <Slider {...settings}>
-      {testimonials.map((testimonial) => (
-        <div key={testimonial.id} className="carousel-container">
-          <div className=" w-4/5 mx-auto bg-[#4839A6] mt-6 rounded-lg image shadow-lg text-center ">
-            <img
-              src={testimonial.image}
-              alt={testimonial.name}
-              className="  border-2 border-[#4839A6] mx-auto mt-2 flex h-16 w-20 -translate-y-6   transform items-center justify-center rounded-full "
-            />
-            <div className="px-6 py-4 ">
-              <p className="text-white text-base text-sm mb-8">
-                {testimonial.testimonial}
-              </p>
-              <button><p className="text-md p-2 border  border-white inset-0 shadow-lg hover:opacity-95 border-b-1 border-l-2 text-white font-semibold mb-4">{testimonial.name}</p></button>
+    <div className=""></div>
+    // <Slider {...settings}>
+    //   {testimonials.map((testimonial) => (
+    //     <div key={testimonial.id} className="carousel-container">
+    //       <div className=" w-4/5 mx-auto bg-[#4839A6] mt-6 rounded-lg image shadow-lg text-center ">
+    //         <img
+    //           src={testimonial.image}
+    //           alt={testimonial.name}
+    //           className="  border-2 border-[#4839A6] mx-auto mt-2 flex h-16 w-20 -translate-y-6   transform items-center justify-center rounded-full "
+    //         />
+    //         <div className="px-6 py-4 ">
+    //           <p className="text-white text-base text-sm mb-8">
+    //             {testimonial.testimonial}
+    //           </p>
+    //           <button><p className="text-md p-2 border  border-white inset-0 shadow-lg hover:opacity-95 border-b-1 border-l-2 text-white font-semibold mb-4">{testimonial.name}</p></button>
               
-            </div>
-          </div>
-        </div>
-      ))}
-    </Slider>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   ))}
+    // </Slider>
   );
 };
 

@@ -3,8 +3,8 @@ import './modal.css'
 import LilacButton from '../Button/LilacButton';
 import forwardInbox from '../../assets/forward-inbox.png'
 import { Link } from 'react-router-dom';
-import Webcam from 'react-webcam';
-import * as faceapi from 'face-api.js';
+// import Webcam from 'react-webcam';
+// import * as faceapi from 'face-api.js';
 import UserContext from '../../context/userContext';
 
 const FaceCapture = () => {

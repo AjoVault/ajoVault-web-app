@@ -1,37 +1,61 @@
 .testimonials {
-	padding: 5% 5% 0 5%;
-	/* display: flex;
-    flex-direction: column; */
+	display: flex;
+	justify-content: center;
+	width: 96%;
+	height: 80vh;
 }
 
 .testimonial-header {
-	display: flex;
-	justify-content: space-evenly;
-	/* border: 1px solid black; */
-}
-
-.testimonial-header h1 {
 	color: #5a47cf;
 	font-size: 3rem;
 	font-weight: 600;
-	line-height: 140%;
-	/* margin-bottom: 28px; */
+	padding-bottom: 20px;
 }
 
 .testimonials-container {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
+	height: 68vh;
+	width: 50%;
+	justify-content: center;
+	align-items: center;
 }
+@media (max-width: 910px) {
+	.testimonials {
+		flex-direction: column;
+		height: 100%;
+		width: 100%;
+	}
+	.secondary-container{
+		width: 100%;
+	}
+	.list-container{
+		width: 100%;
+	}
+	}
+	.list-container1 ul{
+		width: 100%;
+	}
+	.list-container1 li{
+		font-size: 0.2rem;
+	
+	}
 
 .secondary-container {
 	width: 50%;
 	position: relative;
-	margin-top: 24px;
-	margin-bottom: 32px;
+
+}
+.carousel-container{
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .list-container {
-	width: 500px;
+	width: 800px;
 	height: 450px;
 	background-color: #5e0035;
 	z-index: 1;
@@ -58,7 +82,7 @@
 
 .list-container1 li {
 	margin: 0 16px;
-	font-size: 1.4rem;
+	font-size: 1.2rem;
 	list-style-type: disc;
 }
 
