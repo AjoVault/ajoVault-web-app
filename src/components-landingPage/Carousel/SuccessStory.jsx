@@ -35,9 +35,9 @@ const SuccessStory = () => {
 
     return (
         <div className="relative text-white rounded-[8px] h-[80%] flex flex-col justify-center items-center">
-            <img src={currentComment.image} className="absolute w-[18%] h-[140px] border-[10px] top-0 rounded-[50%] border-[#4839A6]" alt="" />
+            <img src={currentComment.image} className="absolute w-[18%] h-[120px] border-[10px] top-0 rounded-[50%] border-[#4839A6]" alt="" />
 
-            <div className="flex flex-col  justify-center items-center rounded-[4px] h-[70%] mt-4 w-[80%] bg-[#4839A6] text-[20px] font-extralight px-6">
+            <div className="flex flex-col  justify-center items-center rounded-[4px] h-[80%] mt-4 w-[80%] bg-[#4839A6] text-[20px] font-extralight px-6">
                 <p className="leading-10 pb-10 text-center">
                     &apos;{currentComment.text}&apos;
                 </p>
