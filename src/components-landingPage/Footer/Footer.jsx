@@ -24,7 +24,7 @@ const Footer = () => {
     <footer className="footer-container">
       <div className="footer-content">
         <div className="header-footer-links-container">
-          <ul className="header-footer-links">
+          <ul className="header-footer-links hidden lg:flex">
             <a href="">Documentation</a>
             <a href=""> Contact Us</a>
             <a href="">Getting Started</a>
@@ -59,7 +59,7 @@ const Footer = () => {
                 <button type="submit">Hop In</button>
               </div>
             </div>
-            <div className="Social-media-links">
+            <div className="Social-media-links hidden lg:flex">
               <div className="social-icons">
                 <a
                   href="https://www.facebook.com/"

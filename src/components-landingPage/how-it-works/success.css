@@ -7,7 +7,6 @@
 
 .testimonial-header {
 	color: #5a47cf;
-	font-size: 3rem;
 	font-weight: 600;
 	padding-bottom: 20px;
 }
@@ -20,33 +19,55 @@
 	justify-content: center;
 	align-items: center;
 }
+
 @media (max-width: 910px) {
 	.testimonials {
 		flex-direction: column;
 		height: 100%;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		
+	}
+	.testimonials-container {
+		width: 100%;
+		
+	}
+
+	.secondary-container {
+		width: 100%;
+
+	}
+
+	.list-container ul{
 		width: 100%;
 	}
-	.secondary-container{
-		width: 100%;
+	.list-container1 li {
+		margin: 0 16px;
+		list-style-type: disc;
 	}
-	.list-container{
-		width: 100%;
+	.carousel-container{
+		height: 100vh;
+		
 	}
-	}
-	.list-container1 ul{
-		width: 100%;
-	}
-	.list-container1 li{
-		font-size: 0.2rem;
-	
-	}
+}
+
+.list-container1 ul {
+	width: 100%;
+}
+
+.list-container1 li {
+	font-size: 0.2rem;
+
+}
 
 .secondary-container {
 	width: 50%;
 	position: relative;
 
 }
-.carousel-container{
+
+.carousel-container {
 	width: 55%;
 	display: flex;
 	flex-direction: column;
@@ -55,7 +76,6 @@
 }
 
 .list-container {
-	width: 800px;
 	height: 450px;
 	background-color: #5e0035;
 	z-index: 1;
@@ -66,7 +86,6 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	width: 80%;
 	height: 450px;
 	margin: 16px 0px;
 	padding: 16px 66px 66px 16px;
