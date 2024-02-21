@@ -8,7 +8,7 @@ const Success = () => {
 
 			<section className="testimonials mt-8 lg:mt-0">
 				<div className="testimonials-container gap-4">
-					<h1 className="testimonial-header text-[20px] ">How it Works</h1>
+					<h1 className="testimonial-header text-[20px] lg:text-[44px] ">How it Works</h1>
 					<div className="secondary-container w-full lg:w-[80%] ">
 						<div className="list-container w-[80%]"></div>
 						<div className="list-container1">
@@ -22,7 +22,7 @@ const Success = () => {
 					</div>
 				</div>
 				<div className="carousel-container">
-					<h1 className="testimonial-header text-[20px]">Success Stories</h1>
+					<h1 className="testimonial-header text-[20px] lg:text-[44px]">Success Stories</h1>
 					<SuccessStory />
 				</div>
 			</section>

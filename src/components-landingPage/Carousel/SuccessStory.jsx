@@ -51,7 +51,7 @@ const SuccessStory = () => {
                 {Array.from({ length: commentsData.length }).map((_, index) => (
                     <div
                         key={index}
-                        className={`h-[20px] bg-[#b6b1b1] w-[20px] rounded-[50%] ${index === currentCommentIndex ? "bg-[#5e5c5c]  w-[50px] rounded-[45%]" : "bg-[#4839A6]"
+                        className={`h-[20px] bg-[#b6b1b1] w-[20px] rounded-[24px] ${index === currentCommentIndex ? "bg-[#5e5c5c]  w-[50px] rounded-[45%]" : "bg-[#4839A6]"
                             }`}
                     ></div>
                 ))}
