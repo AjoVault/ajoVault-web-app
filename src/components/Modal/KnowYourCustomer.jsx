@@ -17,7 +17,6 @@ function KnowYourCustomer({onClick}) {
 	const [date, setDate] = useState("");
 	const [bankCode, setBankCode] = useState("");
 	const {user, setUser} = useContext(UserContext);
-	const [showFaceCapture, setShowFaceCapture] = useState(false);
 
 	const [dis, setDis] = useState("block");
 
@@ -36,7 +35,6 @@ function KnowYourCustomer({onClick}) {
 			date,
 			bankCode,
 		});
-		setShowFaceCapture(true);
 		// if (window.WebcamHelper && window.WebcamHelper.capture()) {
 		// 	let imgData = window.WebcamHelper.getImage();
 		// 	user.faceImg = imgData;
@@ -184,13 +182,14 @@ function KnowYourCustomer({onClick}) {
 									/>
 								</div>
 								<div style={{width: "45%"}}>
-									<LilacButton
-										title="Next"
-										width="100%"
-										onClick={submitDetails}
-									/>
+									<Link to="/captureimage">
+										<LilacButton
+											title="Next"
+											width="100%"
+											onClick={submitDetails}
+										/>
+									</Link>
 								</div>
-								{showFaceCapture && <CaptureImage />}
 							</div>
 						</div>
 
