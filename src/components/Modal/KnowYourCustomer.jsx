@@ -86,7 +86,9 @@ function KnowYourCustomer() {
                     <div>
                         <select className='input select' name="bank" id="" 
                         value={bankCode} 
-                        onChange={(e) => setBankCode(e.target.value)}>
+                        onChange={(e) => setBankCode(e.target.value)}
+                        required
+                        >
                         <option className='select inactive' selected disabled>Select your Bank</option>
                                                         <option className='select-active' value="044">Access Bank</option>
                                                         <option value="023">  Citibank</option>

@@ -142,6 +142,7 @@
   border-radius: 20px;
   overflow: hidden;
   width: 45%;
+  margin-top: 0px;
   /* height: 100%; */
 }
 .customer-text {
@@ -199,6 +200,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+label {
+  color: var(--blackMain);
+}
+
+select,
+select option {
+  color: #000000;
+}
+
+select:invalid,
+select option[value=""] {
+  color: #999999;
 }
 
 @media only screen and (max-width: 1024px) {
