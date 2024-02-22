@@ -7,8 +7,9 @@ import ModalDisplayContex from "../../context/modalDisplay";
 import {Link} from "react-router-dom";
 import UserContext from "../../context/userContext";
 import Input from "../Input/Input";
+import CaptureImage from "./CaptureImage";
 
-function KnowYourCustomer() {
+function KnowYourCustomer({onClick}) {
 	const [nin, setNin] = useState("");
 	const [bvn, setBvn] = useState("");
 	const [acctNumber, setAcctNumber] = useState("");
@@ -16,6 +17,7 @@ function KnowYourCustomer() {
 	const [date, setDate] = useState("");
 	const [bankCode, setBankCode] = useState("");
 	const {user, setUser} = useContext(UserContext);
+	const [showFaceCapture, setShowFaceCapture] = useState(false);
 
 	const [dis, setDis] = useState("block");
 
@@ -34,10 +36,15 @@ function KnowYourCustomer() {
 			date,
 			bankCode,
 		});
+		setShowFaceCapture(true);
+		// if (window.WebcamHelper && window.WebcamHelper.capture()) {
+		// 	let imgData = window.WebcamHelper.getImage();
+		// 	user.faceImg = imgData;
+		// 	console.log("imgdata", imgData);
+		// } else {
+		// 	alert("Unable to access webcam");
+		// }
 	};
-
-	console.log(user.id);
-	console.log(user.email);
 
 	//   console.log(formData)
 
@@ -173,17 +180,17 @@ function KnowYourCustomer() {
 										color="var(--pink)"
 										textColor="black"
 										width="100%"
+										onClick={onClick}
 									/>
 								</div>
 								<div style={{width: "45%"}}>
-									<Link to={"/captureimage"}>
-										<LilacButton
-											title="Next"
-											width="100%"
-											onClick={submitDetails}
-										/>
-									</Link>
+									<LilacButton
+										title="Next"
+										width="100%"
+										onClick={submitDetails}
+									/>
 								</div>
+								{showFaceCapture && <CaptureImage />}
 							</div>
 						</div>
 

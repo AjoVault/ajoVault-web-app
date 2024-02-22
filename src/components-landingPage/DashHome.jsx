@@ -38,7 +38,7 @@ const DashHome = () => {
 					>
 						Continue
 					</button>
-					{pop && <KnowYourCustomer />}
+					{pop && <KnowYourCustomer onClick={() => setIsPopped(false)} />}
 				</div>
 
 				<div className="shrink-0 mb-12">
