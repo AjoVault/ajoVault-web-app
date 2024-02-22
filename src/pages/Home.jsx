@@ -7,7 +7,7 @@ import Footer from "../components-landingPage/Footer/Footer";
 
 const Home = () => {
   return (
-    <section>
+    <section className="">
       <Navbar />
       <Hero />
       <ProductF />

@@ -17,7 +17,7 @@ const navbar = () => {
       </div>
       </div>
       <div className="navbar-link-container">
-        <a href="#">Contact Us</a>
+        <a href="#" className="hidden lg:flex">Contact Us</a>
         <Link to={"/Register"}>
           <button className="primary-button">Get Started</button>
         </Link>
