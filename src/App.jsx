@@ -1,6 +1,6 @@
 import React from "react";
-import {Route, Routes} from "react-router-dom";
-import {useEffect} from "react";
+import { Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
 import AOS from "aos";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
@@ -21,8 +21,8 @@ import Spinner from "./components/spinner/spinner.jsx";
 // import Logo from "./components-landingPage/navbar/logo.jsx"
 import Card from "./components-landingPage/Carousel/Card.jsx";
 import Testimonial from "./components-landingPage/Carousel/testimonial.jsx";
-import {TransactionPage} from "./pages/TransactionPage/TransactionPage.jsx";
-import {UserContextProvider} from "./context/UserContextProvider.jsx";
+import { TransactionPage } from "./pages/TransactionPage/TransactionPage.jsx";
+import { UserContextProvider } from "./context/UserContextProvider.jsx";
 import CaptureImage from "./components/Modal/CaptureImage.jsx";
 
 import BvnSubmitted from "./components/Modal/BvnSumbitted.jsx";
@@ -46,7 +46,7 @@ function App() {
 				<Route path="/knowyourcustomer" element={<KnowYourCustomer />} />
 				<Route path="/pool" element={<PoolContribution />} />
 				<Route path="/personalsavings" element={<PersonalSavings />} />
-				<Route path="/captureImage" element={<CaptureImage />} />
+				{/* <Route path="/captureImage" element={<CaptureImage />} /> */}
 				<Route path="/kycsubmitted" element={<BvnSubmitted />} />
 				<Route path="/spinner" element={<Spinner />} />
 				<Route path="/card" element={<Card />} />

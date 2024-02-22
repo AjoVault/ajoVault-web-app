@@ -39,7 +39,7 @@ const Footer = () => {
                 alt="AjoVault"
               />
             </div>
-            <div className="enter-mail">
+            <div className="enter-mail ">
               <p>
                 Want to be the first to hear about our performance report, and
                 events?
@@ -55,8 +55,8 @@ const Footer = () => {
                     onChange={handleEmailChange}
                     required
                   />
+                <button className="btn" type="submit">Hop In</button>
                 </form>
-                <button type="submit">Hop In</button>
               </div>
             </div>
             <div className="Social-media-links hidden lg:flex">
