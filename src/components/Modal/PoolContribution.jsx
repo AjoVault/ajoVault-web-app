@@ -46,8 +46,8 @@ function PoolContribution() {
                         <label htmlFor="email">Savings Frequency</label>
                     </div>
                     <div>
-                    <select className='input' name="" id="">
-                        <option className='select' selected disabled >Select your savings frequency</option>
+                    <select className='input' name="" id="" required>
+                        <option className='select' value='' selected disabled hidden >Select your savings frequency</option>
                                         <option value="">Daily</option>                    
                                         <option value="">Weekly</option>                    
                                         <option value="">Monthly</option>                    
@@ -57,8 +57,8 @@ function PoolContribution() {
                         <label htmlFor="phone">Savings Duration</label>
                     </div>
                     <div>
-                    <select className='input' name="" id="" >
-                        <option className='select' selected disabled hidden>Select your savings duration</option>
+                    <select className='input' name="" id="" required>
+                        <option value="" selected disabled>Select your savings duration</option>
                                         <option value="5000">NGN 5,000</option>                    
                                         <option value="5000">NGN 10,000</option>                    
                                         <option value="5000">NGN 20,000</option>                    
@@ -95,7 +95,7 @@ function PoolContribution() {
                         </div>  
                     </div>
                     <div className='checkbox-div terms-para'>
-                        <p>By Clicking on submit yo agreed to a direct debit from the bank privided in your <span className='modal-span'>KYC</span> </p>
+                        <p>By Clicking on submit you agreed to a direct debit from the bank privided in your <span className='modal-span'>KYC</span> </p>
                     </div>
 
                     <div className='short-btn'>

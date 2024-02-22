@@ -78,12 +78,15 @@ const CaptureImage = () => {
 
 						<div className="short-btn">
 							<div style={{width: "45%"}}>
+								<Link to={"/knowyourcustomer"}>
 								<LilacButton
 									title="Back"
 									color="var(--pink)"
 									textColor="black"
 									width="100%"
-								/>
+								/>	
+								</Link>
+								
 							</div>
 							<div style={{width: "45%"}}>
 								<Link to={"/kycsubmitted"}>
