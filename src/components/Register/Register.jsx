@@ -16,6 +16,9 @@ import Spinner from '../spinner/spinner';
 
 function Register() {
     const [display, setDisplay] = useState('none');
+    const [nameDis, setNameDis] = useState('none');
+    const [emailDis, setEmailDis] = useState('none');
+    const [phonDis, setPhoneDis] = useState('none');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
@@ -27,7 +30,10 @@ function Register() {
 
     const navigateTo = useNavigate();
 
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*_#?&])[A-Za-z\d@$!%*_#?&]{8,}$/
+    // const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*_#?&])[A-Za-z\d@$!%*_#?&]{8,}$/
+    const passwordRegex = /^(?=(.*[a-z]))(?=(.*[A-Z]))(?=(.*[0-9]))(?=(.*[!@#$%^&*()\-__+.]){1,}).{8,}$/
+
+
 
     const {setUser} = useContext(UserContext)
     
@@ -35,6 +41,19 @@ function Register() {
     firstName = firstName[0];
     const handleSubmit = async () => {
         // e.preventDefault();
+        if(name.length <= 0){
+            setNameDis('block')
+            return;
+        }
+        if(email.length <= 0){
+            setEmailDis('block')
+            return;
+        }
+        if(phone.length <= 0){
+            setPhoneDis('block')
+            return;
+        }
+
         if(!passwordRegex.test(password)){
             console.log('incorrect')
             setDisplay('block')
@@ -46,6 +65,7 @@ function Register() {
         try {
             const response = await fetch('https://ajovault.onrender.com/auth/signup', {
                 method: 'POST',
+                credentials: "include",
                 headers: {
                     'Content-Type': 'application/json',
                   },
@@ -77,16 +97,28 @@ function Register() {
 
     const formData = {
         fullName:name.trim(),
-        email: email,
-        phone: phone,
+        email: email.trim(),
+        phone: phone.trim(),
         password: password,
-        promoCode: promo,
+        promoCode: promo.trim(),
         role: role
     }
 
     let spanStyle = {
         display: display,
         color: 'red',   
+    }
+    let nameStyle = {
+        display: nameDis,
+        color: 'red',
+    }
+    let phoneStyle = {
+        display: phonDis,
+        color: 'red',
+    }
+    let emailStyle = {
+        display: emailDis,
+        color: 'red',
     }
     
     
@@ -118,7 +150,12 @@ function Register() {
                         <label htmlFor="fullName">Full Name</label>
                     </div>
                     <div>
-                        <Input placeholder='Enter your full name' name='fullname'inputValue={name} inputChange={(e) => setName(e.target.value)}/>
+                        <Input placeholder='Enter your full name' name='fullname'
+                        inputValue={name} 
+                        inputChange={(e) => {setName(e.target.value)
+                            setNameDis('none')
+                        }}/>
+                        <span className='password-span' style={nameStyle}>Enter a valid fullname</span>
                     </div>
                     <div>
                         <label htmlFor="email">Email Address</label>
@@ -128,7 +165,10 @@ function Register() {
                          name='email'
                          type='email'
                         inputValue={email} 
-                        inputChange={(e) => setEmail(e.target.value)}/>
+                        inputChange={(e) => {setEmail(e.target.value)
+                            setEmailDis('none')
+                        }}/>
+                        <span className='password-span' style={emailStyle}>Enter a valid email</span>
                     </div>
                     <div>
                         <label htmlFor="phone">Phone Number</label>
@@ -137,8 +177,10 @@ function Register() {
                         <Input placeholder='+234'
                          name='phone'
                         inputValue={phone}
-                        inputChange={(e) => setPhone(e.target.value) }
+                        inputChange={(e) => {setPhone(e.target.value)
+                             setPhoneDis('none')}}
                         />
+                        <span className='password-span' style={phoneStyle}>Phone number cannot be enpty</span>
                     </div>
                     <div>
                         <label htmlFor="password">Password</label>
@@ -152,7 +194,7 @@ function Register() {
                             setDisplay('none')
                         }}
                          />
-                         <span className='password-span' style={spanStyle}>Password must be at least 8 characters, one number and one special character</span>
+                         <span className='password-span' style={spanStyle}>Password must be at least 8 characters, one number, one special character and one upper case</span>
                     </div>
                     <div>
                         <label htmlFor='promoCode'>Promo Code</label>

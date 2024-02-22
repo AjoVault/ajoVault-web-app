@@ -48,12 +48,15 @@ body {
   color: var(--black3);
 }
 
+
+
 :root {
   --lilac: hsla(248, 59%, 55%, 1);
   --inputBackground: rgba(91, 73, 208, 4%);
   --lilacBtn: hsla(248, 93%, 77%, 1);
   --black3: hsla(0, 0%, 17%, 1);
   --black2: hsla(0, 0%, 50%, 1);
+  --blackMain: hsla(0, 0%, 1%, 1);
   --blue: hsla(248, 49%, 44%, 1);
   --pink: hsla(326, 23%, 84%, 1);
   --mobile-max-width: 480px;

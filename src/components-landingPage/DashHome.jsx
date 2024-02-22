@@ -1,20 +1,26 @@
 import DashLoginProfile from "./DashLoginProfile";
 import progressbar from "../assets/progressbar.svg";
 import circle from "../assets/circle.svg";
-import {Link} from "react-router-dom"
-import { useContext } from "react";
+import {Link} from "react-router-dom";
+import {useContext, useState} from "react";
 import UserContext from "../context/userContext";
+import KnowYourCustomer from "../components/Modal/KnowYourCustomer";
 
 const DashHome = () => {
-	const {user} = useContext(UserContext)
+	const {user} = useContext(UserContext);
+	const [pop, setIsPopped] = useState(false);
+	const showKycForm = () => {
+		setIsPopped(true);
+	};
 	return (
-		
 		<section className="flex flex-col pr-4 pt-10 pb-16 lg:w-[90%] lg:mx-auto">
 			<div className="flex gap-3 justify-end items-center">
 				<DashLoginProfile />
 			</div>
 			<div className="pt-4 pb-6">
-				<h1 className="text-[40px] font-semibold">{user.firstName ? user.firstName : "Isaac"}</h1>
+				<h1 className="text-[40px] font-semibold">
+					{user.firstName ? user.firstName : "Isaac"}
+				</h1>
 				<p className="text-[#808080] text-lg text-nowrap">
 					Hello, let&apos;s build today!
 				</p>
@@ -22,14 +28,17 @@ const DashHome = () => {
 			<section className="flex gap-6 lg:justify-between items-center flex-col lg:flex-row">
 				<div className="bg-[#E2DDFE] shrink-0 text-center px-4 py-8 rounded-lg max-md:w-full lg:w-1/2">
 					<h1 className="font-medium text-xl">
-							Complete your KYC to set up your account
+						Complete your KYC to set up your account
 					</h1>
-						
-					
+
 					<img src={progressbar} alt="progress bar" className="py-6" />
-					<button className="text-white bg-[#5A47CF] text-center rounded-lg py-3 px-8">
+					<button
+						onClick={showKycForm}
+						className="text-white bg-[#5A47CF] text-center rounded-lg py-3 px-8"
+					>
 						Continue
 					</button>
+					{pop && <KnowYourCustomer onClick={() => setIsPopped(false)} />}
 				</div>
 
 				<div className="shrink-0 mb-12">
