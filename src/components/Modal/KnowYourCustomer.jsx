@@ -103,8 +103,9 @@ function KnowYourCustomer({onClick}) {
 									id=""
 									value={bankCode}
 									onChange={(e) => setBankCode(e.target.value)}
+									required
 								>
-									<option className="select inactive" selected disabled>
+									<option className="select inactive" value="" selected disabled>
 										Select your Bank
 									</option>
 									<option className="select-active" value="044">

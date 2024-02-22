@@ -9,12 +9,16 @@ import Input from '../Input/Input';
 
 function PersonalSavings() {
   
-  const [dis, setDis] = useState('none');
+  const [dis, setDis] = useState('block');
+
+  let modalstyle = {
+    display: dis
+  }
 
   return (
     <>
     <div>
-            <div id="myModal" className="modal">
+            <div id="myModal" className="modal" tyle={modalstyle}>
 
             <span className="close"
             onClick={() => setDis('none')}
@@ -46,8 +50,8 @@ function PersonalSavings() {
                         <label htmlFor="email">Savings Frequency</label>
                     </div>
                     <div>
-                    <select className='input' name="" id="" placeholder="">
-                        <option className='select' selected disabled>Select your savings frequency</option>
+                    <select className='input' name="" id="" placeholder="" required>
+                        <option className='select' value="" selected disabled>Select your savings frequency</option>
                                         <option value="">Daily</option>                    
                                         <option value="">Weekly</option>                    
                                         <option value="">Monthly</option>                    
@@ -57,22 +61,23 @@ function PersonalSavings() {
                         <label htmlFor="phone">Savings Duration</label>
                     </div>
                     <div>
-                    <select className='input' name="" id="" placeholder="">
-                        <option className='select' selected disabled>Select your savings duration</option>
+                    <select className='input' name="" id="" placeholder="" required>
+                        <option className='select' value="" selected disabled>Select your savings duration</option>
                                         <option value="5000">NGN 5,000</option>                    
-                                        <option value="5000">NGN 10,000</option>                    
-                                        <option value="5000">NGN 20,000</option>                    
-                                        <option value="5000">NGN 30,000</option>                    
-                                        <option value="5000">NGN 50,000</option>                    
-                                        <option value="5000">NGN 100,000</option>                    
-                                        <option value="5000">NGN 150,000</option>                    
-                                        <option value="5000">NGN 200,000</option>                    
-                                        <option value="5000">NGN 500,000</option>                    
+                                        <option value="10000">NGN 10,000</option>                    
+                                        <option value="20000">NGN 20,000</option>                    
+                                        <option value="30000">NGN 30,000</option>                    
+                                        <option value="50000">NGN 50,000</option>                    
+                                        <option value="100000">NGN 100,000</option>                    
+                                        <option value="150000">NGN 150,000</option>                    
+                                        <option value="200000">NGN 200,000</option>                    
+                                        <option value="500000">NGN 500,000</option>                    
                                                             
                     </select>
                     </div>
-                    <div>
-                    <div>
+                    
+                    <div className='flex'>
+                        <div>
                         <div>
                             <label htmlFor="password">Debit Date</label>
                         </div>
@@ -88,6 +93,7 @@ function PersonalSavings() {
                             {/* <span className='password-span' style={spanStyle}>Password must be at least 8 characters, one number and one special character</span> */}
                         </div>
                         </div>
+                        
                         <div>
                             <div>
                                 <label htmlFor="password">Savings target amount</label>
@@ -106,12 +112,13 @@ function PersonalSavings() {
                         </div>
                     </div>
                     
-                    
-
-                    <div>
-                        <label htmlFor=""><p>Accept Terms and Rules of Savings</p></label>
-
-                        <input type="checkbox" name="" id="" />
+                    <div className='checkbox-div terms-para'>
+                        <div>
+                            <input className='check' type="checkbox" name="" id="" /> 
+                        </div>
+                        <div>
+                            <p>Accept <span className='modal-span'>Terms and Rules</span> of Savings</p>
+                        </div>  
                     </div>
 
                     <div className='short-btn'>
