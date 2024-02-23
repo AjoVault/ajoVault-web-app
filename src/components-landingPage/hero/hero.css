@@ -31,10 +31,6 @@
   color: #5e0035;
 }
 
-.primary-container {
-  /* padding-top: 5%; */
-}
-
 .primary-text {
   font-size: 1.5rem;
   color: #2c2c2c;
@@ -65,7 +61,7 @@ img {
   width: 100%;
 }
 
-@media (max-width: 480px) {
+@media only screen and (max-width: 480px) {
   .hero-container {
     align-items: center;
     padding: 5% 5% 0 5%;
@@ -170,5 +166,6 @@ img {
   .hero-container {
     align-items: center;
     padding: 0 5% 0 5%;
+    /* height: 100vh; */
   }
 }

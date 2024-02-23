@@ -35,14 +35,14 @@ const SuccessStory = () => {
 
     return (
         <div className="relative text-white rounded-[8px] h-[80%] flex flex-col justify-center items-center">
-            <img src={currentComment.image} className="absolute w-[40%] lg:w-[18%] h-[120px]  border-[10px] top-0 rounded-[50%] border-[#4839A6]" alt="" />
+            <img src={currentComment.image} className="relative w-[40%] lg:w-[18%] h-[120px]  border-[10px] top-14 rounded-[50%] border-[#4839A6]" alt="" />
 
             <div className="flex flex-col  justify-center items-center rounded-[4px] h-[80%] mt-4 w-[100%] lg:w-[80%] bg-[#4839A6] text-[20px] font-extralight px-6">
-                <p className="lg:leading-10 leading-8 pb-10 text-center">
+                <p className="lg:leading-10 leading-8 pb-10 mt-7 text-center">
                     &apos;{currentComment.text}&apos;
                 </p>
                 <div className="flex  border-white rounded-[8px] border-[2px] shadow-lg shadow-gray-500/40  px-[10px] lg:px-[30px] h-[50px] justify-center items-center">
-                    <h3 className="text-[20px] font-bold sm:text-[14px]  w-[200px] text-center">
+                    <h3 className="text-[20px] font-bold sm:text-[14px] w-[200px] text-center">
                         {currentComment.author}
                     </h3>
                 </div>
