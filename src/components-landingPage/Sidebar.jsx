@@ -35,7 +35,7 @@ const Sidebar = () => {
 							<Tab as={Fragment}>
 								{({selected}) => (
 									<div
-										className={`w-full py-4 pl-4 flex items-center gap-2 cursor-pointer ${
+										className={`w-full px-8 py-4 pl-4 flex items-center gap-2 cursor-pointer ${
 											selected &&
 											"bg-[#FCFCFC] border-l-[3px] rounded-t-lg rounded-l-lg border-black text-black outline-none"
 										}`}
@@ -54,7 +54,7 @@ const Sidebar = () => {
 							<Tab as={Fragment}>
 								{({selected}) => (
 									<div
-										className={`text-center w-full py-4 pl-4 flex items-center gap-2 cursor-pointer ${
+										className={`text-center px-8  w-full py-4 pl-4 flex items-center gap-2 cursor-pointer ${
 											selected &&
 											"bg-[#FCFCFC] border-l-[3px] rounded-t-lg rounded-l-lg border-black text-black outline-none"
 										}`}
@@ -73,7 +73,7 @@ const Sidebar = () => {
 							<Tab as={Fragment}>
 								{({selected}) => (
 									<div
-										className={` w-full py-4 pl-4 flex items-center gap-2 cursor-pointer ${
+										className={` w-full px-8  py-4 pl-4 flex items-center gap-2 cursor-pointer ${
 											selected &&
 											"bg-[#FCFCFC] border-l-[3px] rounded-t-lg rounded-l-lg border-black text-black outline-none"
 										}`}
@@ -92,7 +92,7 @@ const Sidebar = () => {
 							<Tab as={Fragment}>
 								{({selected}) => (
 									<div
-										className={`text-center w-full py-4 pl-4 flex items-center gap-2 cursor-pointer ${
+										className={`text-center w-full px-8  py-4 pl-4 flex items-center gap-2 cursor-pointer ${
 											selected &&
 											"bg-[#FCFCFC] border-l-[3px] rounded-t-lg rounded-l-lg border-black text-black outline-none"
 										}`}
@@ -111,7 +111,7 @@ const Sidebar = () => {
 							<Tab as={Fragment}>
 								{({selected}) => (
 									<div
-										className={`text-center w-full py-4 pl-4 flex items-center gap-2 cursor-pointer ${
+										className={`text-center px-8  w-full py-4 pl-4 flex items-center gap-2 cursor-pointer ${
 											selected &&
 											"bg-[#FCFCFC] border-l-[3px] rounded-t-lg rounded-l-lg border-black text-black outline-none"
 										}`}
@@ -132,7 +132,7 @@ const Sidebar = () => {
 							<Tab disabled as={Fragment}>
 								{({selected}) => (
 									<div
-										className={`text-center w-full py-4 pl-4 flex items-center gap-2 cursor-pointer ${
+										className={`text-center px-8 w-full py-4 pl-4 flex items-center gap-2 cursor-pointer ${
 											selected &&
 											"bg-[#FCFCFC] border-l-[3px] rounded-t-lg rounded-l-lg border-black text-black outline-none"
 										}`}
