@@ -1,11 +1,11 @@
 .hero-container {
   display: flex;
-  /* align-items: start; */
   justify-content: space-between;
   width: 100%;
   padding: 5% 0 0 5%;
-  height: 85vh;
+  height: 100vh;
   gap: 5%;
+  background: rebeccapurple;
 }
 .hero-right-content {
   width: 70%;
