@@ -21,7 +21,7 @@ const Settings = () => {
 							<Button btn_text="Log out" />
 						</div>
 					</div>
-					<div className="w-[60%] h-full bg-blue-500">eghr</div>
+					<div className="w-[60%] h-full bg-blue-500"></div>
 				</div>
 			</div>
 		</div>
