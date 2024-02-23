@@ -114,7 +114,7 @@ module.exports.signupUser = async (req, res) => {
       const user = verifiedUser[1];
 
       //Make token
-      const token = jwt.sign({ id: user.id }, process.env.SESSION_SECRET, { expiresIn: '1h' });
+      const token = jwt.sign({id: user.id }, process.env.SESSION_SECRET, { expiresIn: '1h' });
     
       // Make Profile details
       const fullName = user.fullName;

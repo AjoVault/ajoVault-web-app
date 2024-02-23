@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Enable CORS middleware
 app.use(cors({ 
-  origin: '*', 
+  origin: 'https://ajo-vault-web-app.vercel.app', 
   credentials: true , 
   allowedHeaders: ['Authorization', 'Content-Type'],
 }));
