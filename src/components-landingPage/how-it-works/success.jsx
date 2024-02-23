@@ -7,9 +7,11 @@ const Success = () => {
 	return (
 
 			<section className="testimonials mt-8 lg:mt-0">
+								<div className="testimonial-header-container">		<h1 className="testimonial-header text-[26px] lg:text-[44px] ">How it Works</h1>
+					<h1 className="testimonial-header text-[26px] lg:text-[44px]">Success Stories</h1>
+					</div>			
 				<div className="testimonials-container gap-4">
-					<h1 className="testimonial-header text-[26px] lg:text-[44px] ">How it Works</h1>
-					<div className="secondary-container w-full lg:w-[80%] ">
+					<div className="secondary-container w-full lg:w-[50%] ">
 						<div className="list-container w-full"></div>
 						<div className="list-container1 w-[80%]">
 							<ul className="text-[16px]">
@@ -20,10 +22,9 @@ const Success = () => {
 							</ul>
 						</div>
 					</div>
-				</div>
-				<div className="carousel-container">
-					<h1 className="testimonial-header text-[26px] lg:text-[44px]">Success Stories</h1>
+					<div className="carousel-container">
 					<SuccessStory />
+				</div>
 				</div>
 			</section>
 
