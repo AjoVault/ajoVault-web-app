@@ -6,13 +6,24 @@ import {useContext, useState} from "react";
 import UserContext from "../context/userContext";
 import KnowYourCustomer from "../components/Modal/KnowYourCustomer";
 import PoolContribution from "../components/Modal/PoolContribution";
+import PersonalSavings from "../components/Modal/PersonalSavings";
 
 const DashHome = () => {
 	const {user} = useContext(UserContext);
 	const [pop, setIsPopped] = useState(false);
 	const [showPoolContribution, setShowPoolContribution] = useState(false);
+	const [showPersonalSaving, setShowPersonalSavings] = useState(false);
+	const [showSavingAccount, setShowSavingAccount] = useState(false);
 	const handleShowPoolContribution = (e) => {
 		setShowPoolContribution(!pop);
+		e.preventDefault();
+	};
+	const handleShowPersonal = () => {
+		setShowPersonalSavings(!showPersonalSaving);
+		e.preventDefault();
+	};
+	const handleShowSavingAccount = () => {
+		setShowSavingAccount(true);
 		e.preventDefault();
 	};
 	const showKycForm = () => {
@@ -99,9 +110,13 @@ const DashHome = () => {
 						<p className="max-w-[11rem] pb-4">
 							Start a personal savings to meet your goal
 						</p>
-						<button className="border-2 border-[#5A47CF] py-3 rounded-lg">
+						<button
+							onClick={handleShowPersonal}
+							className="border-2 border-[#5A47CF] py-3 rounded-lg"
+						>
 							Start Now
 						</button>
+						{showPersonalSaving && <PersonalSavings />}
 					</div>
 					<div className="flex flex-col gap-3 shrink-0 bg-[#B5AAFC] card3 py-6 px-10">
 						<h3 className="text-2xl">
@@ -110,9 +125,13 @@ const DashHome = () => {
 						<p className="max-w-[12rem] pb-4">
 							Invite friends to create a pooled contribution that works for all
 						</p>
-						<button className="border-2 border-[#5A47CF] rounded-lg py-3">
+						<button
+							onClick={handleShowSavingAccount}
+							className="border-2 border-[#5A47CF] rounded-lg py-3"
+						>
 							Create Now
 						</button>
+						{showSavingAccount && <PersonalSavings />}
 					</div>
 				</section>
 			</section>
