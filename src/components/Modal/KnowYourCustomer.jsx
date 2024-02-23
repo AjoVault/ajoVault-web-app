@@ -105,7 +105,12 @@ function KnowYourCustomer({onClick}) {
 									onChange={(e) => setBankCode(e.target.value)}
 									required
 								>
-									<option className="select inactive" value="" selected disabled>
+									<option
+										className="select inactive"
+										value=""
+										selected
+										disabled
+									>
 										Select your Bank
 									</option>
 									<option className="select-active" value="044">
@@ -183,7 +188,7 @@ function KnowYourCustomer({onClick}) {
 									/>
 								</div>
 								<div style={{width: "45%"}}>
-									<Link to="/captureimage">
+									<Link to="/CaptureImage">
 										<LilacButton
 											title="Next"
 											width="100%"
