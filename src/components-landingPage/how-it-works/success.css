@@ -1,10 +1,19 @@
 .testimonials {
-	display: flex;
-	justify-content: center;
-	width: 96%;
-	height: 80vh;
+	width: 100%;
+	height: 95vh;
+	background: rebeccapurple;
+	padding: 0 5% 0 5%;
+
 }
 
+.testimonial-header-container{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	/* height: 100px; */
+}
 .testimonial-header {
 	color: #5a47cf;
 	font-weight: 600;
@@ -13,9 +22,9 @@
 
 .testimonials-container {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	height: 68vh;
-	width: 48%;
+	/* width: 48%; */
 	justify-content: center;
 	align-items: center;
 }
