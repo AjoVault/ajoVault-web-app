@@ -5,10 +5,16 @@ import {Link} from "react-router-dom";
 import {useContext, useState} from "react";
 import UserContext from "../context/userContext";
 import KnowYourCustomer from "../components/Modal/KnowYourCustomer";
+import PoolContribution from "../components/Modal/PoolContribution";
 
 const DashHome = () => {
 	const {user} = useContext(UserContext);
 	const [pop, setIsPopped] = useState(false);
+	const [showPoolContribution, setShowPoolContribution] = useState(false);
+	const handleShowPoolContribution = (e) => {
+		setShowPoolContribution(!pop);
+		e.preventDefault();
+	};
 	const showKycForm = () => {
 		setIsPopped(true);
 	};
@@ -78,9 +84,13 @@ const DashHome = () => {
 						<p className="max-w-44 pb-4">
 							Join a batch savings pool based on your budget
 						</p>
-						<button className="border-2 border-[#5E0035] py-3 rounded-lg">
+						<button
+							onClick={handleShowPoolContribution}
+							className="border-2 border-[#5E0035] py-3 rounded-lg"
+						>
 							Join Now
 						</button>
+						{showPoolContribution && <PoolContribution />}
 					</div>
 					<div className="flex flex-col gap-3 shrink-0 bg-[#5E0035] card2 text-white py-6 px-10">
 						<h3 className="text-2xl">
