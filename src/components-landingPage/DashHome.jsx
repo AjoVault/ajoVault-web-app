@@ -7,6 +7,7 @@ import UserContext from "../context/userContext";
 import KnowYourCustomer from "../components/Modal/KnowYourCustomer";
 import PoolContribution from "../components/Modal/PoolContribution";
 import PersonalSavings from "../components/Modal/PersonalSavings";
+import SavingPool from "../components/Modal/SavingPool";
 
 const DashHome = () => {
 	const {user} = useContext(UserContext);
@@ -101,7 +102,11 @@ const DashHome = () => {
 						>
 							Join Now
 						</button>
-						{showPoolContribution && <PoolContribution />}
+						{showPoolContribution && (
+							<PoolContribution
+								onClick={() => setShowPoolContribution(false)}
+							/>
+						)}
 					</div>
 					<div className="flex flex-col gap-3 shrink-0 bg-[#5E0035] card2 text-white py-6 px-10">
 						<h3 className="text-2xl">
@@ -116,7 +121,9 @@ const DashHome = () => {
 						>
 							Start Now
 						</button>
-						{showPersonalSaving && <PersonalSavings />}
+						{showPersonalSaving && (
+							<PersonalSavings onClick={() => setShowPersonalSavings(false)} />
+						)}
 					</div>
 					<div className="flex flex-col gap-3 shrink-0 bg-[#B5AAFC] card3 py-6 px-10">
 						<h3 className="text-2xl">
@@ -131,7 +138,9 @@ const DashHome = () => {
 						>
 							Create Now
 						</button>
-						{showSavingAccount && <PersonalSavings />}
+						{showSavingAccount && (
+							<SavingPool onClick={() => setShowSavingAccount(false)} />
+						)}
 					</div>
 				</section>
 			</section>

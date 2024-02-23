@@ -7,7 +7,7 @@ import ModalDisplayContex from "../../context/modalDisplay";
 import {Link} from "react-router-dom";
 import Input from "../Input/Input";
 
-function PoolContribution({onClick}) {
+function SavingPool({onClick}) {
 	const [dis, setDis] = useState("none");
 
 	return (
@@ -27,7 +27,7 @@ function PoolContribution({onClick}) {
 						>
 							<div className="acct customer-div">
 								<div className="">
-									<h3 className="create">Pool Contribution</h3>
+									<h3 className="create">Saving Pool</h3>
 								</div>
 							</div>
 							<p className="create-text customer-text">
@@ -145,4 +145,4 @@ function PoolContribution({onClick}) {
 	);
 }
 
-export default PoolContribution;
+export default SavingPool;
