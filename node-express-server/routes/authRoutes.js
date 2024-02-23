@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const connectEnsureLogin = require('connect-ensure-login');
 const authController = require('../controllers/authController');
 
@@ -10,6 +13,7 @@ router.post('/signup', authController.signupUser);
 router.post('/verify', authController.verifyEmail);
 
 // Create User PIN
+//router.post('/createUserPIN', passport.authenticate('jwt', { session: false }), authController.createUserPIN);
 router.post('/createUserPIN', authController.createUserPIN);
 
 // Login User

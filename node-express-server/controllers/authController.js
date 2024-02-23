@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const mysqlConnection = require('../db/dbconnect');
 const Users = mysqlConnection.users;
@@ -83,7 +85,6 @@ module.exports.signupUser = async (req, res) => {
                             email: user.email,
                             maskedEmail: maskedEmail,         
                         };
-                        res.header('Access-Control-Allow-Credentials', 'true');
                         res.json({"success":"true", "response": userDetailsToSend});
                         } catch (error) {
                             res.json({"success":"false", "response": "Unable to complete signup"});
@@ -109,30 +110,27 @@ module.exports.signupUser = async (req, res) => {
 
     if (verifiedUser[0]) {
 
-            const user = await Users.findOne({where: { email: email }});
+      //Verification successful. Treat User as authenticated
+      const user = verifiedUser[1];
 
-              req.login(user, (err) => {
-                if (err) {
-                  return res.status(500).json({ success: false, "response": "Authentication failed"});
-                }
+      //Make token
+      const token = jwt.sign({ id: user.id }, process.env.SESSION_SECRET, { expiresIn: '1h' });
+    
+      // Make Profile details
+      const fullName = user.fullName;
+      const fullNameArray = fullName.split(" ");
+      const firstName = fullNameArray[0];
+      const dpPath = path.posix.join('/node-express-server', 'views', 'images', 'dp_images', 'default_avatar.png');
+      const userDetailsToSend = {
+          userId: user.id,
+          email: user.email,
+          firstName: firstName,
+          dpPath: dpPath,
+      };     
+      return res.json({"success":"true", "response": userDetailsToSend, "jwt":token});
 
-                // The user is now logged in                            
-                const fullName = user.fullName;
-                const fullNameArray = fullName.split(" ");
-                const firstName = fullNameArray[0];
-                const dpPath = path.posix.join('/node-express-server', 'views', 'images', 'dp_images', 'default_avatar.png');
-                const userDetailsToSend = {
-                    userId: user.id,
-                    email: user.email,
-                    firstName: firstName,
-                    dpPath: dpPath,             
-                };
-                res.header('Access-Control-Allow-Credentials', 'true');        
-                return res.json({"success":"true", "response": userDetailsToSend});
-              });
     } else {
-        res.status(401).json({"success":"false", "response":"Email validation failed",
-        });
+        res.status(401).json({"success":"false", "response":"Email validation failed"});
     }
 };
 
@@ -164,44 +162,36 @@ module.exports.createUserPIN = async (req, res) => {
   }
 
   user = await user.update({userPIN: userSuppliedPIN});
-  res.header('Access-Control-Allow-Credentials', 'true');
   res.json({"success":"true", "response": "PIN created successfully"});
 };
 
 
 //Login user
 module.exports.loginUser = async (req, res, next) => {
+
+  passport.authenticate('local', (err, user, info) => {
+    //check for and return authentication error
+    if (err) { return next(err); }
+    
+    //check for invalid user and respond accordingly
+    if (!user) { return res.status(401).json({ message: info.message }); }
+
+    //Authentication successful. Make token
+    const token = jwt.sign({ id: user.id }, process.env.SESSION_SECRET, { expiresIn: '1h' });
   
-  const {email, password} = req.body;
-  const verifiedUser = await loginManual(email, password);
-
-  if (verifiedUser[0]) {
-
-    const user = await Users.findOne({where: { email }});
-
-      req.login(user, (err) => {
-        if (err) {
-          return res.status(500).json({ success: false, "response ": verifiedUser[1]});
-        }
-
-        // The user is now logged in                            
-        const fullName = user.fullName;
-        const fullNameArray = fullName.split(" ");
-        const firstName = fullNameArray[0];
-        const dpPath = user.dpPath;
-        const userDetailsToSend = {
-          userId: user.id,
-            email: user.email,
-            firstName: firstName,
-            dpPath: dpPath,             
-        };
-        res.header('Access-Control-Allow-Credentials', 'true');
-        return res.json({"success":"true", "response": userDetailsToSend});
-      });
-} else {
-res.status(401).json({"success":"false", "response":"Username or Password Incorrect",
-});
-}
+    // Make Profile details
+    const fullName = user.fullName;
+    const fullNameArray = fullName.split(" ");
+    const firstName = fullNameArray[0];
+    const dpPath = path.posix.join('/node-express-server', 'views', 'images', 'dp_images', 'default_avatar.png');
+    const userDetailsToSend = {
+        userId: user.id,
+        email: user.email,
+        firstName: firstName,
+        dpPath: dpPath,             
+    };     
+    return res.json({"success":"true", "response": userDetailsToSend, "jwt":token});
+  })(req, res, next);
 
 }
 
