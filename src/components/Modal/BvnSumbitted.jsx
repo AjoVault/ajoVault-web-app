@@ -29,8 +29,22 @@ const BvnSubmitted = () => {
                         </div>
                        
                        {/* { img&& <img src={`data:image/jpeg;base64,${capturedFace}`} alt="Captured Face" />} */}
-                       <p className='pin-para'>Kyc submitted successfully for verification</p>
+                       <p className='terms-para'>Kyc submitted successfully for verification</p>
                     </div>
+                    <Link to={"/dashboard"}>
+                    <div className='submitted-div'>
+                      
+                      <LilacButton
+                                  title="OK"
+                                  color="var(--lilac)"
+                                  textColor="white"
+                                  width="50%"
+                        />	
+
+                  </div>
+                 
+                    </Link>
+                    
 
                    
 
